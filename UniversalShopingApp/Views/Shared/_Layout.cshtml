@@ -1,0 +1,162 @@
+﻿@using UniversalShopingApp.Models
+@using UniversalShopingClasses.DrinksManagement
+@using UniversalShopingClasses.UserManagement
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>@ViewBag.Title Universal-Shoping</title>
+    @{
+        User currentuser = (User)Session[WebUtils.Current_User];
+        List<SelectListItem> categories = ModelHelper.ToSelectItemList(new CategoryHandler().GetAllCategories());
+    }
+    <!-- Font Awesome -->
+    <link href="~/Content/MDB-Free/fonts/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <!-- Bootstrap core CSS -->
+    <link href="~/Content/MDB-Free/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Material Design Bootstrap -->
+    <link href="~/Content/MDB-Free/css/mdb.min.css" rel="stylesheet" />
+    <!-- Your custom styles (optional) -->
+    <link href="~/Content/MDB-Free/css/style.css" rel="stylesheet" />
+</head>
+<body>
+    <!--Navbar-->
+    <nav class="navbar navbar-expand-lg navbar-dark  deep-purple fixed-top">
+        <!-- Navbar brand -->
+        <a class="navbar-brand" href="@Url.Action("Index","Home")"><i class="fa fa-shopping-bag fa-lg"></i>&nbsp;UniversalShopingCenter</a>
+        <!-- Collapse button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- Collapsible content -->
+        <div class="collapse navbar-collapse" id="basicExampleNav">
+            <!-- Links -->
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="@Url.Action("Index","Home")">
+                        <span class="fa fa-home"></span>&nbsp;  Home
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("SubmitMessage","Contact")"><span class="fa fa-phone"></span>&nbsp;Contact Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("ViewCart","Cart")"> Cart <span id="cartitems" class="badge">0</span></a>
+                </li>
+                @if (currentuser != null)
+                {
+
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><span class="fa fa-user" style="color: whitesmoke"></span>&nbsp;User Info<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li class="nav-item"><a class="nav-link" href="@Url.Action("index","Users",new {id=currentuser.Id})"> <span class="fa fa-user"></span>&nbsp; @currentuser.Fullname</a></li>
+                            <li class="nav-item"><a class="nav-link" href="@Url.Action("ChangePassword","Users",new{id=currentuser.Id})"><span class="fa fa-lock"></span>&nbsp; Reset Password</a></li>
+                            <li class="nav-item"><a class="nav-link" href="@Url.Action("ProfileSetting","Users",new{id=currentuser.Id})"><span class="fa fa-cog"></span>&nbsp; Profile Setting</a></li>
+                            <li class="dropdown-divider"></li>
+                            <li class="nav-item"><a href="@Url.Action("Logout","Users")"><span class="fa fa-sign-out-alt"></span>&nbsp; Logout</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <img src="/Content/UserImages/@Url.Content(currentuser.ImageUrl)" style="width: 50px; height: 50px; border-radius: 50%;" class="img-thumbnail" />
+                    </li>
+                }
+            </ul>
+            @if (currentuser != null)
+            {
+                <nav class="navbar navbar-dark mdb-color-ic">
+                    <h4 class="text-white">WellCome:@currentuser.Fullname</h4>
+                </nav>
+            }
+        </div>
+        <!-- Collapsible content -->
+    </nav>
+    <!--/.Navbar-->
+    <div class="row" style="padding: 10px; margin: 0px; ">
+        <div class="col-lg-3" style="margin-top: 6%">
+            <div class="list-group">
+                <a href="#" class="list-group-item deep-purple text-white text-center">
+                    Online Drink Shop Menu
+                </a>
+                <a href="@Url.Action("Index", "Home")" class="list-group-item"><i class="fa fa-tags"></i>&nbsp; All Drinks</a>
+                @if (categories != null)
+                {
+                    foreach (var v in categories)
+                    {
+                        <a class="list-group-item" href="@Url.Action("ByCategory", "Home", new {id = Convert.ToInt32(v.Value)})"><span class="fa fa-tag"></span> @v.Text</a>
+                    }
+                }
+            </div>
+        </div>
+        <div class="col-lg-9">
+            @RenderBody()
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            </footer>
+        </div>
+    </div>
+    <!-- JQuery -->
+    <script src="~/Content/MDB-Free/js/jquery-3.3.1.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script src="~/Content/MDB-Free/js/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script src="~/Content/MDB-Free/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script src="~/Content/MDB-Free/js/mdb.min.js"></script>
+    @RenderSection("myscript", required: false)
+    <script type="text/javascript">
+        $(function () {
+            //here we can print the report of the
+            //product that is buyed by the client
+
+            $.ajax(
+                {
+                    url: "/Cart/ItemsCount",
+                    type: "get"
+                }
+            ).done(function (itemscount) {
+                $("#cartitems").text(itemscount);
+            });
+            $(".cartqtytxt").change(function () {
+                var elt = $(this);
+                var qty = elt.val();
+                if (qty != 0) {
+                    var qs = "?id=" + $(this).data("pid") + "&qty=" + qty;
+                    $.ajax(
+                        {
+                            url: "/Cart/Update" + qs,
+                            type: "get",
+                        }
+                    ).done(function (itemscount) {
+                        $("#cartitems").text(itemscount);
+                    });
+                }
+            });
+            $(".addcartbtn").click(function () {
+                var obj = {
+                    "Id": $(this).data("pid"),
+                    "Name": $(this).data("pname"),
+                    "Price": $(this).data("pprice"),
+                    "ImageUrl": $(this).data("purl"),
+                    "Quantity": $(this).data("pqty")
+                }
+                $(this).parents("#proditem").fadeOut(300);
+                $.ajax(
+                    {
+                        url: "/Cart/Add",
+                        type: "get",
+                        data: obj
+                    }
+                ).done(function (itemscount) {
+                    $("#cartitems").text(itemscount);
+                });
+                $(this).parents("#proditem").fadeIn(300);
+            });
+        })
+    </script>
+</body>
+</html>

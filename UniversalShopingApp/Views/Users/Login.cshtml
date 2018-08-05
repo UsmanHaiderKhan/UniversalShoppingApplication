@@ -1,0 +1,35 @@
+﻿@model UniversalShopingApp.Models.LoginViewModel
+@{
+    ViewBag.Title = "Login";
+    Layout = null;
+}
+<link href="~/Content/style.css" rel="stylesheet" />
+<div>
+    @if (ViewBag.Error != null)
+    {
+        <p class="text-danger"> @ViewBag.Error</p>
+
+    }
+</div>
+<div class="login-box">
+    <img src="/Content/LogImg/avatar.png" class="avatar">
+    <h1>Login Here</h1>
+    @using (Html.BeginForm("Login", "Users", new { c = ViewBag.Controller, a = ViewBag.Action }, FormMethod.Post, new { id = "loginform", enctype = "plain/text" }))
+    {
+        @Html.LabelFor(m => m.Loginid)
+        @Html.TextBoxFor(m => m.Loginid, null, new { placeholder = "Enter Username", type = "text" })
+        @Html.ValidationMessageFor(m => m.Loginid, null, new { @class = "text-white" })
+        @Html.LabelFor(m => m.Password)
+        @Html.TextBoxFor(m => m.Password, null, new { placeholder = "Enter Password", type = "password" })
+        @Html.ValidationMessageFor(m => m.Password, null, new { @class = "text-white" })
+        <input type="submit" name="submit" value="Login">
+        <div style="margin-left: 31%">
+            <a href="@Url.Action("PasswordRecovery","Users")">Forget Password</a>
+        </div>
+        <br />
+        <div style="margin-left: 24%">
+            <a href="@Url.Action("SignUp","Users")">Create Your Account...!</a>
+        </div>
+
+    }
+</div>

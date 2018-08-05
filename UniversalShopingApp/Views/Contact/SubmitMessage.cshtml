@@ -1,0 +1,108 @@
+﻿
+@model UniversalShopingClasses.UserManagement.Contact
+@{
+    ViewBag.Title = "SubmitMessage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!--Section: Contact v.2-->
+<section class="section" style="margin-top: 8%">
+    <div class="card card-image mt-2" style="padding: 2%; background-image: url('../../Content/BackImg/new-instagram-color-background-latest.jpg'); background-repeat: no-repeat">
+        <!--Section heading-->
+        <h2 class="h1-responsive font-weight-bold text-white text-center my-5">Contact us</h2>
+        <!--Section description-->
+        <p class="text-center text-white w-responsive mx-auto mb-5">
+            Do you have any questions? Please do not hesitate to contact us directly. Our team will come back to you within
+            matter of hours to help you.
+        </p>
+        <div class="row">
+            <!--Grid column-->
+            <div class="col-md-9 mb-md-0 mb-5">
+                @using (Html.BeginForm("SubmitMessage", "Contact", FormMethod.Post, new { }))
+                {
+
+                    <!--Grid row-->
+                    <div class="row">
+                        <!--Grid column-->
+                        <div class="col-md-6">
+                            <div class="md-form mb-0">
+                                @*<input type="text" id="name" name="name" class="form-control">*@
+                                <i class="fa fa-user prefix text-white"></i>
+                                @Html.TextBoxFor(m => m.Name, new { @class = "form-control text-white" })
+                                @Html.LabelFor(m => m.Name, new { @class = "text-white" })
+                                @*<label for="name" class="">Your name</label>*@
+                            </div>
+                        </div>
+                        <!--Grid column-->
+                        <!--Grid column-->
+                        <div class="col-md-6">
+                            <div class="md-form mb-0">
+                                <i class="fa fa-envelope-o prefix text-white"></i>
+                                @Html.TextBoxFor(m => m.Email, null, new { @class = "form-control text-white" })
+                                @Html.LabelFor(m => m.Email, new { @class = "text-white" })
+                            </div>
+                        </div>
+                        <!--Grid column-->
+                    </div>
+                    <!--Grid row-->
+                    <!--Grid row-->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="md-form mb-0">
+                                <i class="fa fa-phone-square prefix text-white"></i>
+                                @Html.TextBoxFor(m => m.PhoneNo, null, new { @class = "form-control text-white" })
+                                @Html.LabelFor(m => m.PhoneNo, new { @class = "text-white" })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="md-form mb-0">
+                                <i class="fa fa-rocket prefix text-white"></i>
+                                @Html.TextBoxFor(m => m.Subject, new { @class = "form-control text-white" })
+                                @Html.LabelFor(m => m.Subject, new { @class = "text-white" })
+                            </div>
+                        </div>
+                    </div>
+                    <!--Grid row-->
+                    <!--Grid row-->
+                    <div class="row">
+                        <!--Grid column-->
+                        <div class="col-md-12">
+                            <div class="md-form">
+                                @*<textarea type="text" id="message" name="message" rows="2" class="form-control md-textarea"></textarea>*@
+                                <i class="fa fa-envelope-o prefix white-text"></i>
+                                @Html.TextAreaFor(m => m.Message, new { @class = "form-control text-white md-textarea", rows = "2" })
+                                @Html.LabelFor(m => m.Message, new { @class = "text-white" })
+                                @*<label for="message">Your message</label>*@
+                            </div>
+                        </div>
+                    </div>
+                    <!--Grid row-->
+
+                    <div class="text-center text-md-left">
+                        <button type="submit" class="btn btn-primary fa-lg"><i class="fa fa-paper-plane-o"></i>&nbsp;Send</button>
+                    </div>
+                    <div class="status"></div>
+
+                }
+            </div>
+            <!--Grid column-->
+            <!--Grid column-->
+            <div class="col-md-3 text-center">
+                <ul class="list-unstyled mb-0">
+                    <li class="text-white">
+                        <i class="fa fa-map-marker fa-2x"></i>
+                        <p>Lahore Pakistan, Canal Bank, UOG</p>
+                    </li>
+                    <li class="text-white">
+                        <i class="fa fa-phone mt-4 fa-2x"></i>
+                        <p>+ 92 334 9875662</p>
+                    </li>
+                    <li class="text-white">
+                        <i class="fa fa-envelope mt-4 fa-2x"></i>
+                        <p>usmanhaiderkhan4@hotmail.com</p>
+                    </li>
+                </ul>
+            </div>
+            <!--Grid column-->
+        </div>
+    </div>
+</section>

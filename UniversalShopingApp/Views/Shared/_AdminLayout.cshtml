@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>@ViewBag.Title Universal-Shoping</title>
+    <!-- Font Awesome -->
+    <link href="~/Content/MDB-Free/fonts/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <!-- Bootstrap core CSS -->
+    <link href="~/Content/MDB-Free/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Material Design Bootstrap -->
+    <link href="~/Content/MDB-Free/css/mdb.min.css" rel="stylesheet" />
+    <!-- Your custom styles (optional) -->
+    <link href="~/Content/MDB-Free/css/style.css" rel="stylesheet" />
+</head>
+<body>
+    <!--Navbar-->
+    <nav class="navbar navbar-expand-lg navbar-dark deep-purple">
+        <!-- Navbar brand -->
+        <a class="navbar-brand" href="@Url.Action("DashBoard","Admin")">Universal-Shoping</a>
+        <!-- Collapse button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- Collapsible content -->
+        <div class="collapse navbar-collapse" id="basicExampleNav">
+            <!-- Links -->
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">
+                        Home
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Features</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Pricing</a>
+                </li>
+                <!-- Dropdown -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                    <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </li>
+            </ul>
+            <!-- Links -->
+        </div>
+        <!-- Collapsible content -->
+    </nav>
+    <!--/.Navbar-->
+    <div class="row" style="padding: 10px;margin:0px">
+        <div class="col-lg-3">
+            <div class="list-group">
+                <a href="#" class="list-group-item deep-purple text-white text-center">
+                    Online Drink Shop Menu
+                </a>
+                <a href="@Url.Action("DashBoard", "Admin")" class="list-group-item"><i class="fa fa-tachometer fa-lg"></i>&nbsp; DashBoard</a>
+                <a href="@Url.Action("GetAllUsers", "Admin")" class="list-group-item"><i class="fa fa-users"></i>&nbsp; UserDetails<i class="badge deep-purple" style="padding: 3%;margin-left: 50% ">@Html.Action("GetUserCount", "Admin")</i></a>
+                <a href="@Url.Action("ProductsinShop", "Drink")" class="list-group-item"><i class="fa fa-product-hunt"></i>&nbsp; Product Detail</a>
+                <a href="@Url.Action("Orderby", "Order")" class="list-group-item"><i class="fa fa-shopping-bag"></i>&nbsp; Order Details <i class="badge deep-purple" style="padding: 3%;margin-left: 45% ">@Html.Action("GetOrderCount", "Admin")</i></a>
+            </div>
+        </div>
+        <div class="col-lg-9">
+            @RenderBody()
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            </footer>
+        </div>
+    </div>
+    <!-- JQuery -->
+    <script src="~/Content/MDB-Free/js/jquery-3.3.1.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script src="~/Content/MDB-Free/js/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script src="~/Content/MDB-Free/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script src="~/Content/MDB-Free/js/mdb.min.js"></script>
+    @RenderSection("myscript", required: false)
+</body>
+</html>

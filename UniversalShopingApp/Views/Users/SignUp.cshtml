@@ -1,0 +1,144 @@
+﻿@model UniversalShopingClasses.UserManagement.User
+@{
+    ViewBag.title = "User Registration";
+    Layout = null;
+}
+<link href="~/Content/MDB-Free/fonts/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+<!-- Bootstrap core CSS -->
+<link href="~/Content/MDB-Free/css/bootstrap.min.css" rel="stylesheet" />
+<!-- Material Design Bootstrap -->
+<link href="~/Content/MDB-Free/css/mdb.min.css" rel="stylesheet" />
+<style>
+
+
+    .back {
+        padding: 0px;
+        margin: 0px;
+        background-size: cover;
+        background-image: url('../../Content/backimg/images (1).jpg');
+    }
+</style>
+<div class="back">
+    <div class="container">
+        <div class="col-lg-8 offset-lg-2">
+            @using (Html.BeginForm("SignUp", "Users", new { c = ViewBag.Controller, a = ViewBag.Action }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <div class="mt-4" style="margin-bottom: 6%;margin-left: 35%">
+                    <div class="" id="fileUpldbtnContainer" style="padding: 0; width: 221px;">
+                        <div>
+                            <img id="blah" src="" alt="" class="img-thumbnail" style="height: 155px; width: 176px; z-index: 0; position: absolute; top: 2px;border-radius:50%" />
+                        </div>
+                        <div class="fileUpload" style="height: 152px; width:176px; padding: 29px 51px; font-size: 74px; color: rgba(0, 0, 0, 0.1); border: 2px solid rgba(0, 0, 0, 0.1);border-radius:50%">
+                            <span class="uploadFile"><span class="fa fa-plus"></span></span>
+                            <input id="photo" name="photo" type="file" class="upload" style="position: absolute; top:-2px;left: 16px; margin: 0; padding: 0px; font-size: 2em; cursor: pointer; opacity: 0; filter: alpha(opacity=0); box-sizing: content-box; width: 197px;border-radius: 50%" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="md-form">
+                    <i class="fa fa-user prefix"></i>
+                    @Html.TextBoxFor(m => m.Fullname, null, new { @class = "text-white form-control" })
+                    @Html.LabelFor(m => m.Fullname)
+                    @Html.ValidationMessageFor(m => m.Fullname, null, new { @class = "text-white" })
+                </div>
+                <div class="md-form">
+                    <i class="fa fa-envelope prefix"></i>
+                    @Html.TextBoxFor(m => m.Email, null, new { @class = "text-white form-control" })
+                    @Html.LabelFor(m => m.Email)
+                    @Html.ValidationMessageFor(m => m.Email, null, new { @class = "text-white" })
+                </div>
+                <div class="md-form">
+                    <i class="fa fa-user prefix"></i>
+                    @Html.TextBoxFor(m => m.Loginid, null, new { @class = "text-white form-control" })
+                    @Html.LabelFor(m => m.Loginid)
+                    @Html.ValidationMessageFor(m => m.Loginid, null, new { @class = "text-white " })
+                </div>
+                <div class="md-form">
+                    <i class="fa fa-lock prefix"></i>
+                    @Html.PasswordFor(m => m.Password, new { @class = "text-white form-control" })
+                    @Html.LabelFor(m => m.Password)
+                    @Html.ValidationMessageFor(m => m.Password, null, new { @class = "text-white" })
+                </div>
+                <div class="md-form">
+                    <i class="fa fa-lock prefix"></i>
+                    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "text-white form-control" })
+                    @Html.LabelFor(m => m.ConfirmPassword)
+                    @Html.ValidationMessageFor(m => m.ConfirmPassword, null, new { @class = "text-white" })
+                </div>
+                <div class="md-form">
+                    <i class="fa fa-id-card prefix"></i>
+                    @Html.TextBoxFor(m => m.Cnic, null, new { @class = "text-white form-control" })
+                    @Html.LabelFor(m => m.Cnic)
+                    @Html.ValidationMessageFor(m => m.Cnic, null, new { @class = "text-white" })
+                </div>
+                <div class="md-form">
+                    <i class="fa fa-calendar prefix"></i>
+                    @Html.TextBoxFor(m => m.DateofBirth, null, new { @class = "text-white form-control", type = "date" })
+                    @Html.ValidationMessageFor(m => m.DateofBirth, null, new { @class = "text-white" })
+                </div>
+                <div class="md-form">
+                    <i class="fa fa-flag prefix"></i>
+                    @Html.TextBoxFor(m => m.State, null, new { @class = "text-white form-control" })
+                    @Html.LabelFor(m => m.State)
+                    @Html.ValidationMessageFor(m => m.State, null, new { @class = "text-white" })
+                </div>
+                <div class="md-form">
+                    <i class="fa fa-flag prefix"></i>
+                    @Html.TextBoxFor(m => m.City, null, new { @class = "text-white form-control" })
+                    @Html.LabelFor(m => m.City)
+                    @Html.ValidationMessageFor(m => m.City, null, new { @class = "text-white" })
+                </div>
+                <div class="md-form">
+                    <i class="fa fa-address-book prefix"></i>
+                    @Html.TextBoxFor(m => m.FullAddress, null, new { @class = "text-white form-control" })
+                    @Html.LabelFor(m => m.FullAddress)
+                    @Html.ValidationMessageFor(m => m.FullAddress, null, new { @class = "text-white" })
+                </div>
+                <div class="md-form text-white">
+                    <i class="fa fa-phone prefix"></i>
+                    @Html.TextBoxFor(m => m.MobileNo, null, new { @class = "text-white form-control" })
+                    @Html.LabelFor(m => m.MobileNo)
+                    @Html.ValidationMessageFor(m => m.MobileNo, null, new { @class = "text-white" })
+                </div>
+                <div class="form-group text-center text-white">
+                    @Html.LabelFor(m => m.Gender, new { })
+                    @foreach (var b in (IEnumerable<SelectListItem>)ViewBag.GenderList)
+                    {
+                        <label>@Html.RadioButton("gender.Name", b.Value) @b.Text</label>
+                    }
+                </div>
+                <div class="form-group text-center ">
+                    <button type="submit" class="btn btn-deep-purple"><span class="fa fa-user-plus"></span>&nbsp;Signup</button>
+                </div>
+
+            }
+        </div>
+    </div>
+</div>
+<script src="~/Content/MDB-Free/js/jquery-3.3.1.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script src="~/Content/MDB-Free/js/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script src="~/Content/MDB-Free/js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script src="~/Content/MDB-Free/js/mdb.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(document).on('click', '.fileUpload', function () {
+            $(this).children('.upload').change(function (event) {
+                readURL(this);
+                fileName = $(this).val();
+            });
+        });
+
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#blah').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    });
+</script>

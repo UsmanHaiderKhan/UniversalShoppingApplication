@@ -1,0 +1,16 @@
+﻿.box {
+    width: 240px;
+    height: 180px;
+    padding: 50px;
+    background-color: violet;
+}
+
+.box, a:hover {
+    text-decoration-line: none;
+    font-weight: bold;
+}
+
+    .box h2 {
+        width: 100%;
+        margin-left: 25%;
+    }
