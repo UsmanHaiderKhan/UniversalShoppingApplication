@@ -334,6 +334,7 @@
     <Content Include="Views\Drink\ProductsinShop.cshtml" />
     <Content Include="Views\Drink\_DeleteDrink.cshtml" />
     <Content Include="Views\Drink\UpdateProduct.cshtml" />
+    <Content Include="Views\Contact\SuccessMessage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
