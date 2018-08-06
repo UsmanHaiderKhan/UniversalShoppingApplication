@@ -7,7 +7,7 @@
 <div class="row">
     <div class="col-lg-3">
         <div class="card box">
-            <a href="@Url.Action("GetAllUsers", "Admin")">
+            <a href="@Url.Action("GetAllUsers", "Admin")" class="text-white">
                 <h2><span class="fa fa-users fa-lg"></span><span class="ml-3">@Html.Action("GetUserCount", "Admin")</span> </h2>
                 <h4 class="text-center">Users</h4>
             </a>
@@ -15,9 +15,17 @@
     </div>
     <div class="col-lg-3">
         <div class="card box">
-            <a href="@Url.Action("Orderby", "Order")">
+            <a href="@Url.Action("Orderby", "Order")" class="text-white">
                 <h2><span class="fa fa-shopping-cart fa-lg"></span><span class="ml-3">@Html.Action("GetOrderCount", "Admin")</span> </h2>
                 <h4 class="text-center">Orders</h4>
+            </a>
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="card box">
+            <a href="@Url.Action("ProductsinShop", "Drink")" class="text-white">
+                <h2><span class="fa fa-product-hunt fa-lg"></span><span class="ml-3">@Html.Action("GetOrderCount", "Admin")</span> </h2>
+                <h4 class="text-center">Products</h4>
             </a>
         </div>
     </div>
