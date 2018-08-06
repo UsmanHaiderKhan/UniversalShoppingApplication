@@ -63,8 +63,9 @@
                 </a>
                 <a href="@Url.Action("DashBoard", "Admin")" class="list-group-item"><i class="fa fa-tachometer fa-lg"></i>&nbsp; DashBoard</a>
                 <a href="@Url.Action("GetAllUsers", "Admin")" class="list-group-item"><i class="fa fa-users"></i>&nbsp; UserDetails<i class="badge deep-purple" style="padding: 3%;margin-left: 50% ">@Html.Action("GetUserCount", "Admin")</i></a>
-                <a href="@Url.Action("ProductsinShop", "Drink")" class="list-group-item"><i class="fa fa-product-hunt"></i>&nbsp; Product Detail</a>
+                <a href="@Url.Action("ProductsinShop", "Drink")" class="list-group-item"><i class="fa fa-product-hunt"></i>&nbsp; Product Detail <i class="badge deep-purple" style="padding: 3%;margin-left: 42% ">@Html.Action("GetOrderCount", "Admin")</i></a>
                 <a href="@Url.Action("Orderby", "Order")" class="list-group-item"><i class="fa fa-shopping-bag"></i>&nbsp; Order Details <i class="badge deep-purple" style="padding: 3%;margin-left: 45% ">@Html.Action("GetOrderCount", "Admin")</i></a>
+                <a href="@Url.Action("AddProduct", "Drink")" class="list-group-item"><i class="fa fa-plus"></i>&nbsp;Add Product </a>
             </div>
         </div>
         <div class="col-lg-9">
