@@ -64,6 +64,15 @@
                         <img src="/Content/UserImages/@Url.Content(currentuser.ImageUrl)" style="width: 50px; height: 50px; border-radius: 50%;" class="img-thumbnail" />
                     </li>
                 }
+                else
+                {
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Login","Users")"><span class="fa fa-user"></span>&nbsp;Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("SignUp","Users")"><span class="fa fa-user-plus"></span>&nbsp;Signup</a>
+                    </li>
+                }
             </ul>
             @if (currentuser != null)
             {
