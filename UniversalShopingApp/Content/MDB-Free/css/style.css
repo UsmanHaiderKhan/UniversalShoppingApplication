@@ -5,7 +5,7 @@
     background-color: #4B0082;
 }
 
-.box, a:hover {
+.box {
     text-decoration-line: none;
     font-weight: bold;
 }
