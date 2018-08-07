@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using UniversalShopingClasses.GeneralProductManagement;
 
 namespace UniversalShopingClasses.DrinksManagement
 {
@@ -14,14 +15,14 @@ namespace UniversalShopingClasses.DrinksManagement
         public string LongDescription { get; set; }
         [DataType(DataType.Currency)]
         public decimal Price { get; set; }
-        public List<ProductImages> ImageUrl { get; set; }
         public bool IsPreferredDrink { get; set; }
         public bool InStock { get; set; }
-        public virtual DrinkCategory Category { get; set; }
+        public ProductBrand ProductBrand { get; set; }
+        public virtual ICollection<ProductImages> ProductImages { get; set; }
 
         public Drink()
         {
-            ImageUrl = new List<ProductImages>();
+            ProductImages = new List<ProductImages>();
         }
     }
 

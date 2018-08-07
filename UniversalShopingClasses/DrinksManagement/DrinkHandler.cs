@@ -1,6 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using UniversalShopingClasses.CartManagement;
+using UniversalShopingClasses.GeneralProductManagement;
+using UniversalShopingClasses.MobileManagement;
 
 namespace UniversalShopingClasses.DrinksManagement
 {
@@ -12,13 +15,25 @@ namespace UniversalShopingClasses.DrinksManagement
             using (db)
             {
                 return (from m in db.Drinks
-                        .Include(m => m.Category)
-                        .Include(m => m.ImageUrl)
+                            .Include(m => m.ProductBrand)
+                           .Include(m => m.ProductImages)
                         orderby m.Name descending
                         select m).Take(counter).ToList();
             }
         }
-        public List<Drink> GetDrinksByCategory(DrinkCategory category)
+        public List<Mobile> GetLastestMobiles(int counter)
+        {
+            UniversalContext db = new UniversalContext();
+            using (db)
+            {
+                return (from m in db.Mobiles
+                        .Include(m => m.ProductBrand)
+                        .Include(m => m.ProductImages)
+                        orderby m.Name descending
+                        select m).Take(counter).ToList();
+            }
+        }
+        public List<Drink> GetDrinksByCategory(ProductBrand category)
         {
             UniversalContext db = new UniversalContext();
             using (db)
@@ -26,27 +41,37 @@ namespace UniversalShopingClasses.DrinksManagement
                 return
                     (from m in
                             db.Drinks
-                                .Include(m => m.Category)
-                                .Include(m => m.ImageUrl)
-                     where m.Category.Id == category.Id
+                                .Include(m => m.ProductBrand)
+                                .Include(m => m.ProductImages)
+                     where m.ProductBrand.Id == category.Id
                      select m).ToList();
             }
         }
-        public DrinkCategory GetCategoryById(int id)
-        {
-            using (UniversalContext db = new UniversalContext())
-            {
-                return (from b in db.DrinkCategories
-                        where b.Id == id
-                        select b).FirstOrDefault();
-            }
-        }
-        public DrinkOrder GetOrderById(int id)
+        public ProductBrand GetCategoryById(int id)
         {
             UniversalContext db = new UniversalContext();
             using (db)
             {
-                return (from c in db.DrinkOrders.Include(m => m.OrderDetails) where c.Id == id select c).FirstOrDefault();
+                return (from c in db.ProductBrands
+                        where c.Id == id
+                        select c).FirstOrDefault();
+            }
+        }
+        public List<ProductBrand> GetAllBrands()
+        {
+            UniversalContext db = new UniversalContext();
+            using (db)
+            {
+                return (from c in db.ProductBrands
+                        select c).ToList();
+            }
+        }
+        public Order GetOrderById(int id)
+        {
+            UniversalContext db = new UniversalContext();
+            using (db)
+            {
+                return (from c in db.Orders.Include(m => m.OrderDetails) where c.Id == id select c).FirstOrDefault();
             }
         }
         public List<Drink> GetDrinkbyId(int id)
@@ -54,7 +79,11 @@ namespace UniversalShopingClasses.DrinksManagement
             UniversalContext db = new UniversalContext();
             using (db)
             {
-                return (from c in db.Drinks.Include(m => m.ImageUrl).Include(m => m.Category) where c.Id == id select c).ToList();
+                return (from c in db.Drinks
+                           .Include(m => m.ProductBrand)
+                           .Include(m => m.ProductImages)
+                        where c.Id == id
+                        select c).ToList();
             }
         }
 
@@ -63,7 +92,10 @@ namespace UniversalShopingClasses.DrinksManagement
             UniversalContext db = new UniversalContext();
             using (db)
             {
-                return (from c in db.Drinks.Include(m => m.Category).Include(m => m.ImageUrl) select c).ToList();
+                return (from c in db.Drinks
+                    .Include(m => m.ProductBrand)
+                    .Include(m => m.ProductImages)
+                        select c).ToList();
             }
 
         }
@@ -73,7 +105,11 @@ namespace UniversalShopingClasses.DrinksManagement
             UniversalContext db = new UniversalContext();
             using (db)
             {
-                return (from c in db.Drinks.Include(m => m.Category).Include(m => m.ImageUrl) where c.Id == id select c)
+                return (from c in db.Drinks
+                        .Include(m => m.ProductBrand)
+                        .Include(m => m.ProductImages)
+                        where c.Id == id
+                        select c)
                     .FirstOrDefault();
             }
         }
