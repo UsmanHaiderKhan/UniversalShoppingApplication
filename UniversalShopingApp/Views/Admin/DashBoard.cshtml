@@ -24,8 +24,16 @@
     <div class="col-lg-3">
         <div class="card box">
             <a href="@Url.Action("ProductsinShop", "Drink")" class="text-white">
-                <h2><span class="fa fa-product-hunt fa-lg"></span><span class="ml-3">@Html.Action("GetOrderCount", "Admin")</span> </h2>
-                <h4 class="text-center">Products</h4>
+                <h2><span class="fa fa-glass fa-lg"></span><span class="ml-3">@Html.Action("GetdrinkCount", "Admin")</span> </h2>
+                <h4 class="text-center">Drinks</h4>
+            </a>
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="card box">
+            <a href="@Url.Action("MobileDetails", "Home")" class="text-white">
+                <h2><span class="fa fa-mobile fa-lg"></span><span class="ml-3">@Html.Action("GetMobileCount", "Admin")</span> </h2>
+                <h4 class="text-center">Mobiles</h4>
             </a>
         </div>
     </div>
