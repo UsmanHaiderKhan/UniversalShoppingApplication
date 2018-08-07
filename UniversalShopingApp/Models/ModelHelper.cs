@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using UniversalShopingClasses.DrinksManagement;
+using UniversalShopingClasses.MobileManagement;
 
 namespace UniversalShopingApp.Models
 {
@@ -33,6 +34,16 @@ namespace UniversalShopingApp.Models
             }
             return temp;
         }
+        public static List<MobileHelper> ProductSummeryListOfMobiles(IEnumerable<Mobile> mobiles)
+        {
+            List<MobileHelper> temp = new List<MobileHelper>();
+            if (mobiles != null)
+            {
+                temp.AddRange(mobiles.Select(c => ToProductSummaryMobile(c)));
+                temp.TrimExcess();
+            }
+            return temp;
+        }
         public static ProductSummeryModel ToProductSummary(Drink drink)
         {
             return new ProductSummeryModel
@@ -41,7 +52,18 @@ namespace UniversalShopingApp.Models
                 Name = drink.Name,
                 Price = drink.Price,
                 ShortDescription = drink.ShortDescription,
-                ImageUrl = (drink.ImageUrl.Count > 0) ? drink.ImageUrl.First().Url : null
+                ImageUrl = (drink.ProductImages.Count > 0) ? drink.ProductImages.First().Url : null
+            };
+        }
+        public static MobileHelper ToProductSummaryMobile(Mobile mobile)
+        {
+            return new MobileHelper()
+            {
+                Id = mobile.Id,
+                Name = mobile.Name,
+                Price = mobile.Price,
+                Description = mobile.Description,
+                ImageUrl = (mobile.ProductImages.Count > 0) ? mobile.ProductImages.First().Url : null
             };
         }
     }
