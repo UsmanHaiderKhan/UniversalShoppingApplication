@@ -1,6 +1,11 @@
 ﻿using System.Data.Entity;
+using UniversalShopingClasses.CartManagement;
 using UniversalShopingClasses.DrinksManagement;
+using UniversalShopingClasses.FabricsManagement;
+using UniversalShopingClasses.GeneralProductManagement;
+using UniversalShopingClasses.MobileManagement;
 using UniversalShopingClasses.UserManagement;
+
 
 namespace UniversalShopingClasses
 {
@@ -14,12 +19,15 @@ namespace UniversalShopingClasses
         public DbSet<User> Users { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<Gender> Genders { get; set; }
-        public DbSet<DrinkCategory> DrinkCategories { get; set; }
         public DbSet<Drink> Drinks { get; set; }
-        public DbSet<DrinkOrder> DrinkOrders { get; set; }
-        public DbSet<DrinkOrderDetail> DrinkOrderDetails { get; set; }
-        public DbSet<ProductImages> ProductImageses { get; set; }
-        public DbSet<DrinkOrderStatus> OrderStatuses { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderDetail> OrderDetails { get; set; }
+        public DbSet<OrderStatus> OrderStatuses { get; set; }
+        public DbSet<Mobile> Mobiles { get; set; }
+        public DbSet<ProductBrand> ProductBrands { get; set; }
+        public DbSet<ProductType> ProductTypes { get; set; }
+        public DbSet<ProductImages> Imageses { get; set; }
+        public DbSet<Fabric> Fabrics { get; set; }
 
 
 
