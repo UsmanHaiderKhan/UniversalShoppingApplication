@@ -1,9 +1,9 @@
-﻿@using UniversalShopingClasses.DrinksManagement
-@model IEnumerable<DrinkOrder>
+﻿@using UniversalShopingClasses.CartManagement
+@model IEnumerable<UniversalShopingClasses.CartManagement.Order>
 @{
     ViewBag.Title = "ViewOrderDetails";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    List<DrinkOrder> orders = ViewBag.orders;
+    List<Order> orders = ViewBag.orders;
 }
 <h2 class="">ViewOrderDetails</h2>
 @Html.Partial("~/views/Home/_Userinfo.cshtml")

@@ -1,0 +1,10 @@
+﻿@using UniversalShopingApp.Models
+
+@{
+    ViewBag.Title = "MobileByCategory";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    @Html.Partial("~/Views/Shared/_MobileSummery.cshtml", (List<MobileHelper>)ViewBag.MobileByCategory)
+</div>
