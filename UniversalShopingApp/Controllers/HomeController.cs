@@ -32,7 +32,7 @@ namespace UniversalShopingApp.Controllers
         public ActionResult MobileByCategory(int id)
         {
             ViewBag.MobileByCategory = ModelHelper.ProductSummeryListOfMobiles(new MobileHandler().GetMobileByBrand(new ProductBrand { Id = id }));
-            ProductBrand mb = new DrinkHandler().GetCategoryById(id);
+            ProductBrand mb = new MobileHandler().GetBrandById(id);
             return View(mb);
         }
 
