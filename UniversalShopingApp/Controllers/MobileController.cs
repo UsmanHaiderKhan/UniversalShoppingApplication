@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
@@ -16,7 +17,8 @@ namespace UniversalShopingApp.Controllers
         // GET: Mobile
         public ActionResult Index()
         {
-            return View();
+            List<Mobile> mobiles = new MobileHandler().GetAllMobiles();
+            return View(mobiles);
         }
         [HttpGet]
         public ActionResult CreateMobile()
