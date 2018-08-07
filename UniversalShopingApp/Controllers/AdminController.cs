@@ -16,18 +16,18 @@ namespace UniversalShopingApp.Controllers
         }
         public ActionResult GetAllUsers()
         {
-            User user = (User)Session[WebUtils.Current_User];//for  Seeing Admin
-            if (!(user != null && user.IsInRole(WebUtils.Admin)))
-                return RedirectToAction("Login", "Users", new { ctl = "Admin", act = "Index" });
+            //User user = (User)Session[WebUtils.Current_User];//for  Seeing Admin
+            //if (!(user != null && user.IsInRole(WebUtils.Admin)))
+            //    return RedirectToAction("Login", "Users", new { ctl = "Admin", act = "Index" });
             List<User> users = new UserHandler().GetUsers();
             return View(users);
         }
         [HttpGet]
         public ActionResult UpdateUser(int id)
         {
-            User user = (User)Session[WebUtils.Current_User];//for  Seeing Admin
-            if (!(user != null && user.IsInRole(WebUtils.Admin)))
-                return RedirectToAction("Login", "Users", new { ctl = "Admin", act = "Index" });
+            //User user = (User)Session[WebUtils.Current_User];//for  Seeing Admin
+            //if (!(user != null && user.IsInRole(WebUtils.Admin)))
+            //    return RedirectToAction("Login", "Users", new { ctl = "Admin", act = "Index" });
 
             User user1 = new UserHandler().GetUserById(id);
             return View(user1);
@@ -37,9 +37,9 @@ namespace UniversalShopingApp.Controllers
 
         public ActionResult UpdateUser(User u)
         {
-            User user = (User)Session[WebUtils.Current_User];//for  Seeing Admin
-            if (!(user != null && user.IsInRole(WebUtils.Admin)))
-                return RedirectToAction("Login", "Users", new { ctl = "Admin", act = "Index" });
+            //User user = (User)Session[WebUtils.Current_User];//for  Seeing Admin
+            //if (!(user != null && user.IsInRole(WebUtils.Admin)))
+            //    return RedirectToAction("Login", "Users", new { ctl = "Admin", act = "Index" });
 
             UniversalContext db = new UniversalContext();
             if (ModelState.IsValid)
@@ -58,11 +58,10 @@ namespace UniversalShopingApp.Controllers
                     oldUser.MobileNo = u.MobileNo;
                     oldUser.Email = u.Email;
                     oldUser.FullAddress = u.FullAddress;
-                    // db.Entry(oldUser.Role).State = EntityState.Unchanged;
                     db.Entry(oldUser).State = EntityState.Modified;
                     db.SaveChanges();
                 }
-                return RedirectToAction("GetAllUsers");
+                return RedirectToAction("GetAllUsers", "Admin");
             }
 
             return View();
@@ -97,7 +96,7 @@ namespace UniversalShopingApp.Controllers
             UniversalContext db = new UniversalContext();
             using (db)
             {
-                return (from c in db.Drinks select c).Count();
+                return (from c in db.Mobiles select c).Count();
             }
         }
     }
