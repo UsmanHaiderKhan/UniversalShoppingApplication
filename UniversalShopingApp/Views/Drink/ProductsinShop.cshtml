@@ -25,7 +25,7 @@
                 @Html.DisplayNameFor(model => model.LongDescription)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Category.Name)
+                @Html.DisplayNameFor(model => model.ProductBrand.Name)
             </th>
             <th>Action</th>
         </tr>
@@ -43,7 +43,7 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Price)
                 </td>
-                @foreach (var v in item.ImageUrl)
+                @foreach (var v in item.ProductImages)
                 {
                     <td>
                         <img src="@Url.Content(v.Url)" style="width: 80px; height: 80px" class="img-thumbnail" />
@@ -53,7 +53,7 @@
                     @Html.DisplayFor(modelitem => item.LongDescription)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Category.Name)
+                    @Html.DisplayFor(modelItem => item.ProductBrand.Name)
                 </td>
                 <td>
                     <a href="#exampleModal" data-toggle="modal" id="@item.Id" class="text-danger hits"><span class="fa fa-trash"></span></a> |
