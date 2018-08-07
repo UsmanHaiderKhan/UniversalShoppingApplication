@@ -13,7 +13,7 @@ namespace UniversalShopingClasses.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201808031347333_InitialCreate"; }
+            get { return "201808061558283_InitialCreate"; }
         }
         
         string IMigrationMetadata.Source
