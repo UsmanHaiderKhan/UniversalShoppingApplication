@@ -43,12 +43,22 @@ namespace UniversalShopingApp.Controllers
         [HttpGet]
         public ActionResult ViewCart()
         {
+
             ShoppingCart cart = (ShoppingCart)Session[WebUtils.Cart];
-            if (!ModelState.IsValid)
+            if (cart != null)
             {
-                return View();
+
+
+                if (!ModelState.IsValid)
+                {
+                    return View();
+                }
+                ViewBag.GrandTotal = cart.GrandTotal;
             }
-            ViewBag.GrandTotal = cart.GrandTotal;
+            else
+            {
+                return RedirectToAction("Empty", "Cart");
+            }
             return View();
         }
 
@@ -57,6 +67,11 @@ namespace UniversalShopingApp.Controllers
         {
             ShoppingCart cart = (ShoppingCart)Session[WebUtils.Cart];
             return (cart == null) ? 0 : cart.NumberOfItems;
+        }
+
+        public ActionResult Empty()
+        {
+            return View();
         }
 
     }

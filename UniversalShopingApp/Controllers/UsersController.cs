@@ -82,6 +82,7 @@ namespace UniversalShopingApp.Controllers
         public ActionResult SignUp(User u, FormCollection data)
         {
             UniversalContext db = new UniversalContext();
+            //u.Gender = new Gender { Id = u.Gender.Id };
             u.Gender = new Gender { Id = Convert.ToInt32(data["gender.Name"]) };
             u.Role = new Role() { Id = 2 };
             int counter = 0;

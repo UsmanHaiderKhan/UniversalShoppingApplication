@@ -3,7 +3,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
 using UniversalShopingClasses;
-using UniversalShopingClasses.DrinksManagement;
+using UniversalShopingClasses.CartManagement;
 
 namespace UniversalShopingApp.Controllers
 {
@@ -17,7 +17,7 @@ namespace UniversalShopingApp.Controllers
 
         public ActionResult ReciveOrders()
         {
-            List<DrinkOrderDetail> orders = new OrderHandler().GetAllOrders();
+            List<OrderDetail> orders = new OrderHandler().GetAllOrders();
             return View(orders);
         }
         public int GetOrdersCount()
@@ -25,19 +25,19 @@ namespace UniversalShopingApp.Controllers
             UniversalContext db = new UniversalContext();
             using (db)
             {
-                return (from o in db.DrinkOrderDetails select o).Count();
+                return (from o in db.OrderDetails select o).Count();
             }
         }
 
         public ActionResult Orderby()
         {
-            List<DrinkOrder> orders = new OrderHandler().GetOrders();
+            List<Order> orders = new OrderHandler().GetOrders();
             return View(orders);
         }
         public ActionResult DeleteOrdersBy(int id)
         {
             UniversalContext db = new UniversalContext();
-            DrinkOrder p = (from c in db.DrinkOrders.Include(x => x.OrderDetails) where c.Id == id select c).FirstOrDefault();
+            Order p = (from c in db.Orders.Include(x => x.OrderDetails) where c.Id == id select c).FirstOrDefault();
             db.Entry(p).State = EntityState.Deleted;
             db.SaveChanges();
             return Json("Delete", JsonRequestBehavior.AllowGet);
@@ -47,15 +47,15 @@ namespace UniversalShopingApp.Controllers
         public ActionResult OrderView(int id)
         {
             OrderHandler ph = new OrderHandler();
-            List<DrinkOrder> pl = ph.GetOrders();
+            List<Order> pl = ph.GetOrders();
             ViewBag.POrders = pl;
-            List<DrinkOrder> orders = new OrderHandler().GetOrdersDetails(id);
+            List<Order> orders = new OrderHandler().GetOrdersDetails(id);
             return View(orders);
         }
         public ActionResult DeleteOrders(int id)
         {
             UniversalContext db = new UniversalContext();
-            DrinkOrderDetail p = (from c in db.DrinkOrderDetails where c.Id == id select c).FirstOrDefault();
+            OrderDetail p = (from c in db.OrderDetails where c.Id == id select c).FirstOrDefault();
             db.Entry(p).State = EntityState.Deleted;
             db.SaveChanges();
             return Json("Delete", JsonRequestBehavior.AllowGet);
@@ -69,18 +69,18 @@ namespace UniversalShopingApp.Controllers
             UniversalContext db = new UniversalContext();
             using (db)
             {
-                return (from c in db.DrinkOrders select c).Count();
+                return (from c in db.Orders select c).Count();
             }
         }
 
         [HttpGet]
         public ActionResult UpdateOrder(int id)
         {
-            DrinkOrderDetail orderDetail = new OrderHandler().GetOrderDetailById(id);
+            OrderDetail orderDetail = new OrderHandler().GetOrderDetailById(id);
             return View(orderDetail);
         }
         [HttpPost]
-        public ActionResult UpdateOrder(DrinkOrderDetail orderDetail)
+        public ActionResult UpdateOrder(OrderDetail orderDetail)
         {
             UniversalContext db = new UniversalContext();
             using (db)

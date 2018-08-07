@@ -9,7 +9,9 @@ using System.Web;
 using System.Web.Mvc;
 using UniversalShopingApp.Models;
 using UniversalShopingClasses;
+using UniversalShopingClasses.CartManagement;
 using UniversalShopingClasses.DrinksManagement;
+using UniversalShopingClasses.GeneralProductManagement;
 using UniversalShopingClasses.UserManagement;
 
 namespace UniversalShopingApp.Controllers
@@ -29,7 +31,8 @@ namespace UniversalShopingApp.Controllers
             //if (!(user != null && user.IsInRole(WebUtils.Admin)))
             //    return RedirectToAction("Login", "Users", new { ctl = "Admin", act = "Index" });
 
-            CategoryHandler mHandler = new CategoryHandler();
+
+            ProductHandler mHandler = new ProductHandler();
             ViewBag.Category = ModelHelper.ToSelectItemList(mHandler.GetAllCategories());
             return View();
         }
@@ -53,15 +56,15 @@ namespace UniversalShopingApp.Controllers
                     string path = Request.MapPath(url);
                     //m.Images = file.FileName;
                     file.SaveAs(path);
-                    drink.ImageUrl.Add(new ProductImages { Url = url, Perority = counter });
+                    drink.ProductImages.Add(new ProductImages { Url = url, Perority = counter });
                 }
             }
-            drink.Category = new DrinkCategory() { Id = Convert.ToInt32(data["category"]) };
+            drink.ProductBrand = new ProductBrand() { Id = Convert.ToInt32(data["category"]) };
             UniversalContext db = new UniversalContext();
             using (db)
             {
                 db.Drinks.Add(drink);
-                db.Entry(drink.Category).State = EntityState.Unchanged;
+                db.Entry(drink.ProductBrand).State = EntityState.Unchanged;
                 db.SaveChanges();
             }
             return RedirectToAction("Success");
@@ -81,7 +84,7 @@ namespace UniversalShopingApp.Controllers
         public ActionResult Order(FormCollection data)
         {
             UniversalContext db = new UniversalContext();
-            DrinkOrder p = new DrinkOrder()
+            Order p = new Order()
             {
                 BuyerName = data["BuyerName"],
                 FullAddress = data["FullAddress"],
@@ -90,12 +93,12 @@ namespace UniversalShopingApp.Controllers
                 IsActive = false,
                 OrderStatus = new OrderHandler().GetOrderStatusById(1)
             };
-            List<DrinkOrderDetail> cartItems = new List<DrinkOrderDetail>();
+            List<OrderDetail> cartItems = new List<OrderDetail>();
             ShoppingCart cart = (ShoppingCart)Session[WebUtils.Cart];
 
             foreach (var i in cart.Items)
             {
-                DrinkOrderDetail ci = new DrinkOrderDetail
+                OrderDetail ci = new OrderDetail
                 {
                     Id = i.Id,
                     Name = i.Name,
@@ -111,10 +114,10 @@ namespace UniversalShopingApp.Controllers
 
             foreach (var i in cartItems)
             {
-                db.DrinkOrderDetails.Add(i);
+                db.OrderDetails.Add(i);
             }
 
-            db.DrinkOrders.Add(p);
+            db.Orders.Add(p);
             db.SaveChanges();
             //Session.Clear();
             //Here We Sent the Email 
@@ -197,8 +200,8 @@ namespace UniversalShopingApp.Controllers
                 return RedirectToAction("Login", "Users", new { ctl = "Admin", act = "Index" });
             UniversalContext db = new UniversalContext();
             Drink drink = (from c in db.Drinks
-                    .Include(x => x.ImageUrl)
-                    .Include(m => m.Category)
+                    .Include(x => x.ProductImages)
+                               //.Include(m => m.Category)
                            where c.Id == id
                            select c).FirstOrDefault();
             db.Entry(drink).State = EntityState.Deleted;

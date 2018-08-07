@@ -81,10 +81,18 @@ namespace UniversalShopingApp.Controllers
             UniversalContext db = new UniversalContext();
             using (db)
             {
-                return (from c in db.DrinkOrders select c).Count();
+                return (from c in db.Orders select c).Count();
             }
         }
-        public int GetProductCount()
+        public int GetDrinkCount()
+        {
+            UniversalContext db = new UniversalContext();
+            using (db)
+            {
+                return (from c in db.Drinks select c).Count();
+            }
+        }
+        public int GetMobileCount()
         {
             UniversalContext db = new UniversalContext();
             using (db)
