@@ -1,11 +1,10 @@
-﻿@model IEnumerable<UniversalShopingClasses.DrinksManagement.DrinkOrder>
+﻿@model IEnumerable<UniversalShopingClasses.CartManagement.Order>
 @{
     ViewBag.Title = "Orderby";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
     long price = 0;
     int qty = 0;
 }
-
 
 @Html.Partial("~/Views/Order/_DeleteOrderBy.cshtml")
 <table class="table table-borderless table-striped table-hover">
@@ -32,7 +31,6 @@
         <th class="text-center">Quantity</th>
         <th>Action</th>
     </tr>
-
     @foreach (var item in Model)
     {
         <tr id="row_@item.Id">
@@ -65,11 +63,9 @@
             <td>
                 <a href='#exampleModal' data-toggle="modal" id="@item.Id" class="hits text-danger"><span class="fa fa-trash"></span></a> |
                 <a href="@Url.Action("OrderView","Order",new {id=item.Id})" id="@item.Id" class="text-success"><span class="fa fa-eye"></span></a>
-
             </td>
         </tr>
     }
-
 </table>
 <input type="hidden" id="hiddenOrderId" />
 @section myscript
