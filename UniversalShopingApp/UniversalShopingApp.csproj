@@ -224,6 +224,7 @@
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\DrinkController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MobileController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
@@ -231,6 +232,7 @@
     </Compile>
     <Compile Include="Models\Email.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
+    <Compile Include="Models\MobileHelper.cs" />
     <Compile Include="Models\ModelHelper.cs" />
     <Compile Include="Models\ProductSummeryModel.cs" />
     <Compile Include="Models\ShoppingCart.cs" />
@@ -335,6 +337,12 @@
     <Content Include="Views\Drink\_DeleteDrink.cshtml" />
     <Content Include="Views\Drink\UpdateProduct.cshtml" />
     <Content Include="Views\Contact\SuccessMessage.cshtml" />
+    <Content Include="Views\Cart\Empty.cshtml" />
+    <Content Include="Views\Mobile\CreateMobile.cshtml" />
+    <Content Include="Views\Shared\_MobileSummery.cshtml" />
+    <Content Include="Views\Home\MobileDetails.cshtml" />
+    <Content Include="Views\Home\MobileByCategory.cshtml" />
+    <Content Include="Views\Mobile\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
