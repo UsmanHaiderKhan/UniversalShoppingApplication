@@ -4,6 +4,7 @@ using UniversalShopingClasses.DrinksManagement;
 using UniversalShopingClasses.FabricsManagement;
 using UniversalShopingClasses.GeneralProductManagement;
 using UniversalShopingClasses.MobileManagement;
+using UniversalShopingClasses.OLXClass;
 using UniversalShopingClasses.UserManagement;
 
 
@@ -28,6 +29,17 @@ namespace UniversalShopingClasses
         public DbSet<ProductType> ProductTypes { get; set; }
         public DbSet<ProductImages> Imageses { get; set; }
         public DbSet<Fabric> Fabrics { get; set; }
+
+
+        //OLXClass WORK
+
+        public DbSet<Advertisement> Advertisements { get; set; }
+        public DbSet<AdvertisementSubCategory> AdvertisementSubCategories { get; set; }
+        public DbSet<AdvertismentCateory> AdvertismentCateories { get; set; }
+        public DbSet<AdvertisementType> AdvertisementTypes { get; set; }
+
+
+
 
 
 
