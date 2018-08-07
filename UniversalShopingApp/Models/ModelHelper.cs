@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using UniversalShopingClasses.DrinksManagement;
+using UniversalShopingClasses.FabricsManagement;
 using UniversalShopingClasses.MobileManagement;
 
 namespace UniversalShopingApp.Models
 {
-    public class ModelHelper
+    public static class ModelHelper
     {
         public static List<SelectListItem> ToSelectItemList(dynamic values)
 
@@ -34,12 +35,22 @@ namespace UniversalShopingApp.Models
             }
             return temp;
         }
-        public static List<MobileHelper> ProductSummeryListOfMobiles(IEnumerable<Mobile> mobiles)
+        public static List<ProductSummeryModel> ProductSummeryList(IEnumerable<Mobile> mobiles)
         {
-            List<MobileHelper> temp = new List<MobileHelper>();
+            List<ProductSummeryModel> temp = new List<ProductSummeryModel>();
             if (mobiles != null)
             {
-                temp.AddRange(mobiles.Select(c => ToProductSummaryMobile(c)));
+                temp.AddRange(mobiles.Select(c => ToProductSummary(c)));
+                temp.TrimExcess();
+            }
+            return temp;
+        }
+        public static List<ProductSummeryModel> ProductSummeryList(IEnumerable<Fabric> fabricss)
+        {
+            List<ProductSummeryModel> temp = new List<ProductSummeryModel>();
+            if (fabricss != null)
+            {
+                temp.AddRange(fabricss.Select(c => ToProductSummary(c)));
                 temp.TrimExcess();
             }
             return temp;
@@ -55,16 +66,29 @@ namespace UniversalShopingApp.Models
                 ImageUrl = (drink.ProductImages.Count > 0) ? drink.ProductImages.First().Url : null
             };
         }
-        public static MobileHelper ToProductSummaryMobile(Mobile mobile)
+        public static ProductSummeryModel ToProductSummary(Mobile mobile)
         {
-            return new MobileHelper()
+            return new ProductSummeryModel
             {
                 Id = mobile.Id,
                 Name = mobile.Name,
                 Price = mobile.Price,
-                Description = mobile.Description,
+                ShortDescription = mobile.Description,
                 ImageUrl = (mobile.ProductImages.Count > 0) ? mobile.ProductImages.First().Url : null
             };
         }
+
+        public static ProductSummeryModel ToProductSummary(Fabric fabric)
+        {
+            return new ProductSummeryModel
+            {
+                Id = fabric.Id,
+                Name = fabric.Name,
+                Price = fabric.Price,
+                ShortDescription = fabric.Description,
+                ImageUrl = (fabric.ProductImages.Count > 0) ? fabric.ProductImages.First().Url : null
+            };
+        }
+
     }
 }
