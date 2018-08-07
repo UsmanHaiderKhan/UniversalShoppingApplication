@@ -220,6 +220,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\AdvertisementController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\DrinkController.cs" />
@@ -354,6 +355,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Content\ProductImages\" />
     <Folder Include="Content\UserImages\" />
+    <Folder Include="Views\Advertisement\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\UniversalShopingClasses\UniversalShopingClasses.csproj">
