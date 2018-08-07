@@ -33,7 +33,7 @@ namespace UniversalShopingApp.Controllers
 
 
             ProductHandler mHandler = new ProductHandler();
-            ViewBag.Category = ModelHelper.ToSelectItemList(mHandler.GetAllCategories());
+            //ViewBag.Category = ModelHelper.ToSelectItemList(mHandler.GetAllCategories());
             return View();
         }
         [HttpPost]
