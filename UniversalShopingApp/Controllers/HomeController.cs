@@ -17,23 +17,25 @@ namespace UniversalShopingApp.Controllers
         // GET: Home
         public ActionResult Index()
         {
+
             ViewBag.products = ModelHelper.ProductSummeryList(new DrinkHandler().GetLatestDrinks(6));
-            ViewBag.Mobiles = ModelHelper.ProductSummeryListOfMobiles(new DrinkHandler().GetLastestMobiles(9));
+            ViewBag.Mobiles = ModelHelper.ProductSummeryList(new DrinkHandler().GetLastestMobiles(9));
             return View();
         }
         [HttpGet]
         public ActionResult ByCategory(int id)
         {
-            ViewBag.ByCategory = ModelHelper.ProductSummeryList(new DrinkHandler().GetDrinksByCategory(new ProductBrand { Id = id }));
-            ProductBrand mb = new DrinkHandler().GetCategoryById(id);
-            return View(mb);
+            ViewBag.DrinksByCategory = ModelHelper.ProductSummeryList(new ProductHandler().GetDrinksType(id));
+            ViewBag.MobileByCategory = ModelHelper.ProductSummeryList(new ProductHandler().GetMobilesType(id));
+            ViewBag.FabricsByCategory = ModelHelper.ProductSummeryList(new ProductHandler().GetFabricssType(id));
+            return View();
         }
 
         public ActionResult MobileByCategory(int id)
         {
-            ViewBag.MobileByCategory = ModelHelper.ProductSummeryListOfMobiles(new MobileHandler().GetMobileByBrand(new ProductBrand { Id = id }));
-            ProductBrand mb = new MobileHandler().GetBrandById(id);
-            return View(mb);
+            ViewBag.MobileByCategory = ModelHelper.ProductSummeryList(new MobileHandler().GetMobileByBrand(new ProductBrand { Id = id }));
+
+            return View();
         }
 
         [HttpGet]
