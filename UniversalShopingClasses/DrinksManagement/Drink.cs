@@ -14,7 +14,7 @@ namespace UniversalShopingClasses.DrinksManagement
         [Display(Name = "Long Description")]
         public string LongDescription { get; set; }
         [DataType(DataType.Currency)]
-        public decimal Price { get; set; }
+        public float Price { get; set; }
         public bool IsPreferredDrink { get; set; }
         public bool InStock { get; set; }
         public ProductBrand ProductBrand { get; set; }
