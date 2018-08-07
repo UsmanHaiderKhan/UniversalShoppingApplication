@@ -1,5 +1,6 @@
 ﻿@using UniversalShopingApp.Models
 @using UniversalShopingClasses.DrinksManagement
+@using UniversalShopingClasses.GeneralProductManagement
 @using UniversalShopingClasses.UserManagement
 <!DOCTYPE html>
 <html lang="en">
@@ -10,7 +11,7 @@
     <title>@ViewBag.Title Universal-Shoping</title>
     @{
         User currentuser = (User)Session[WebUtils.Current_User];
-        List<SelectListItem> categories = ModelHelper.ToSelectItemList(new CategoryHandler().GetAllCategories());
+        List<SelectListItem> categories = ModelHelper.ToSelectItemList(new ProductHandler().GetAllCategories());
     }
     <!-- Font Awesome -->
     <link href="~/Content/MDB-Free/fonts/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
