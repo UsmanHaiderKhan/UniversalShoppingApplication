@@ -2,6 +2,7 @@
 using System.Data.Entity;
 using System.Linq;
 using UniversalShopingClasses.CartManagement;
+using UniversalShopingClasses.FabricsManagement;
 using UniversalShopingClasses.GeneralProductManagement;
 using UniversalShopingClasses.MobileManagement;
 
@@ -111,6 +112,19 @@ namespace UniversalShopingClasses.DrinksManagement
                         where c.Id == id
                         select c)
                     .FirstOrDefault();
+            }
+        }
+
+        public List<Fabric> GetLastestFabrics(int counter)
+        {
+            UniversalContext db = new UniversalContext();
+            using (db)
+            {
+                return (from m in db.Fabrics
+                        .Include(m => m.ProductBrand)
+                        .Include(m => m.ProductImages)
+                        orderby m.Name descending
+                        select m).Take(counter).ToList();
             }
         }
     }
