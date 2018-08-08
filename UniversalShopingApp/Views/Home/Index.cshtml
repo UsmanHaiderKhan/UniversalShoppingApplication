@@ -4,6 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     List<ProductSummeryModel> products = ViewBag.products;
     List<ProductSummeryModel> mobiles = ViewBag.Mobiles;
+    List<ProductSummeryModel> fabrics = ViewBag.Fabrics;
 }
 <div style="margin-top: 7%">
     @Html.Partial("~/Views/Home/_Slider.cshtml")
@@ -13,4 +14,7 @@
 </div>
 <div id="prodlist1">
     @Html.Partial("~/Views/Shared/_MobileSummery.cshtml", mobiles)
+</div>
+<div id="prodlist2">
+    @Html.Partial("~/Views/Shared/_MobileSummery.cshtml", fabrics)
 </div>
