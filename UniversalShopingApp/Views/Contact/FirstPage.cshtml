@@ -1,0 +1,132 @@
+﻿@{
+    ViewBag.Title = "FirstPage";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>UniversalShopping APP</title>
+    <link href="~/Content/MDB-Free/fonts/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/FrontTemp/css/bootstrap.css" rel="stylesheet" />
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <!-- Custom Theme files -->
+    <script src="~/Content/FrontTemp/js/jquery.min.js"></script>
+    <link href="~/Content/FrontTemp/css/style.css" rel="stylesheet" />
+    <!-- Custom Theme files -->
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!--webfont-->
+    <!-- for bootstrap working -->
+    <script src="~/Content/FrontTemp/js/bootstrap-3.1.1.min.js"></script>
+    <!-- //for bootstrap working -->
+    <!-- cart -->
+    <link href="~/Content/FrontTemp/css/flexslider.css" rel="stylesheet" />
+    <!-- cart -->
+</head>
+<body>
+    <!-- header-section-starts -->
+    <div class="header">
+        <div class="header-top-strip">
+            <div class="container">
+                <div class="header-top-left">
+                    <ul>
+                        <li><a href="@Url.Action("Login","Users")"><span class="fa fa-user"> </span>&nbsp; Login</a></li>
+                        <li><a href="@Url.Action("SignUp","Users")"><span class="fa fa-user-plus"> </span>&nbsp; Create an Account</a></li>
+                    </ul>
+                </div>
+                <div class="header-right">
+                    <p style="color: white">Usman hiader khan</p>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+    </div>
+    <!-- header-section-ends -->
+    <div class="banner-top">
+        <div class="container">
+            <nav class="navbar navbar-default" role="navigation">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <div class="logo">
+                        <h1><a href="@Url.Action("FirstPage","Contact")">Universal Shopping System</a></h1>
+                    </div>
+                </div>
+                <!--/.navbar-header-->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li><a href="@Url.Action("FirstPage","Contact")">Home</a></li>
+                        <li><a href="@Url.Action("SubmitMessage","Contact")">CONTACT</a></li>
+                    </ul>
+                </div>
+                <!--/.navbar-collapse-->
+            </nav>
+            <!--/.navbar-->
+        </div>
+    </div>
+    <div class="banner">
+        <div class="container">
+            <div class="banner-bottom">
+                <div class="banner-bottom-left">
+                    <h2>U<br>S<br>S</h2>
+                </div>
+                <div class="banner-bottom-right">
+                    <div class="callbacks_container">
+                        <ul class="rslides" id="slider4">
+                            <li>
+                                <div class="banner-info">
+                                    <h3>Shop Online</h3>
+                                    <p>Start your Shopping here...</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="banner-info">
+                                    <h3>Auction Room</h3>
+                                    <p>Bit to Bulid Assets</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="banner-info">
+                                    <h3>Earn From Spare</h3>
+                                    <p>Get Rid &amp; Make Money</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--banner-->
+                    <script src="~/Content/FrontTemp/js/responsiveslides.min.js"></script>
+                    <script>
+                        // You can also use "$(window).load(function() {"
+                        $(function () {
+                            // Slideshow 4
+                            $("#slider4").responsiveSlides({
+                                auto: true,
+                                pager: true,
+                                nav: false,
+                                speed: 500,
+                                namespace: "callbacks",
+                                before: function () {
+                                    $('.events').append("<li>before event fired.</li>");
+                                },
+                                after: function () {
+                                    $('.events').append("<li>after event fired.</li>");
+                                }
+                            });
+
+                        });
+                    </script>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+            <div class="shop">
+                <a href="@Url.Action("Index","Home")" style="border-radius: 20px">Shopping Window</a>
+                <a href="single.html" style="border-radius: 20px">Auction Room</a>
+                <a href="@Url.Action("","")" style="border-radius: 20px">Earn from Spare</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
