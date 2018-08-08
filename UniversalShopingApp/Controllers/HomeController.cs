@@ -19,7 +19,8 @@ namespace UniversalShopingApp.Controllers
         {
 
             ViewBag.products = ModelHelper.ProductSummeryList(new DrinkHandler().GetLatestDrinks(6));
-            ViewBag.Mobiles = ModelHelper.ProductSummeryList(new DrinkHandler().GetLastestMobiles(9));
+            ViewBag.Mobiles = ModelHelper.ProductSummeryList(new DrinkHandler().GetLastestMobiles(6));
+            ViewBag.Fabrics = ModelHelper.ProductSummeryList(new DrinkHandler().GetLastestFabrics(6));
             return View();
         }
         [HttpGet]
