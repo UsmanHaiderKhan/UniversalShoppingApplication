@@ -97,8 +97,53 @@
   <ItemGroup>
     <Content Include="Content\BackImg\images %281%29.jpg" />
     <Content Include="Content\BackImg\new-instagram-color-background-latest.jpg" />
+    <Content Include="Content\FrontTemp\css\bootstrap.css" />
+    <Content Include="Content\FrontTemp\css\component.css" />
+    <Content Include="Content\FrontTemp\css\flexslider.css" />
+    <Content Include="Content\FrontTemp\css\style.css" />
+    <Content Include="Content\FrontTemp\images\arrow2.gif" />
+    <Content Include="Content\FrontTemp\images\bag.png" />
+    <Content Include="Content\FrontTemp\images\banner_img.jpg" />
+    <Content Include="Content\FrontTemp\images\cards.jpg" />
+    <Content Include="Content\FrontTemp\images\cart.png" />
+    <Content Include="Content\FrontTemp\images\close_1.png" />
+    <Content Include="Content\FrontTemp\images\follow.png" />
+    <Content Include="Content\FrontTemp\images\grid_view.png" />
+    <Content Include="Content\FrontTemp\images\icon1.png" />
+    <Content Include="Content\FrontTemp\images\images.jpg" />
+    <Content Include="Content\FrontTemp\images\l1.jpg" />
+    <Content Include="Content\FrontTemp\images\l2.jpg" />
+    <Content Include="Content\FrontTemp\images\l3.jpg" />
+    <Content Include="Content\FrontTemp\images\l4.jpg" />
+    <Content Include="Content\FrontTemp\images\l5.jpg" />
+    <Content Include="Content\FrontTemp\images\list_view.png" />
+    <Content Include="Content\FrontTemp\images\p1.jpg" />
+    <Content Include="Content\FrontTemp\images\p2.jpg" />
+    <Content Include="Content\FrontTemp\images\p3.jpg" />
+    <Content Include="Content\FrontTemp\images\p4.jpg" />
+    <Content Include="Content\FrontTemp\images\p5.jpg" />
+    <Content Include="Content\FrontTemp\images\p6.jpg" />
+    <Content Include="Content\FrontTemp\images\p7.jpg" />
+    <Content Include="Content\FrontTemp\images\p8.jpg" />
+    <Content Include="Content\FrontTemp\images\p9.jpg" />
+    <Content Include="Content\FrontTemp\images\s-icons.png" />
+    <Content Include="Content\FrontTemp\images\shipping.png" />
+    <Content Include="Content\FrontTemp\images\si.jpg" />
+    <Content Include="Content\FrontTemp\images\si1.jpg" />
+    <Content Include="Content\FrontTemp\images\si2.jpg" />
+    <Content Include="Content\FrontTemp\js\bootstrap-3.1.1.min.js" />
+    <Content Include="Content\FrontTemp\js\cbpViewModeSwitch.js" />
+    <Content Include="Content\FrontTemp\js\classie.js" />
+    <Content Include="Content\FrontTemp\js\imagezoom.js" />
+    <Content Include="Content\FrontTemp\js\jquery.flexisel.js" />
+    <Content Include="Content\FrontTemp\js\jquery.flexslider.js" />
+    <Content Include="Content\FrontTemp\js\jquery.min.js" />
+    <Content Include="Content\FrontTemp\js\responsive-tabs.js" />
+    <Content Include="Content\FrontTemp\js\responsiveslides.min.js" />
+    <Content Include="Content\FrontTemp\js\simpleCart.min.js" />
     <Content Include="Content\LogImg\avatar.png" />
     <Content Include="Content\LogImg\image.jpg" />
+    <Content Include="Content\LogImg\uss LOGO-01.png" />
     <Content Include="Content\MDB-Free\css\addons\datatables.css" />
     <Content Include="Content\MDB-Free\css\addons\datatables.min.css" />
     <Content Include="Content\MDB-Free\css\bootstrap.css" />
@@ -231,6 +276,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AlertMessage.cs" />
+    <Compile Include="Models\DDListView.cs" />
     <Compile Include="Models\Email.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\MobileHelper.cs" />
@@ -344,6 +391,10 @@
     <Content Include="Views\Home\MobileDetails.cshtml" />
     <Content Include="Views\Home\MobileByCategory.cshtml" />
     <Content Include="Views\Mobile\Index.cshtml" />
+    <Content Include="Views\Contact\FirstPage.cshtml" />
+    <Content Include="Views\Advertisement\PostAdvertisement.cshtml" />
+    <Content Include="Views\Advertisement\ByCategory.cshtml" />
+    <Content Include="Views\Shared\_DDLView.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -353,9 +404,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\OLXImages\" />
     <Folder Include="Content\ProductImages\" />
     <Folder Include="Content\UserImages\" />
-    <Folder Include="Views\Advertisement\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\UniversalShopingClasses\UniversalShopingClasses.csproj">
