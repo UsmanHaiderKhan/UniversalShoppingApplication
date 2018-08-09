@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using UniversalShopingClasses.GeneralProductManagement;
-using UniversalShopingClasses.UserManagement;
 
 namespace UniversalShopingClasses.OLXClass
 {
@@ -19,10 +18,16 @@ namespace UniversalShopingClasses.OLXClass
         public string Description { get; set; }
         public float Price { get; set; }
         public DateTime PostedOn { get; set; }
-        public User User { get; set; }
+        public string FullAddress { get; set; }
+        public double Contact { get; set; }
         public virtual AdvertisementSubCategory SubCategory { get; set; }
         public virtual AdvertisementType Type { get; set; }
         public virtual ICollection<ProductImages> Images { get; set; }
+
+        public Advertisement()
+        {
+            Images = new List<ProductImages>();
+        }
 
     }
 }

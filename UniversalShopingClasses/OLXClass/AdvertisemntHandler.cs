@@ -41,7 +41,7 @@ namespace UniversalShopingClasses.OLXClass
             {
                 return (from adv in context.Advertisements
                         .Include(a => a.SubCategory.AdvertismentCateory)
-                        .Include(a => a.User)
+
                         .Include(a => a.Images)
                       .Include(a => a.Type)
                         where adv.SubCategory.AdvertismentCateory.Id == advertisementCategory.Id
