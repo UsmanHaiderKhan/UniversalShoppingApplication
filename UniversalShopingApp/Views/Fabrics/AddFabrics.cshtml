@@ -1,0 +1,49 @@
+﻿@model UniversalShopingClasses.FabricsManagement.Fabric
+@{
+    ViewBag.Title = "AddFabrics";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<h2>AddFabrics</h2>
+<div class="card">
+    <div class="card-header deep-purple lighten-1 white-text">Featured</div>
+    <div class="card-body">
+        <p class="card-text">
+            @using (Html.BeginForm("AddFabrics", "Fabrics", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <div class="md-form">
+                    <i class="fa fa-edit prefix"></i>
+                    @Html.TextBoxFor(m => m.Name, null, new { @class = "form-control", type = "text" })
+                    @Html.LabelFor(m => m.Name)
+                    @Html.ValidationMessageFor(m => m.Name, null, new { @clasS = "text-danager" })
+                </div>
+                <div class="md-form">
+                    <i class="fa fa-dollar prefix"></i>
+                    @Html.TextBoxFor(m => m.Price, null, new { @class = "form-control", type = "number" })
+                    @Html.LabelFor(m => m.Price)
+                    @Html.ValidationMessageFor(m => m.Price, null, new { @clasS = "text-danager" })
+                </div>
+                <div class="form-group">
+                    @Html.TextAreaFor(m => m.Description, new { @class = "form-control", type = "text", rows = 5 })
+                </div>
+                <div class="form-group">
+                    @foreach (var b in (IEnumerable<SelectListItem>)ViewBag.Brands)
+                    {
+                        <label>
+                            @Html.RadioButton("brand", b.Value)@b.Text
+                        </label>
+                    }
+                </div>
+                <div class="form-group">
+                    <input id="image1" name="image1" type="file" />
+                    <input id="image2" name="image2" type="file" />
+                    <input id="image3" name="image3" type="file" />
+                    <input id="image4" name="image4" type="file" />
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-cyan" type="submit"><span class="fa fa-floppy-o"></span>&nbsp; Save</button>
+                    <button class="btn btn-cyan" type="reset"><span class="fa fa-floppy-o"></span>&nbsp; Cancle</button>
+                </div>
+            }
+        </p>
+    </div>
+</div>
