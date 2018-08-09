@@ -97,6 +97,7 @@
   <ItemGroup>
     <Content Include="Content\BackImg\images %281%29.jpg" />
     <Content Include="Content\BackImg\new-instagram-color-background-latest.jpg" />
+    <Content Include="Content\bootstrap.min.js" />
     <Content Include="Content\FrontTemp\css\bootstrap.css" />
     <Content Include="Content\FrontTemp\css\component.css" />
     <Content Include="Content\FrontTemp\css\flexslider.css" />
@@ -141,6 +142,7 @@
     <Content Include="Content\FrontTemp\js\responsive-tabs.js" />
     <Content Include="Content\FrontTemp\js\responsiveslides.min.js" />
     <Content Include="Content\FrontTemp\js\simpleCart.min.js" />
+    <Content Include="Content\jquery-1.10.0.min.js" />
     <Content Include="Content\LogImg\avatar.png" />
     <Content Include="Content\LogImg\image.jpg" />
     <Content Include="Content\LogImg\uss LOGO-01.png" />
@@ -395,6 +397,9 @@
     <Content Include="Views\Advertisement\PostAdvertisement.cshtml" />
     <Content Include="Views\Advertisement\ByCategory.cshtml" />
     <Content Include="Views\Shared\_DDLView.cshtml" />
+    <Content Include="Views\Advertisement\_PostAdvSummery.cshtml" />
+    <Content Include="Views\Shared\_OLXLayout.cshtml" />
+    <Content Include="Views\Advertisement\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
