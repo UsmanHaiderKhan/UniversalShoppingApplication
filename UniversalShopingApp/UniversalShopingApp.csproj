@@ -143,6 +143,7 @@
     <Content Include="Content\FrontTemp\js\responsiveslides.min.js" />
     <Content Include="Content\FrontTemp\js\simpleCart.min.js" />
     <Content Include="Content\jquery-1.10.0.min.js" />
+    <Content Include="Content\LogImg\logo.png" />
     <Content Include="Content\LogImg\avatar.png" />
     <Content Include="Content\LogImg\image.jpg" />
     <Content Include="Content\LogImg\uss LOGO-01.png" />
@@ -414,6 +415,7 @@
     <Content Include="Views\Mobile\UpdateMobile.cshtml" />
     <Content Include="Views\Auction\Index.cshtml" />
     <Content Include="Views\Advertisement\ViewDetailofPost.cshtml" />
+    <Content Include="Views\Advertisement\AdminAdvDetails.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
