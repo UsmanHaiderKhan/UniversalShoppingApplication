@@ -61,5 +61,18 @@ namespace UniversalShopingClasses.OLXClass
                         select adv).ToList();
             }
         }
+
+        public List<Advertisement> GetAllAdvertisement(int id)
+        {
+            UniversalContext db = new UniversalContext();
+            using (db)
+            {
+                return (from c in db.Advertisements
+                        .Include(m => m.SubCategory)
+                        .Include(m => m.Images)
+                        where c.Id == id
+                        select c).ToList();
+            }
+        }
     }
 }
