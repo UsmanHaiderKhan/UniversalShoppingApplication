@@ -24,6 +24,19 @@ namespace UniversalShopingClasses.OLXClass
             }
         }
 
+        public List<Advertisement> GetLatestAdvertisements(int count)
+        {
+            using (UniversalContext context = new UniversalContext())
+            {
+                return (from adv in context.Advertisements
+                        .Include(a => a.SubCategory.AdvertismentCateory)
+                       .Include(a => a.Images)
+                       .Include(a => a.Type)
+                        orderby adv.PostedOn
+                        select adv).Take(count).ToList();
+            }
+        }
+
         public List<AdvertisementSubCategory> GetSubCategories(AdvertismentCateory category)
         {
             using (UniversalContext context = new UniversalContext())
