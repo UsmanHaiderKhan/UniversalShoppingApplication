@@ -81,6 +81,12 @@ namespace UniversalShopingApp.Controllers
             ViewBag.Advertisements = new AdvertisemntHandler().GetAdvertisementsByCategory(new AdvertismentCateory() { Id = id }).ToAdvSumModelList();
             return View();
         }
+        [HttpGet]
+        public ActionResult ViewDetailofPost(int id)
+        {
+            List<Advertisement> advertisements = new AdvertisemntHandler().GetAllAdvertisement(id);
+            return View(advertisements);
+        }
 
 
 
