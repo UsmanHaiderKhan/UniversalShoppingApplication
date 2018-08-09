@@ -4,6 +4,7 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 <h2>Index</h2>
+@Html.Partial("~/Views/Mobile/_DeleteMobile.cshtml")
 <table class="table table-responsive-lg">
     <tr class="deep-purple text-white">
         <th>
@@ -36,7 +37,7 @@
         <th>
             @Html.DisplayNameFor(model => model.Stock)
         </th>
-        <th></th>
+        <th>Action</th>
     </tr>
     @foreach (var item in Model)
     {
@@ -71,7 +72,41 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Stock)
             </td>
-            <td></td>
+            <td>
+                <a href="#exampleModal" data-toggle="modal" id="@item.Id" class="text-danger hits"><span class="fa fa-trash"></span></a>
+                |
+                <a href="@Url.Action("UpdateMobile","Mobile",new{id=item.Id})"
+                   class="text-success"><span class="fa fa-edit"></span></a>
+            </td>
         </tr>
     }
 </table>
+<input type="hidden" id="hiddenOrderId" />
+@section myscript
+{
+    <script type="text/javascript">
+        $(function () {
+            $(".hits").click(function () {
+                var rid = $(this).attr("id");
+                alert(rid);
+                $("#hiddenOrderId").val(rid);
+                $("#modal-id").model('show');
+            });
+
+            $("#hit").click(function (event) {
+                var delRecord = $("#hiddenOrderId").val();
+                alert(delRecord);
+                $.ajax({
+
+                    url: "/Admin/DeleteMobile/" + delRecord,
+                    type: "POST",
+                    data: { id: delRecord },
+                    success: function (result) {
+
+                        $("#modal-id").modal('hide');
+                        $("#row_" + delRecord).remove();
+                    }
+                });
+            });
+        });</script>
+}
