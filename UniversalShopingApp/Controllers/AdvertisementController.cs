@@ -84,11 +84,15 @@ namespace UniversalShopingApp.Controllers
         [HttpGet]
         public ActionResult ViewDetailofPost(int id)
         {
-            List<Advertisement> advertisements = new AdvertisemntHandler().GetAllAdvertisement(id);
+            List<Advertisement> advertisements = new AdvertisemntHandler().GetAllAdvertisementById(id);
             return View(advertisements);
         }
 
-
+        public ActionResult AdminAdvDetails()
+        {
+            List<Advertisement> advertisements = new AdvertisemntHandler().GetAllAdvertisement();
+            return View(advertisements);
+        }
 
     }
 }
