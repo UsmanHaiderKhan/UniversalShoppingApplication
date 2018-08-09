@@ -45,10 +45,10 @@ namespace UniversalShopingApp.Controllers
                     if (!string.IsNullOrWhiteSpace(file.FileName))
                     {
                         string ext = file.FileName.Substring(file.FileName.LastIndexOf("."));
-                        string url = "/Content/OLXImages/" + $"{uno}_{++counter}{ext}";
+                        string url = "/Content/ProductImages/" + $"{uno}_{++counter}{ext}";
                         string path = Request.MapPath(url);
                         file.SaveAs(path);
-                        advertisement.Images.Add(new ProductImages { Url = url, Perority = counter });
+                        advertisement.Images.Add(new ProductImages() { Url = url, Perority = counter });
                     }
                 }
                 UniversalContext db = new UniversalContext();
@@ -57,10 +57,10 @@ namespace UniversalShopingApp.Controllers
                     db.Advertisements.Add(advertisement);
                     db.Entry(advertisement.Type).State = EntityState.Unchanged;
                     db.Entry(advertisement.SubCategory).State = EntityState.Unchanged;
-                    db.Entry(advertisement.User).State = EntityState.Unchanged;
                     db.SaveChanges();
+                    TempData.Add("Message",
+                        new AlertMessage("Advertisement added successfully", AlertMessageType.Success));
                 }
-                TempData.Add("Message", new AlertMessage("Advertisement added successfully", AlertMessageType.Success));
             }
             catch (Exception ex)
             {
@@ -68,6 +68,7 @@ namespace UniversalShopingApp.Controllers
                     new AlertMessage("Failed to add advertisements, try later", AlertMessageType.Error));
                 throw ex;
             }
+
             return RedirectToAction("Success", "Drink");
 
         }
@@ -79,27 +80,7 @@ namespace UniversalShopingApp.Controllers
             return View();
         }
 
-        [HttpGet]
-        public ActionResult all()
-        {
-            DDListView model = new DDListView();
-            model.Name = "Category";
-            model.Caption = "- Select Category -";
-            model.GlyphIcon = "fa-tag";
-            model.Values = new AdvertisemntHandler().GetCategories().ToSelectItemList();
-            return PartialView("~/Views/Shared/_DDLView.cshtml", model);
-        }
 
-        [HttpGet]
-        public ActionResult sub(int id)
-        {
-            DDListView model = new DDListView();
-            model.Name = "SubCategory";
-            model.Caption = "- Select Sub Category -";
-            model.GlyphIcon = "fa-tag";
-            model.Values = new AdvertisemntHandler().GetSubCategories(new AdvertismentCateory { Id = id }).ToSelectItemList();
-            return PartialView("~/Views/Shared/_DDLView.cshtml", model);
-        }
 
     }
 }
