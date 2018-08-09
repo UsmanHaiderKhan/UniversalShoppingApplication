@@ -81,34 +81,47 @@ namespace UniversalShopingApp.Controllers
         [HttpPost]
         public ActionResult SignUp(User u, FormCollection data)
         {
-            UniversalContext db = new UniversalContext();
-            //u.Gender = new Gender { Id = u.Gender.Id };
-            u.Gender = new Gender { Id = Convert.ToInt32(data["gender.Name"]) };
-            u.Role = new Role() { Id = 2 };
-            int counter = 0;
-            long uno = DateTime.Now.Ticks;
-
-            foreach (string fileName in Request.Files)
+            try
             {
-                HttpPostedFileBase file = Request.Files[fileName];
-                if (!string.IsNullOrEmpty(file.FileName))
+                if (u != null)
                 {
-                    string abc = uno + "_" + ++counter +
-                                 file.FileName.Substring(file.FileName.LastIndexOf("."));
-                    string url = "~/Content/UserImages/" + abc;
-                    string path = Request.MapPath(url);
-                    u.ImageUrl = abc;
-                    file.SaveAs(path);
+                    UniversalContext db = new UniversalContext();
+                    //u.Gender = new Gender { Id = u.Gender.Id };
+                    u.Gender = new Gender { Id = Convert.ToInt32(data["gender.Name"]) };
+                    u.Role = new Role() { Id = 2 };
+                    int counter = 0;
+                    long uno = DateTime.Now.Ticks;
+
+                    foreach (string fileName in Request.Files)
+                    {
+                        HttpPostedFileBase file = Request.Files[fileName];
+                        if (!string.IsNullOrEmpty(file.FileName))
+                        {
+                            string abc = uno + "_" + ++counter +
+                                         file.FileName.Substring(file.FileName.LastIndexOf("."));
+                            string url = "~/Content/UserImages/" + abc;
+                            string path = Request.MapPath(url);
+                            u.ImageUrl = abc;
+                            file.SaveAs(path);
+                        }
+                    }
+                    using (db)
+                    {
+                        db.Users.Add(u);
+                        db.Entry(u.Role).State = EntityState.Unchanged;
+                        db.Entry(u.Gender).State = EntityState.Unchanged;
+                        db.SaveChanges();
+                        return RedirectToAction("Login", "Users");
+                    }
                 }
             }
-            using (db)
+            catch (Exception e)
             {
-                db.Users.Add(u);
-                db.Entry(u.Role).State = EntityState.Unchanged;
-                db.Entry(u.Gender).State = EntityState.Unchanged;
-                db.SaveChanges();
-                return RedirectToAction("Login", "Users");
+                Console.WriteLine(e);
+                throw;
             }
+
+            return View("SignUp");
         }
         [HttpGet]
         public ActionResult PasswordRecovery()
@@ -116,7 +129,7 @@ namespace UniversalShopingApp.Controllers
             return View();
         }
         [HttpPost]
-        [ValidateAntiForgeryToken]
+
         public ActionResult PasswordRecovery(Email data)
         {
             try
@@ -132,7 +145,7 @@ namespace UniversalShopingApp.Controllers
                     user.ConfirmPassword = Convert.ToString(c);
                     var message = new MailMessage();
                     message.To.Add(new MailAddress(data.email));
-                    message.Subject = "-No-Reply- Password Recovery Email OnLineDRINK-SHOP";
+                    message.Subject = "-No-Reply- Password Recovery EmailUniversal Shopping System";
                     message.Body = $"Dear:{sub} Please Login next time with This Given Password:" + c;
                     message.IsBodyHtml = false;
                     using (var smtp = new SmtpClient())
