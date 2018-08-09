@@ -10,5 +10,6 @@ namespace UniversalShopingClasses.OLXClass
         [MaxLength(50)]
         [Column(TypeName = "varchar")]
         public string Name { get; set; }
+
     }
 }
