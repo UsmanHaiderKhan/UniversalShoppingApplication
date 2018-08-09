@@ -62,7 +62,7 @@ namespace UniversalShopingClasses.OLXClass
             }
         }
 
-        public List<Advertisement> GetAllAdvertisement(int id)
+        public List<Advertisement> GetAllAdvertisement()
         {
             UniversalContext db = new UniversalContext();
             using (db)
@@ -70,7 +70,18 @@ namespace UniversalShopingClasses.OLXClass
                 return (from c in db.Advertisements
                         .Include(m => m.SubCategory)
                         .Include(m => m.Images)
-                        where c.Id == id
+                        select c).ToList();
+            }
+        }
+
+        public List<Advertisement> GetAllAdvertisementById(int id)
+        {
+            UniversalContext db = new UniversalContext();
+            using (db)
+            {
+                return (from c in db.Advertisements
+                        .Include(m => m.SubCategory)
+                        .Include(m => m.Images)
                         select c).ToList();
             }
         }
