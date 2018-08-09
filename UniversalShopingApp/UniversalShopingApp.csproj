@@ -413,6 +413,7 @@
     <Content Include="Views\Fabrics\UpdateFabric.cshtml" />
     <Content Include="Views\Mobile\UpdateMobile.cshtml" />
     <Content Include="Views\Auction\Index.cshtml" />
+    <Content Include="Views\Advertisement\ViewDetailofPost.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
