@@ -99,5 +99,13 @@ namespace UniversalShopingApp.Controllers
                 return (from c in db.Mobiles select c).Count();
             }
         }
+        public int GetFabricsCount()
+        {
+            UniversalContext db = new UniversalContext();
+            using (db)
+            {
+                return (from c in db.Fabrics select c).Count();
+            }
+        }
     }
 }
