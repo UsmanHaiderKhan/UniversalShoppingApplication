@@ -69,7 +69,7 @@ namespace UniversalShopingApp.Controllers
                 throw ex;
             }
 
-            return RedirectToAction("Success", "Drink");
+            return View();
 
         }
 
