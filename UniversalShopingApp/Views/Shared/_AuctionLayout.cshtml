@@ -1,4 +1,11 @@
-﻿<!DOCTYPE html>
+﻿@using UniversalShopingApp.Models
+@using UniversalShopingClasses.GeneralProductManagement
+@using UniversalShopingClasses.UserManagement
+@{
+    User currentuser = (User)Session[WebUtils.Current_User];
+    List<SelectListItem> categories = ModelHelper.ToSelectItemList(new ProductHandler().GetAllCategories());
+}
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -56,17 +63,20 @@
         <div class="col-lg-3">
             <div class="list-group">
                 <a href="#" class="list-group-item deep-purple text-white text-center">
-                    Online Shop Menu
+                    Online Auction Shop Menu
                 </a>
-                <a href="@Url.Action("DashBoard", "Admin")" class="list-group-item"><i class="fa fa-tachometer fa-lg"></i>&nbsp; DashBoard</a>
-                <a href="@Url.Action("GetAllUsers", "Admin")" class="list-group-item"><i class="fa fa-users"></i>&nbsp; UserDetails<i class="badge deep-purple" style="padding: 3%;margin-left: 50% ">@Html.Action("GetUserCount", "Admin")</i></a>
-                <a href="@Url.Action("ProductsinShop", "Drink")" class="list-group-item"><i class="fa fa-glass"></i>&nbsp; Drink Detail <i class="badge deep-purple" style="padding: 3%;margin-left: 49% ">@Html.Action("GetDrinkCount", "Admin")</i></a>
-                <a href="@Url.Action("Orderby", "Order")" class="list-group-item"><i class="fa fa-shopping-bag"></i>&nbsp; Order Details <i class="badge deep-purple" style="padding: 3%;margin-left: 45% ">@Html.Action("GetOrderCount", "Admin")</i></a>
-                <a href="@Url.Action("AddProduct", "Drink")" class="list-group-item"><i class="fa fa-plus"></i>&nbsp;Add Product </a>
-                <a href="@Url.Action("CreateMobile", "Mobile")" class="list-group-item"><i class="fa fa-plus"></i>&nbsp;Add Mobiles </a>
-                <a href="@Url.Action("AddFabrics", "Fabrics")" class="list-group-item"><i class="fa fa-plus"></i>&nbsp;Add Fabrics </a>
-                <a href="@Url.Action("Index", "Mobile")" class="list-group-item"><i class="fa fa-mobile fa-lg"></i>&nbsp; Mobiles-in-Shop <i class="badge deep-purple" style="padding: 3%;margin-left: 40% ">@Html.Action("GetMobileCount", "Admin")</i></a>
-                <a href="@Url.Action("Index", "Fabrics")" class="list-group-item"><i class="fa fa-female fa-lg"></i>&nbsp; Fabrics-in-Shop <i class="badge deep-purple" style="padding: 3%;margin-left: 39% ">@Html.Action("GetFabricsCount", "Admin")</i></a>
+                <a href="@Url.Action("Index", "Home")" class="list-group-item"><i class="fa fa-tags"></i>&nbsp; All Drinks</a>
+                <a href="@Url.Action("Index", "Home")" class="list-group-item"><i class="fa fa-tags"></i>&nbsp; Car</a>
+                <a href="@Url.Action("Index", "Home")" class="list-group-item"><i class="fa fa-tags"></i>&nbsp; Property</a>
+                <a href="@Url.Action("Index", "Home")" class="list-group-item"><i class="fa fa-tags"></i>&nbsp; Antiques</a>
+                <a href="@Url.Action("Index", "Home")" class="list-group-item"><i class="fa fa-tags"></i>&nbsp; AddNew Adds</a>
+                @*@if (categories != null)
+                    {
+                        foreach (var v in categories)
+                        {
+                            <a class="list-group-item" href="@Url.Action("ByCategory", "Home", new {id = Convert.ToInt32(v.Value)})"><span class="fa fa-tag"></span> @v.Text</a>
+                        }
+                    }*@
             </div>
         </div>
         <div class="col-lg-9">
