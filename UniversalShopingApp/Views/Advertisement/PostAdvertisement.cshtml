@@ -11,6 +11,8 @@
 
 
 
+
+
     .mytabpane {
         padding: 10px;
         border-left: solid 3px #e4e4e4;
@@ -72,7 +74,7 @@
                 </div>
                 <div class="md-form">
                     <i class="fa fa-map-marker prefix"></i>
-                    @Html.TextBoxFor(m => m.FullAddress, null, new { @class = "form-control", type = "number" })
+                    @Html.TextBoxFor(m => m.FullAddress, null, new { @class = "form-control", type = "text" })
                     @Html.LabelFor(m => m.FullAddress)
                 </div>
                 <div class="form-group form-inline">
