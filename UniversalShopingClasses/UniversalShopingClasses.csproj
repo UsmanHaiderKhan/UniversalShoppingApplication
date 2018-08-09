@@ -75,6 +75,7 @@
     <Compile Include="DrinksManagement\DrinkHandler.cs" />
     <Compile Include="CartManagement\OrderHandler.cs" />
     <Compile Include="FabricsManagement\Fabric.cs" />
+    <Compile Include="FabricsManagement\FabricHandler.cs" />
     <Compile Include="GeneralProductManagement\ProductHandler.cs" />
     <Compile Include="GeneralProductManagement\ProductImages.cs" />
     <Compile Include="Migrations\201808061558283_InitialCreate.cs" />
@@ -88,6 +89,10 @@
     <Compile Include="Migrations\201808072125009_GenricListHandler.cs" />
     <Compile Include="Migrations\201808072125009_GenricListHandler.Designer.cs">
       <DependentUpon>201808072125009_GenricListHandler.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808092046541_UpdateAdvertisement.cs" />
+    <Compile Include="Migrations\201808092046541_UpdateAdvertisement.Designer.cs">
+      <DependentUpon>201808092046541_UpdateAdvertisement.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MobileManagement\Mobile.cs" />
@@ -123,6 +128,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808072125009_GenricListHandler.resx">
       <DependentUpon>201808072125009_GenricListHandler.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808092046541_UpdateAdvertisement.resx">
+      <DependentUpon>201808092046541_UpdateAdvertisement.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
