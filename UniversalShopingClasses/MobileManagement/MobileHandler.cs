@@ -17,6 +17,17 @@ namespace UniversalShopingClasses.MobileManagement
                         select c).ToList();
             }
         }
+
+        public Mobile GetMobilesById(int id)
+        {
+            UniversalContext db = new UniversalContext();
+            using (db)
+            {
+                return (from c in db.Mobiles.Include(m => m.ProductBrand).Include(m => m.ProductImages)
+                        where c.Id == id
+                        select c).FirstOrDefault();
+            }
+        }
         public List<Mobile> GetMobileByBrand(ProductBrand mobileBrand)
         {
             UniversalContext db = new UniversalContext();
