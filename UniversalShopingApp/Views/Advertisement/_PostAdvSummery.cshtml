@@ -1,6 +1,6 @@
 ﻿
 @model IEnumerable<UniversalShopingClasses.OLXClass.AdvSummeryModel>
-<div style="margin-top: 5%">
+<div style="margin-top: 2%">
     @if (Model != null)
     {
         <div class="row">
@@ -20,12 +20,7 @@
                             @p.Title
                         </h3>
                         <p>@p.Description </p>
-                        @*<p class="cartbtnwpr">
-                                <button type="button" style="border-radius: 30px;float: left" class="btn btn-primary btn-sm addcartbtn" data-pid="@p.Id" data-pname="@p.Title" data-pprice="@p.Price" data-purl="@p.ImageUrl" data-pqty="1">
-                                    Add To Cart &nbsp;<span class="fa fa-shopping-cart"></span>
-                                </button>
-                            </p>*@
-                        <a href="@Url.Action("MobileDetails","Home", new { Id = p.Id})" style="border-radius: 30px" class="btn btn-success btn-sm">View Details &nbsp;<span class="fa fa-eye"></span></a>
+                        <a href="@Url.Action("ViewDetailofPost","Advertisement", new { Id = p.Id})" style="border-radius: 30px;margin-left: 20%" class="btn btn-success text-center">View Details &nbsp;<span class="fa fa-eye"></span></a>
                     </div>
                 </div>
             }
