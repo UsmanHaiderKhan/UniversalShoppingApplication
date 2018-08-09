@@ -1,5 +1,5 @@
 ﻿@using UniversalShopingApp.Models
 @model DDListView
-@*<span class="input-group-addon"><span class="glyphicon @Model.GlyphIcon"></span></span>*@
-<i class="prefix fa @Model.GlyphIcon"></i>
+<span class="input-group-addon"><span class="fa @Model.GlyphIcon"></span></span>
+@*<i class="prefix fa @Model.GlyphIcon"></i>*@
 @Html.DropDownList(Model.Name, Model.Values, Model.Caption, new { @class = "form-control" })
