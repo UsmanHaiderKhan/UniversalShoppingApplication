@@ -1,8 +1,12 @@
-﻿
+﻿@using UniversalShopingClasses.OLXClass
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_OLXLayout.cshtml";
+    List<AdvSummeryModel> newAdvetisements = ViewBag.NewAdvs;
 }
 <div>
     @Html.Partial("~/Views/Home/_Slider.cshtml")
+</div>
+<div>
+    @Html.Partial("~/Views/Advertisement/_PostAdvSummery.cshtml", newAdvetisements)
 </div>
