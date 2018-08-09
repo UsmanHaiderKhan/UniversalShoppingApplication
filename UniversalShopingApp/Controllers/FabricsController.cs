@@ -7,35 +7,32 @@ using System.Web.Mvc;
 using UniversalShopingApp.Models;
 using UniversalShopingClasses;
 using UniversalShopingClasses.DrinksManagement;
+using UniversalShopingClasses.FabricsManagement;
 using UniversalShopingClasses.GeneralProductManagement;
-using UniversalShopingClasses.MobileManagement;
 
 namespace UniversalShopingApp.Controllers
 {
-    public class MobileController : Controller
+    public class FabricsController : Controller
     {
-        // GET: Mobile
+        // GET: Fabrics
         public ActionResult Index()
         {
-            List<Mobile> mobiles = new MobileHandler().GetAllMobiles();
-            return View(mobiles);
+            List<Fabric> fabrics = new FabricHandler().GetAllProducts();
+            return View(fabrics);
         }
+
         [HttpGet]
-        public ActionResult CreateMobile()
+        public ActionResult AddFabrics()
         {
             DrinkHandler mHandler = new DrinkHandler();
             ViewBag.Brands = ModelHelper.ToSelectItemList(mHandler.GetAllBrands());
             return View();
         }
+
         [HttpPost]
-        public ActionResult CreateMobile(Mobile mobile, FormCollection data)
+        public ActionResult AddFabrics(Fabric fabric, FormCollection data)
         {
-            UniversalContext db = new UniversalContext();
-            mobile.ProductBrand = new ProductBrand { Id = Convert.ToInt32(data["brand"]) };
-            mobile.Wifi = Convert.ToBoolean(data["wifi"].Split(',').First());
-            mobile.BlueTooth = Convert.ToBoolean(data["bluetooth"].Split(',').First());
-            mobile.ThreeG = Convert.ToBoolean(data["3g"].Split(',').First());
-            mobile.FourG = Convert.ToBoolean(data["4g"].Split(',').First());
+            fabric.ProductBrand = new ProductBrand { Id = Convert.ToInt32(data["brand"]) };
             long uno = DateTime.Now.Ticks;
             int counter = 0;
             foreach (string fcName in Request.Files)
@@ -48,48 +45,56 @@ namespace UniversalShopingApp.Controllers
                     string path = Request.MapPath(url);
                     //m.Images = file.FileName;
                     file.SaveAs(path);
-                    mobile.ProductImages.Add(new ProductImages() { Url = url, Perority = counter });
+                    fabric.ProductImages.Add(new ProductImages() { Url = url, Perority = counter });
                 }
             }
+
+            UniversalContext db = new UniversalContext();
             using (db)
             {
-                db.Mobiles.Add(mobile);
-                db.Entry(mobile.ProductBrand).State = EntityState.Unchanged;
-
+                db.Fabrics.Add(fabric);
+                db.Entry(fabric.ProductBrand).State = EntityState.Unchanged;
                 db.SaveChanges();
-                return RedirectToAction("Success", "drink");
+                return RedirectToAction("Complete", "Drink");
             }
-
         }
 
-        public ActionResult DeleteMobile(int id)
+        public ActionResult DeleteFabrics(int id)
         {
             UniversalContext db = new UniversalContext();
-            Mobile mobile = (from c in db.Mobiles
+            Fabric fabric = (from c in db.Fabrics
                     .Include(x => x.ProductBrand)
                     .Include(m => m.ProductImages)
                              where c.Id == id
                              select c).FirstOrDefault();
-            db.Entry(mobile).State = EntityState.Deleted;
+            db.Entry(fabric).State = EntityState.Deleted;
             db.SaveChanges();
             return Json("Delete", JsonRequestBehavior.AllowGet);
         }
+
         [HttpGet]
-        public ActionResult UpdateMobile(int id)
+        public ActionResult UpdateFabric(int id)
         {
-            Mobile mobile = new MobileHandler().GetMobilesById(id);
-            return View(mobile);
+            Fabric fabric = new FabricHandler().GetFabricById(id);
+            return View(fabric);
         }
+
         [HttpPost]
-        public ActionResult UpdateMobile(Mobile mobile)
+        [ValidateAntiForgeryToken]
+
+        public ActionResult UpdateFabric(Fabric fabric)
         {
             UniversalContext db = new UniversalContext();
-            using (db)
+            if (ModelState.IsValid)
             {
-                db.Entry(mobile).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index", "Mobile");
+                using (db)
+                {
+                    db.Entry(fabric).State = EntityState.Modified;
+                    db.SaveChanges();
+                }
             }
+            return RedirectToAction("Index", "Fabrics");
         }
+
     }
 }
