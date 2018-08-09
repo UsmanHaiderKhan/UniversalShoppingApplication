@@ -107,5 +107,14 @@ namespace UniversalShopingApp.Controllers
                 return (from c in db.Fabrics select c).Count();
             }
         }
+
+        public int GetPostCount()
+        {
+            UniversalContext db = new UniversalContext();
+            using (db)
+            {
+                return (from c in db.Advertisements select c).Count();
+            }
+        }
     }
 }
