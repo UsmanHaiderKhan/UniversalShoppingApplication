@@ -124,7 +124,6 @@ namespace UniversalShopingApp.Controllers
             string message = null;
             try
             {
-
                 if (ModelState.IsValid)
                 {
                     var sender = new MailAddress("usmanhaiderkhan4@gmail.com");
@@ -136,7 +135,7 @@ namespace UniversalShopingApp.Controllers
                     {
                         var sub = "---- E-Drink Shope ----";
 
-                        var body = $"<h2 style='color:#bc4b4b'><center>---Your Buyed Drink Information Given Below --- </center></h2><br />" +
+                        var body = $"<h2 style='color:#bc4b4b'><center>---Your Buyed Product Information From Universal Shopping App Given Below --- </center></h2><br />" +
                                    $"<div><table style='width:60%;border:1px solid yellow;padding:10px; background-color: #eeeeee; margin: auto;border-collapse: collapse; transition: all 1s;'><tr onMouseOver=this.style.color = 'red''  onMouseOut=this.style.color = 'blue''  style='border:1px solid grey;padding:10px;background-color: #eee;'><th style='border:1px solid grey;padding:10px'>Customer Name:</th><td style='border:1px solid grey;padding:10px'>{p1.BuyerName}</td></tr><tr onMouseOver=this.style.color = 'red''  onMouseOut=this.style.color = 'blue'' style='border:1px solid grey;padding:10px;background-color: pink;'><th style='border:1px solid grey;padding:10px'>Customer Address:</th><td style='border:1px solid grey;padding:10px'>{p1.FullAddress}</td></tr><tr onMouseOver=this.style.color = 'red''  onMouseOut=this.style.color = 'blue'' style='border:1px solid grey;padding:10px;background-color:  #eee;'><th style='border:1px solid grey;padding:10px'>Customer PhoneNo:</th><td style='border:1px solid grey;padding:10px'>{p1.Phone}</td></tr><tr onMouseOver=this.style.color = 'red''  onMouseOut=this.style.color = 'blue'' style='border:1px solid grey;padding:10px;background-color: pink;'><th style='border:1px solid grey;padding:10px'>Product Name:</th><td style='border:1px solid grey;padding:10px'>{p1.OrderDetails.First().Name}</td></tr><tr onMouseOver=this.style.color = 'red''  onMouseOut=this.style.color = 'blue'' style='background-color:  #eee;border:1px solid grey;padding:10px'><th style='border:1px solid grey;padding:10px'>Product Quantity:</th><td style='border:1px solid grey;padding:10px'>{p1.OrderDetails.First().Qauntity}</td></tr><tr onMouseOver=this.style.color = 'red'' onMouseOut=this.style.color = 'blue'' style='background-color: pink;border:1px solid grey;padding:10px'><th style='border:1px solid grey;padding:10px'>Product Amount:</th><td style='border:1px solid grey;padding:10px'>{p1.OrderDetails.First().Amount}</td></tr></table></div>";
                         var smtp1 = new SmtpClient
                         {
