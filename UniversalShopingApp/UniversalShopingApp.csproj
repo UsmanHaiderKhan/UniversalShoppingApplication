@@ -259,6 +259,8 @@
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\jquery-1.9.1.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -268,9 +270,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\AdvertisementController.cs" />
+    <Compile Include="Controllers\AuctionController.cs" />
     <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\CatController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\DrinkController.cs" />
+    <Compile Include="Controllers\FabricsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MobileController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
@@ -400,6 +405,14 @@
     <Content Include="Views\Advertisement\_PostAdvSummery.cshtml" />
     <Content Include="Views\Shared\_OLXLayout.cshtml" />
     <Content Include="Views\Advertisement\Index.cshtml" />
+    <Content Include="Views\Fabrics\AddFabrics.cshtml" />
+    <Content Include="Views\Shared\_AuctionLayout.cshtml" />
+    <Content Include="Views\Fabrics\Index.cshtml" />
+    <Content Include="Views\Fabrics\_DeleteFabrics.cshtml" />
+    <Content Include="Views\Mobile\_DeleteMobile.cshtml" />
+    <Content Include="Views\Fabrics\UpdateFabric.cshtml" />
+    <Content Include="Views\Mobile\UpdateMobile.cshtml" />
+    <Content Include="Views\Auction\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -412,6 +425,7 @@
     <Folder Include="Content\OLXImages\" />
     <Folder Include="Content\ProductImages\" />
     <Folder Include="Content\UserImages\" />
+    <Folder Include="Views\Cat\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\UniversalShopingClasses\UniversalShopingClasses.csproj">
