@@ -37,19 +37,19 @@
 
                 <div class="md-form">
                     <i class="fa fa-user prefix"></i>
-                    @Html.TextBoxFor(m => m.Fullname, null, new { @class = "text-white form-control" })
+                    @Html.TextBoxFor(m => m.Fullname, null, new { @class = "text-white form-control", type = "text" })
                     @Html.LabelFor(m => m.Fullname)
                     @Html.ValidationMessageFor(m => m.Fullname, null, new { @class = "text-white" })
                 </div>
                 <div class="md-form">
                     <i class="fa fa-envelope prefix"></i>
-                    @Html.TextBoxFor(m => m.Email, null, new { @class = "text-white form-control" })
+                    @Html.TextBoxFor(m => m.Email, null, new { @class = "text-white form-control", type = "email" })
                     @Html.LabelFor(m => m.Email)
                     @Html.ValidationMessageFor(m => m.Email, null, new { @class = "text-white" })
                 </div>
                 <div class="md-form">
                     <i class="fa fa-user prefix"></i>
-                    @Html.TextBoxFor(m => m.Loginid, null, new { @class = "text-white form-control" })
+                    @Html.TextBoxFor(m => m.Loginid, null, new { @class = "text-white form-control", type = "email" })
                     @Html.LabelFor(m => m.Loginid)
                     @Html.ValidationMessageFor(m => m.Loginid, null, new { @class = "text-white " })
                 </div>
@@ -67,7 +67,7 @@
                 </div>
                 <div class="md-form">
                     <i class="fa fa-id-card prefix"></i>
-                    @Html.TextBoxFor(m => m.Cnic, null, new { @class = "text-white form-control" })
+                    @Html.TextBoxFor(m => m.Cnic, null, new { @class = "text-white form-control", type = "number" })
                     @Html.LabelFor(m => m.Cnic)
                     @Html.ValidationMessageFor(m => m.Cnic, null, new { @class = "text-white" })
                 </div>
@@ -78,25 +78,25 @@
                 </div>
                 <div class="md-form">
                     <i class="fa fa-flag prefix"></i>
-                    @Html.TextBoxFor(m => m.State, null, new { @class = "text-white form-control" })
+                    @Html.TextBoxFor(m => m.State, null, new { @class = "text-white form-control", type = "text" })
                     @Html.LabelFor(m => m.State)
                     @Html.ValidationMessageFor(m => m.State, null, new { @class = "text-white" })
                 </div>
                 <div class="md-form">
                     <i class="fa fa-flag prefix"></i>
-                    @Html.TextBoxFor(m => m.City, null, new { @class = "text-white form-control" })
+                    @Html.TextBoxFor(m => m.City, null, new { @class = "text-white form-control", type = "text" })
                     @Html.LabelFor(m => m.City)
                     @Html.ValidationMessageFor(m => m.City, null, new { @class = "text-white" })
                 </div>
                 <div class="md-form">
                     <i class="fa fa-address-book prefix"></i>
-                    @Html.TextBoxFor(m => m.FullAddress, null, new { @class = "text-white form-control" })
+                    @Html.TextBoxFor(m => m.FullAddress, null, new { @class = "text-white form-control", type = "text" })
                     @Html.LabelFor(m => m.FullAddress)
                     @Html.ValidationMessageFor(m => m.FullAddress, null, new { @class = "text-white" })
                 </div>
                 <div class="md-form text-white">
                     <i class="fa fa-phone prefix"></i>
-                    @Html.TextBoxFor(m => m.MobileNo, null, new { @class = "text-white form-control" })
+                    @Html.TextBoxFor(m => m.MobileNo, null, new { @class = "text-white form-control", type = "number" })
                     @Html.LabelFor(m => m.MobileNo)
                     @Html.ValidationMessageFor(m => m.MobileNo, null, new { @class = "text-white" })
                 </div>
