@@ -14,8 +14,10 @@ namespace UniversalShopingApp.Controllers
     public class AdvertisementController : Controller
     {
         // GET: Advertisement
+        [HttpGet]
         public ActionResult Index()
         {
+            ViewBag.NewAdvs = new AdvertisemntHandler().GetLatestAdvertisements(12).ToAdvSumModelList();
             return View();
         }
 
