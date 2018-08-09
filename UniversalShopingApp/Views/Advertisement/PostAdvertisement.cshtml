@@ -11,8 +11,6 @@
 
 
 
-
-
     .mytabpane {
         padding: 10px;
         border-left: solid 3px #e4e4e4;
@@ -57,25 +55,25 @@
         </ul>
         <div class="tab-content">
             <div id="productpane" class="tab-pane mytabpane active">
-                @*<div class="form-group form-inline">
-                        <div id="countrydiv" class="input-group">
-                            <span class="input-group-addon"><span class="glyphicon glyphicon-map-marker"></span></span>
-                            @Html.DropDownList("Country", (IEnumerable<SelectListItem>)ViewBag.Countries, "- Select Country -", new { @class = "form-control" })
-                        </div>
-                        <div id="statediv" class="input-group">
-                        </div>
-                        <div id="citydiv" class="input-group">
-                        </div>
-                    </div>*@
                 <div class="md-form">
                     <i class="fa fa-edit prefix"></i>
-                    @Html.TextBox("AdvTitle", null, new { @class = "form-control" })
+                    @Html.TextBoxFor(m => m.Title, null, new { @class = "form-control" })
                     @Html.LabelFor(m => m.Title)
                 </div>
                 <div class="md-form">
                     <i class="fa fa-dollar prefix"></i>
-                    @Html.TextBox("Price", null, new { @class = "form-control", type = "number" })
+                    @Html.TextBoxFor(m => m.Price, null, new { @class = "form-control", type = "number" })
                     @Html.LabelFor(m => m.Price)
+                </div>
+                <div class="md-form">
+                    <i class="fa fa-phone prefix"></i>
+                    @Html.TextBoxFor(m => m.Contact, null, new { @class = "form-control", type = "number" })
+                    @Html.LabelFor(m => m.Contact)
+                </div>
+                <div class="md-form">
+                    <i class="fa fa-map-marker prefix"></i>
+                    @Html.TextBoxFor(m => m.FullAddress, null, new { @class = "form-control", type = "number" })
+                    @Html.LabelFor(m => m.FullAddress)
                 </div>
                 <div class="form-group form-inline">
                     <div id="categorydiv" class="input-group">
@@ -96,13 +94,13 @@
                 </div>
             </div>
             <div id="orderpane" class="tab-pane mytabpane">
-                @Html.TextArea("Description", new { @class = "form-control", rows = 10, placeholder = "Advertisement Details" })
+                @Html.TextAreaFor(m => m.Description, new { @class = "form-control", rows = 10, placeholder = "Advertisement Details" })
             </div>
             <div id="summerypane" class="tab-pane mytabpane">
-                <input id="file1" name="photo1" type="file" />
-                <input id="file1" name="photo2" type="file" />
-                <input id="file1" name="photo3" type="file" />
-                <input id="file1" name="photo4" type="file" />
+                <input id="image1" name="image1" type="file" />
+                <input id="image2" name="image2" type="file" />
+                <input id="image3" name="image3" type="file" />
+                <input id="image4" name="image4" type="file" />
             </div>
         </div>
 
@@ -112,25 +110,32 @@
         </div>
     }
 </div>
-@section myScript{
-    <script src="~/Content/jquery-1.10.0.min.js"></script>
-    <script src="~/Content/bootstrap.min.js"></script>
+@section myscript{
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
     <script type="text/javascript">
         $(function () {
             $("#Category").change(function () {
-
                 var cid = $(this).select("option:selected").val();
-                alert(cid);
                 $.ajax(
                     {
-                        url: "/Advertisement/sub/" + cid
-                    }
-                ).done(function (result2) {
-                    $("#subcategorydiv").html(result2);
-                });
+                        url: "/Cat/sub/" + cid,
+                        type: "get",
+                        success: function (result) {
+
+                            $("#subcategorydiv").html(result);
+                        }
+                    });
             });
         });
-
-
     </script>
 }
+s
+@*//fetch("/advertisement/sub/" + cid).then((response) => {
+    //    response.text();
+    //    alert(response.text());
+    //}).then((data) => {
+    //    alert(data);
+    //    var el = document.getElementById("subcategorydiv");
+    //    el.innerHTML = data;
+    //});*@
