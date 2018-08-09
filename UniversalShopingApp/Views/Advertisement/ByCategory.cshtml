@@ -1,7 +1,6 @@
-﻿
+﻿@using UniversalShopingClasses.OLXClass
 @{
     ViewBag.Title = "ByCategory";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>ByCategory</h2>
+@Html.Partial("~/Views/Advertisement/_PostAdvSummery.cshtml", (List<AdvSummeryModel>)ViewBag.Advertisements)
