@@ -96,6 +96,14 @@
     <Compile Include="Migrations\201808092046541_UpdateAdvertisement.Designer.cs">
       <DependentUpon>201808092046541_UpdateAdvertisement.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201808100738137_AddedNewModule.cs" />
+    <Compile Include="Migrations\201808100738137_AddedNewModule.Designer.cs">
+      <DependentUpon>201808100738137_AddedNewModule.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808100743172_AddedNewModules.cs" />
+    <Compile Include="Migrations\201808100743172_AddedNewModules.Designer.cs">
+      <DependentUpon>201808100743172_AddedNewModules.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MobileManagement\Mobile.cs" />
     <Compile Include="GeneralProductManagement\ProductBrand.cs" />
@@ -133,6 +141,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808092046541_UpdateAdvertisement.resx">
       <DependentUpon>201808092046541_UpdateAdvertisement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808100738137_AddedNewModule.resx">
+      <DependentUpon>201808100738137_AddedNewModule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808100743172_AddedNewModules.resx">
+      <DependentUpon>201808100743172_AddedNewModules.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

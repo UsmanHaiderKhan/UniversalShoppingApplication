@@ -1,4 +1,5 @@
 ﻿using System.Data.Entity;
+using UniversalShopingClasses.AuctionManagement;
 using UniversalShopingClasses.CartManagement;
 using UniversalShopingClasses.DrinksManagement;
 using UniversalShopingClasses.FabricsManagement;
@@ -37,6 +38,11 @@ namespace UniversalShopingClasses
         public DbSet<AdvertisementSubCategory> AdvertisementSubCategories { get; set; }
         public DbSet<AdvertismentCateory> AdvertismentCateories { get; set; }
         public DbSet<AdvertisementType> AdvertisementTypes { get; set; }
+
+
+        public DbSet<Auction> Auctions { get; set; }
+        public DbSet<AuctionCategory> AuctionCategories { get; set; }
+
 
 
 
