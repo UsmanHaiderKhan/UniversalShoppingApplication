@@ -116,5 +116,10 @@ namespace UniversalShopingApp.Controllers
                 return (from c in db.Advertisements select c).Count();
             }
         }
+
+        public ActionResult Jumb()
+        {
+            return View();
+        }
     }
 }
