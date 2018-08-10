@@ -1,8 +1,13 @@
-﻿
+﻿@using UniversalShopingApp.Models
+@using UniversalShopingClasses.AuctionManagement
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_AuctionLayout.cshtml";
+    List<AuctionSummery> products = ViewBag.NewProduct;
 }
-
-<h2>Index</h2>
-
+<div>
+    @Html.Partial("~/Views/Home/_slider.cshtml")
+</div>
+<div class="mt-4">
+    @Html.Partial("~/Views/Auction/_AuctionSummery.cshtml", products)
+</div>

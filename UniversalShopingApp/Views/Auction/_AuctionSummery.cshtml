@@ -1,0 +1,30 @@
+﻿
+@model IEnumerable<UniversalShopingClasses.AuctionManagement.AuctionSummery>
+<div>
+    @if (Model != null)
+    {
+        <div class="row">
+            @foreach (var p in Model)
+            {
+                <div id="proditem" class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="img-thumbnail prodsmyitem">
+                        @if (p.ImageUrl != null)
+                        {
+                            <img src="@Url.Content(p.ImageUrl)" alt="@p.Name" style="width: 292px;height: 200px" />
+                        }
+                        else
+                        {
+                            <h3>No Image</h3>
+                        } <h3 class="float-right">@p.BidPrice.ToString("c")</h3>
+                        <h3>
+                            @p.Name
+                        </h3>
+                        <p>@p.Description </p>
+                        <a href="@Url.Action("Index","Auction", new { Id = p.Id})" style="border-radius: 30px;margin-left: 21%" class="btn btn-success"><span class="fa fa-envelope"></span>&nbsp; Start Auction</a>
+                    </div>
+                </div>
+            }
+        </div>
+
+    }
+</div>
