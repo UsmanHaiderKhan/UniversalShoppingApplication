@@ -79,8 +79,13 @@ namespace UniversalShopingApp.Controllers
             return View();
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult SignUp(User u, FormCollection data)
         {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
             try
             {
                 if (u != null)
@@ -158,9 +163,9 @@ namespace UniversalShopingApp.Controllers
                     return View();
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                throw ex;
                 ViewBag.Error = "Error Sending Email.  Try Again Later.Ooop's";
             }
 
