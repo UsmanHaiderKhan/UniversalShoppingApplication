@@ -416,6 +416,8 @@
     <Content Include="Views\Auction\Index.cshtml" />
     <Content Include="Views\Advertisement\ViewDetailofPost.cshtml" />
     <Content Include="Views\Advertisement\AdminAdvDetails.cshtml" />
+    <Content Include="Views\Advertisement\UpdateAdv.cshtml" />
+    <Content Include="Views\Advertisement\_DeleteAdv.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
