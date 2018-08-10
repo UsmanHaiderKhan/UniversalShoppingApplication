@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using UniversalShopingClasses.AuctionManagement;
 
 namespace UniversalShopingApp.Controllers
 {
@@ -9,6 +10,16 @@ namespace UniversalShopingApp.Controllers
         {
             return View();
         }
+        [HttpGet]
+        public ActionResult AddAuctinoProduct()
+        {
+            return View();
+        }
 
+        [HttpPost]
+        public ActionResult AddAuctinoProduct(Auction auction)
+        {
+            return View();
+        }
     }
 }
