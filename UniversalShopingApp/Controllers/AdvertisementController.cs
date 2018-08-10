@@ -53,6 +53,7 @@ namespace UniversalShopingApp.Controllers
                         advertisement.Images.Add(new ProductImages() { Url = url, Perority = counter });
                     }
                 }
+
                 UniversalContext db = new UniversalContext();
                 using (db)
                 {
@@ -78,9 +79,11 @@ namespace UniversalShopingApp.Controllers
         [HttpGet]
         public ActionResult ByCategory(int id)
         {
-            ViewBag.Advertisements = new AdvertisemntHandler().GetAdvertisementsByCategory(new AdvertismentCateory() { Id = id }).ToAdvSumModelList();
+            ViewBag.Advertisements = new AdvertisemntHandler()
+                .GetAdvertisementsByCategory(new AdvertismentCateory() { Id = id }).ToAdvSumModelList();
             return View();
         }
+
         [HttpGet]
         public ActionResult ViewDetailofPost(int id)
         {
@@ -94,5 +97,43 @@ namespace UniversalShopingApp.Controllers
             return View(advertisements);
         }
 
+        public ActionResult DeleteAdv(int id)
+        {
+            UniversalContext db = new UniversalContext();
+            Advertisement advertisement = (from c in db.Advertisements
+                    .Include(x => x.SubCategory)
+                    .Include(m => m.Images)
+                                           where c.Id == id
+                                           select c).FirstOrDefault();
+            db.Entry(advertisement).State = EntityState.Deleted;
+            db.SaveChanges();
+            return Json("Delete", JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public ActionResult UpdateAdv(int id)
+        {
+            Advertisement advertisement = new AdvertisemntHandler().AdvertisementById(id);
+            return View(advertisement);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+
+        public ActionResult UpdateAdv(Advertisement advertisement)
+        {
+            UniversalContext db = new UniversalContext();
+            if (ModelState.IsValid)
+            {
+                using (db)
+                {
+                    db.Entry(advertisement).State = EntityState.Modified;
+                    db.SaveChanges();
+
+                }
+            }
+
+            return RedirectToAction("AdminAdvDetails", "Advertisement");
+        }
     }
 }
