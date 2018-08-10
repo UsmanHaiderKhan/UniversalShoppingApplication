@@ -11,6 +11,8 @@ namespace UniversalShopingClasses.AuctionManagement
         public float BidPrice { get; set; }
         public string Specification { get; set; }
         public DateTime Postedon { get; set; }
+        public string FullAddress { get; set; }
+        public double Contact { get; set; }
         public string Description { get; set; }
         public AuctionCategory AuctionCategory { get; set; }
         public ICollection<ProductImages> ProductImages { get; set; }
