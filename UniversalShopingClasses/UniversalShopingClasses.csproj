@@ -70,6 +70,10 @@
   <ItemGroup>
     <Compile Include="AuctionManagement\Auction.cs" />
     <Compile Include="AuctionManagement\AuctionCategory.cs" />
+    <Compile Include="AuctionManagement\AuctionHandler.cs" />
+    <Compile Include="AuctionManagement\AuctionHelper.cs" />
+    <Compile Include="AuctionManagement\AuctionSummery.cs" />
+    <Compile Include="AuctionManagement\IBidable.cs" />
     <Compile Include="CartManagement\Order.cs" />
     <Compile Include="CartManagement\OrderDetail.cs" />
     <Compile Include="CartManagement\OrderStatus.cs" />
