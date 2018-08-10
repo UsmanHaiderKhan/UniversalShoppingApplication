@@ -85,5 +85,17 @@ namespace UniversalShopingClasses.OLXClass
                         select c).ToList();
             }
         }
+
+        public Advertisement AdvertisementById(int id)
+        {
+            UniversalContext db = new UniversalContext();
+            using (db)
+            {
+                return (from c in db.Advertisements
+                        .Include(m => m.SubCategory)
+                        .Include(m => m.Images)
+                        select c).FirstOrDefault();
+            }
+        }
     }
 }
