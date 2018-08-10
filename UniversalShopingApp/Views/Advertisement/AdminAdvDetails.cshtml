@@ -1,13 +1,10 @@
 ﻿@model IEnumerable<UniversalShopingClasses.OLXClass.Advertisement>
-
 @{
     ViewBag.Title = "AdminAdvDetails";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-
 <h2>AdminAdvDetails</h2>
-
-
+@Html.Partial("~/Views/Advertisement/_DeleteAdv.cshtml")
 <table class="table">
     <tr>
         <th>
@@ -30,7 +27,6 @@
         </th>
         <th></th>
     </tr>
-
     @foreach (var item in Model)
     {
         <tr>
@@ -52,8 +48,41 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Contact)
             </td>
-            <td></td>
+            <td>
+                <a href="#exampleModal" data-toggle="modal" id="@item.Id" class="text-danger hits"><span class="fa fa-trash"></span></a>
+                |
+                <a href="@Url.Action("UpdateAdv","Advertisement",new{id=item.Id})"
+                   class="text-success"><span class="fa fa-edit"></span></a>
+            </td>
         </tr>
     }
-
 </table>
+<input type="hidden" id="hiddenOrderId" />
+@section myscript
+{
+    <script type="text/javascript">
+        $(function () {
+            $(".hits").click(function () {
+                var rid = $(this).attr("id");
+                alert(rid);
+                $("#hiddenOrderId").val(rid);
+                $("#modal-id").model('show');
+            });
+
+            $("#hit").click(function (event) {
+                var delRecord = $("#hiddenOrderId").val();
+                alert(delRecord);
+                $.ajax({
+
+                    url: "/Advertisement/DeleteAdv/" + delRecord,
+                    type: "POST",
+                    data: { id: delRecord },
+                    success: function (result) {
+
+                        $("#modal-id").modal('hide');
+                        $("#row_" + delRecord).remove();
+                    }
+                });
+            });
+        });</script>
+}
