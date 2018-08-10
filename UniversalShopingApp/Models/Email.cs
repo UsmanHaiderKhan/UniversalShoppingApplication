@@ -5,9 +5,8 @@ namespace UniversalShopingApp.Models
     public class Email
     {
         [Required]
-        [EmailAddress()]
+        [EmailAddress]
         [Display(Name = "Email")]
-        [DataType(DataType.EmailAddress)]
         public string email { get; set; }
     }
 }
