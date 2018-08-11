@@ -7,7 +7,6 @@ namespace UniversalShopingClasses.GeneralProductManagement
         public int Id { get; set; }
         [Required]
         public string Name { get; set; }
-        [Required]
         public string ImageUrl { get; set; }
 
         public ProductType ProductType { get; set; }
