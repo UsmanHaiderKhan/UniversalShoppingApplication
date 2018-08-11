@@ -1,0 +1,8 @@
+﻿@using UniversalShopingClasses.AuctionManagement
+@{
+    ViewBag.Title = "AuctionByCategory";
+    Layout = "~/Views/Shared/_AuctionLayout.cshtml";
+}
+<div>
+    @Html.Partial("~/Views/Auction/_AuctionSummery.cshtml", (List<AuctionSummery>)ViewBag.AuctionCat)
+</div>
