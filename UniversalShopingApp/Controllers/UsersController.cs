@@ -163,9 +163,8 @@ namespace UniversalShopingApp.Controllers
                     return View();
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw ex;
                 ViewBag.Error = "Error Sending Email.  Try Again Later.Ooop's";
             }
 
