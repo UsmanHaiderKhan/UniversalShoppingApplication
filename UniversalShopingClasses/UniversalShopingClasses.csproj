@@ -108,6 +108,10 @@
     <Compile Include="Migrations\201808100743172_AddedNewModules.Designer.cs">
       <DependentUpon>201808100743172_AddedNewModules.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201808111347344_UpdateBrandValidation.cs" />
+    <Compile Include="Migrations\201808111347344_UpdateBrandValidation.Designer.cs">
+      <DependentUpon>201808111347344_UpdateBrandValidation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MobileManagement\Mobile.cs" />
     <Compile Include="GeneralProductManagement\ProductBrand.cs" />
@@ -151,6 +155,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808100743172_AddedNewModules.resx">
       <DependentUpon>201808100743172_AddedNewModules.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808111347344_UpdateBrandValidation.resx">
+      <DependentUpon>201808111347344_UpdateBrandValidation.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
