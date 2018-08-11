@@ -421,6 +421,7 @@
     <Content Include="Views\Auction\AddAuctinoProduct.cshtml" />
     <Content Include="Views\Admin\Jumb.cshtml" />
     <Content Include="Views\Auction\_AuctionSummery.cshtml" />
+    <Content Include="Views\Auction\AuctionByCategory.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
