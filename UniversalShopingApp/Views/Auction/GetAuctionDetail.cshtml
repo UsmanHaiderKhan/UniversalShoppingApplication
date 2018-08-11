@@ -1,0 +1,101 @@
+﻿@model IEnumerable<UniversalShopingClasses.AuctionManagement.Auction>
+@{
+    ViewBag.Title = "GetAuctionDetail";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<h2>GetAuctionDetail</h2>
+@Html.Partial("~/Views/Auction/_DeleteAuction.cshtml")
+<table class="table">
+    <tr>
+        <th>
+            Pictures
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BidPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Specification)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Postedon)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FullAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Contact)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>Actions</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            @foreach (var v in item.ProductImages)
+            {
+                <td><img src="@Url.Content(v.Url)" style="width: 50px; height: 50px" /></td>
+            }
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BidPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Specification)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Postedon)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FullAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Contact)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                <a href="#exampleModal" data-toggle="modal" id="@item.Id" class="text-danger hits"><span class="fa fa-trash"></span></a>
+                |
+                <a href="@Url.Action("UpdateAuction","Auction",new{id=item.Id})"
+                   class="text-success"><span class="fa fa-edit"></span></a>
+            </td>
+        </tr>
+    }
+</table>
+<input type="hidden" id="hiddenOrderId" />
+@section myscript
+{
+    <script type="text/javascript">
+        $(function () {
+            $(".hits").click(function () {
+                var rid = $(this).attr("id");
+                alert(rid);
+                $("#hiddenOrderId").val(rid);
+                $("#modal-id").model('show');
+            });
+
+            $("#hit").click(function (event) {
+                var delRecord = $("#hiddenOrderId").val();
+                alert(delRecord);
+                $.ajax({
+
+                    url: "/Auction/DeleteAuction/" + delRecord,
+                    type: "POST",
+                    data: { id: delRecord },
+                    success: function (result) {
+
+                        $("#modal-id").modal('hide');
+                        $("#row_" + delRecord).remove();
+                    }
+                });
+            });
+        });</script>
+}
