@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
+using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using UniversalShopingApp.Models;
@@ -74,5 +76,41 @@ namespace UniversalShopingApp.Controllers
 
             return RedirectToAction("AddAuctinoProduct");
         }
+        [HttpGet]
+        public ActionResult GetAuctionDetail()
+        {
+            List<Auction> auctions = new AuctionHandler().GetAllAuctions();
+            return View(auctions);
+        }
+        [HttpGet]
+        public ActionResult UpdateAuction(int id)
+        {
+            Auction auction = new AuctionHandler().GetAuctionById(id);
+            return View(auction);
+        }
+        [HttpPost]
+        public ActionResult UpdateAuction(Auction auction)
+        {
+            UniversalContext db = new UniversalContext();
+            using (db)
+            {
+                db.Entry(auction).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("GetAuctionDetail", "Auction");
+            }
+        }
+        public ActionResult DeleteAuction(int id)
+        {
+            UniversalContext db = new UniversalContext();
+            Auction auction = (from c in db.Auctions
+                    .Include(x => x.AuctionCategory)
+                    .Include(m => m.ProductImages)
+                               where c.Id == id
+                               select c).FirstOrDefault();
+            db.Entry(auction).State = EntityState.Deleted;
+            db.SaveChanges();
+            return Json("Delete", JsonRequestBehavior.AllowGet);
+        }
+
     }
 }
