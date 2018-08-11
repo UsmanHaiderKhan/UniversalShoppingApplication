@@ -17,6 +17,12 @@ namespace UniversalShopingApp.Controllers
             ViewBag.NewProduct = new AuctionHandler().GetLatestAuction(12).ToAuctinoSummeryModelList();
             return View();
         }
+
+        public ActionResult AuctionByCategory(int id)
+        {
+            ViewBag.AuctionCat = AuctionHelper.AuctionSummeryList(new AuctionHandler().GetAuctionByCategory(id));
+            return View();
+        }
         [HttpGet]
         public ActionResult AddAuctinoProduct()
         {
