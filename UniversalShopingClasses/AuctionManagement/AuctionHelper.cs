@@ -30,6 +30,16 @@ namespace UniversalShopingClasses.AuctionManagement
             }
             return templist;
         }
+        public static List<AuctionSummery> AuctionSummeryList(IEnumerable<Auction> auction)
+        {
+            List<AuctionSummery> temp = new List<AuctionSummery>();
+            if (auction != null)
+            {
+                temp.AddRange(auction.Select(c => ToAuctionSummary(c)));
+                temp.TrimExcess();
+            }
+            return temp;
+        }
 
         public static List<AuctionSummery> ToAuctinoSummeryModelList(this List<Auction> auctions)
         {
@@ -45,6 +55,17 @@ namespace UniversalShopingClasses.AuctionManagement
             }
             tempList.TrimExcess();
             return tempList;
+        }
+        public static AuctionSummery ToAuctionSummary(Auction auction)
+        {
+            return new AuctionSummery()
+            {
+                Id = auction.Id,
+                Name = auction.Name,
+                BidPrice = auction.BidPrice,
+                Description = auction.Description,
+                ImageUrl = (auction.ProductImages.Count > 0) ? auction.ProductImages.First().Url : null
+            };
         }
     }
 }
