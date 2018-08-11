@@ -274,6 +274,7 @@
     <Compile Include="Controllers\AuctionController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CatController.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\DrinkController.cs" />
     <Compile Include="Controllers\FabricsController.cs" />
@@ -422,6 +423,15 @@
     <Content Include="Views\Admin\Jumb.cshtml" />
     <Content Include="Views\Auction\_AuctionSummery.cshtml" />
     <Content Include="Views\Auction\AuctionByCategory.cshtml" />
+    <Content Include="Views\Auction\GetAuctionDetail.cshtml" />
+    <Content Include="Views\Auction\_DeleteAuction.cshtml" />
+    <Content Include="Views\Auction\UpdateAuction.cshtml" />
+    <Content Include="Views\Category\Index.cshtml" />
+    <Content Include="Views\Category\AddProductType.cshtml" />
+    <Content Include="Views\Category\DeleteProductType.cshtml" />
+    <Content Include="Views\Category\ProductCategories.cshtml" />
+    <Content Include="Views\Category\AddProductBrands.cshtml" />
+    <Content Include="Views\Category\DeleteProductBrands.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
