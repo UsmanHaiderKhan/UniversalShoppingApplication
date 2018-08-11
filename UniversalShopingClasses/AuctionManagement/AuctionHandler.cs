@@ -18,6 +18,13 @@ namespace UniversalShopingClasses.AuctionManagement
             }
         }
 
+        public List<AuctionCategory> GetAllCategories()
+        {
+            using (db)
+            {
+                return (from c in db.AuctionCategories select c).ToList();
+            }
+        }
         public List<Auction> GetLatestAuction(int count)
         {
             using (db)
@@ -29,6 +36,19 @@ namespace UniversalShopingClasses.AuctionManagement
                         select adv).Take(count).ToList();
             }
         }
+
+        public List<Auction> GetAuctionByCategory(int id)
+        {
+            using (db)
+            {
+                return (from c in db.Auctions
+                        .Include(m => m.AuctionCategory)
+                    .Include(m => m.ProductImages)
+                        where c.Id == id
+                        select c).ToList();
+            }
+        }
+
         public object GetCategories()
         {
             using (db)
