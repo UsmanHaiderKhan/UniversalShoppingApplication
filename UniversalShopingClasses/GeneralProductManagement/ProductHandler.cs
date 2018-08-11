@@ -54,6 +54,30 @@ namespace UniversalShopingClasses.GeneralProductManagement
             }
         }
 
+        public void DeleteOperatingSystem(ProductType productType)
+        {
+            UniversalContext db = new UniversalContext();
+            using (db)
+            {
+                db.Entry(productType).State = EntityState.Deleted;
+                db.ProductTypes.Remove(productType);
+                db.SaveChanges();
+            }
+        }
+
+        public List<ProductBrand> GetProductBrandBypType(ProductType productType)
+        {
+            UniversalContext db = new UniversalContext();
+            using (db)
+            {
+                return (from c in db.ProductBrands
+                        where c.ProductType.Id ==
+                              productType.Id
+                        select c).ToList();
+            }
+
+        }
+
         public List<Fabric> GetFabricssType(int id)
         {
             UniversalContext db = new UniversalContext();
@@ -64,6 +88,39 @@ namespace UniversalShopingClasses.GeneralProductManagement
                         .Include(m => m.ProductBrand)
                         where c.ProductBrand.Id == id
                         select c).ToList();
+            }
+        }
+
+        public void AddProductBrand(ProductBrand productBrand)
+        {
+            UniversalContext db = new UniversalContext();
+            using (db)
+            {
+                db.Entry(productBrand.ProductType).State = EntityState.Unchanged;
+                db.ProductBrands.Add(productBrand);
+                db.SaveChanges();
+            }
+        }
+
+        public ProductBrand GetProductBrandById(int? id)
+        {
+            UniversalContext db = new UniversalContext();
+            using (db)
+            {
+                return (from c in db.ProductBrands
+                        where c.Id == id
+                        select c).FirstOrDefault();
+            }
+        }
+
+        public void DeleteProductBrands(ProductBrand ct)
+        {
+            UniversalContext db = new UniversalContext();
+            using (db)
+            {
+                db.Entry(ct).State = EntityState.Deleted;
+                db.ProductBrands.Remove(ct);
+                db.SaveChanges();
             }
         }
 
