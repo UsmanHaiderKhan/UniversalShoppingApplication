@@ -1,9 +1,9 @@
 ﻿@using UniversalShopingApp.Models
-@using UniversalShopingClasses.GeneralProductManagement
+@using UniversalShopingClasses.AuctionManagement
 @using UniversalShopingClasses.UserManagement
 @{
     User currentuser = (User)Session[WebUtils.Current_User];
-    List<SelectListItem> categories = ModelHelper.ToSelectItemList(new ProductHandler().GetAllCategories());
+    List<SelectListItem> categories = AuctionHelper.ToSelectItemList(new AuctionHandler().GetAllCategories());
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -66,9 +66,13 @@
                     Online Auction Shop Menu
                 </a>
                 <a href="@Url.Action("Index", "Auction")" class="list-group-item"><i class="fa fa-product-hunt"></i>&nbsp; Auction Products</a>
-                <a href="@Url.Action("Index", "Home")" class="list-group-item"><i class="fa fa-car"></i>&nbsp; Car</a>
-                <a href="@Url.Action("Index", "Home")" class="list-group-item"><i class="fa fa-home"></i>&nbsp; Property</a>
-                <a href="@Url.Action("Index", "Home")" class="list-group-item"><i class="fa fa-angle-left"></i>&nbsp; Antiques</a>
+                @if (categories != null)
+                {
+                    foreach (var v in categories)
+                    {
+                        <a class="list-group-item" href="@Url.Action("AuctionByCategory", "Auction", new {id = Convert.ToInt32(v.Value)})"><span class="fa fa-tag"></span> @v.Text</a>
+                    }
+                }
                 <a href="@Url.Action("AddAuctinoProduct", "Auction")" class="list-group-item"><i class="fa fa-plus"></i>&nbsp; AddNew Adds</a>
                 @*@if (categories != null)
                     {
