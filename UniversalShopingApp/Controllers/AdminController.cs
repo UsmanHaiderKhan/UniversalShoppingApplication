@@ -117,6 +117,14 @@ namespace UniversalShopingApp.Controllers
             }
         }
 
+        public int GetAuctionProduct()
+        {
+            UniversalContext db = new UniversalContext();
+            using (db)
+            {
+                return (from c in db.Auctions select c).Count();
+            }
+        }
         public ActionResult Jumb()
         {
             return View();
