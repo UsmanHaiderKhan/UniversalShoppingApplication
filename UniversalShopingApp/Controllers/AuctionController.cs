@@ -112,9 +112,9 @@ namespace UniversalShopingApp.Controllers
             return Json("Delete", JsonRequestBehavior.AllowGet);
         }
         [HttpGet]
-        public ActionResult GetAuctionDetailForCustomer()
+        public ActionResult GetAuctionDetailForCustomer(int id)
         {
-            List<Auction> auctions = new AuctionHandler().GetAllAuctions();
+            Auction auctions = new AuctionHandler().GetAuctionById(id);
             return View(auctions);
         }
 
