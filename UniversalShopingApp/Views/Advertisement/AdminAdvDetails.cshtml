@@ -6,7 +6,7 @@
 <h2>AdminAdvDetails</h2>
 @Html.Partial("~/Views/Advertisement/_DeleteAdv.cshtml")
 <table class="table">
-    <tr>
+    <tr class="deep-purple text-white">
         <th>
             @Html.DisplayNameFor(model => model.Title)
         </th>
@@ -29,7 +29,7 @@
     </tr>
     @foreach (var item in Model)
     {
-        <tr>
+        <tr id="row_@item.Id">
             <td>
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
