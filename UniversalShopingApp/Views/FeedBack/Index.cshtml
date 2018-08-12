@@ -1,0 +1,61 @@
+﻿@model IEnumerable<UniversalShopingClasses.AuctionManagement.FeedBack>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@Html.Partial("~/Views/FeedBack/_deletefeedback.cshtml")
+<h2>Index</h2>
+<table class="table">
+    <tr class="deep-purple text-white">
+        <th>
+            @Html.DisplayNameFor(model => model.Subject)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FeedDetail)
+        </th>
+        <th>Actions</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr id="row_@item.Id">
+            <td>
+                @Html.DisplayFor(modelItem => item.Subject)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FeedDetail)
+            </td>
+            <td>
+                <a href="#exampleModal" data-toggle="modal" id="@item.Id" class="text-danger hits"><span class="fa fa-trash"></span></a>
+            </td>
+        </tr>
+    }
+</table>
+<input type="hidden" id="hiddenOrderId" />
+@section myscript
+{
+    <script type="text/javascript">
+        $(function () {
+            $(".hits").click(function () {
+                var rid = $(this).attr("id");
+                alert(rid);
+                $("#hiddenOrderId").val(rid);
+                $("#modal-id").model('show');
+            });
+
+            $("#hit").click(function (event) {
+                var delRecord = $("#hiddenOrderId").val();
+                alert(delRecord);
+                $.ajax({
+
+                    url: "/FeedBack/DeleteFeedBack/" + delRecord,
+                    type: "POST",
+                    data: { id: delRecord },
+                    success: function (result) {
+
+                        $("#modal-id").modal('hide');
+                        $("#row_" + delRecord).remove();
+                    }
+                });
+            });
+        });</script>
+}
