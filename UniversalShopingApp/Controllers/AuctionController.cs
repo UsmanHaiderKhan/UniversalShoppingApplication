@@ -111,6 +111,12 @@ namespace UniversalShopingApp.Controllers
             db.SaveChanges();
             return Json("Delete", JsonRequestBehavior.AllowGet);
         }
+        [HttpGet]
+        public ActionResult GetAuctionDetailForCustomer()
+        {
+            List<Auction> auctions = new AuctionHandler().GetAllAuctions();
+            return View(auctions);
+        }
 
     }
 }
