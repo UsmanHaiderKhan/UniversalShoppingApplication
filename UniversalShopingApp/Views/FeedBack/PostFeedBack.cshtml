@@ -1,0 +1,22 @@
+﻿@model UniversalShopingClasses.AuctionManagement.FeedBack
+@{
+    ViewBag.Title = "PostFeedBack";
+    Layout = "~/Views/Shared/_AuctionLayout.cshtml";
+}
+<h2>PostFeedBack</h2>
+@using (Html.BeginForm("PostFeedBack", "FeedBack", FormMethod.Post, new { }))
+{
+    <div class="md-form">
+        <i class="fa fa-envelope prefix"></i>
+        @Html.TextBoxFor(m => m.Subject, "", new { @class = "form-control" })
+        @Html.LabelFor(m => m.Subject)
+        @Html.ValidationMessageFor(m => m.Subject, "", new { @class = "text-danger" })
+    </div>
+    <div class="md-form">
+        <i class="fa fa-pencil fa-lg prefix "></i>
+        @Html.TextAreaFor(m => m.FeedDetail, new { @class = "md-textarea form-control z-depth-1", rows = "10" })
+        @Html.LabelFor(m => m.FeedDetail)
+        @Html.ValidationMessageFor(m => m.FeedDetail, "", new { @class = "text-danger" })
+    </div>
+    <button type="submit" class="btn btn-success">Send&nbsp;<i class="fa fa-paper-plane"></i></button>
+}
