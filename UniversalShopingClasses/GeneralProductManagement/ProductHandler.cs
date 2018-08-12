@@ -78,6 +78,18 @@ namespace UniversalShopingClasses.GeneralProductManagement
 
         }
 
+        public List<ProductBrand> GetProductBrandBypTypeId(int id)
+        {
+            UniversalContext db = new UniversalContext();
+            using (db)
+            {
+                return (from c in db.ProductBrands
+                        where c.ProductType.Id == id
+                        select c).ToList();
+            }
+
+        }
+
         public List<Fabric> GetFabricssType(int id)
         {
             UniversalContext db = new UniversalContext();
@@ -130,6 +142,15 @@ namespace UniversalShopingClasses.GeneralProductManagement
             using (db)
             {
                 return (from c in db.ProductBrands select c).ToList();
+            }
+        }
+
+        public ProductBrand GetBrandById(int id)
+        {
+            UniversalContext db = new UniversalContext();
+            using (db)
+            {
+                return (from c in db.ProductBrands where c.Id == id select c).FirstOrDefault();
             }
         }
     }
