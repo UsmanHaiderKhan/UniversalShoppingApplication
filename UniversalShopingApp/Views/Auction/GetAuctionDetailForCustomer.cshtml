@@ -1,49 +1,45 @@
-﻿@model IEnumerable<UniversalShopingClasses.AuctionManagement.Auction>
+﻿@model UniversalShopingClasses.AuctionManagement.Auction
 @{
     ViewBag.Title = "GetAuctionDetailForCustomer";
     Layout = "~/Views/Shared/_AuctionLayout.cshtml";
 }
-<h2 class="text-center" style="margin-top: 5%">Specifications</h2>
-<div class="col-lg-6 offset-lg-3">
-    <table class="table table-bordered  table-responsive table-hover">
-        @foreach (var v in Model)
-        {
-            <tr class="text-center">
-                <th>Product Image</th>
-                @foreach (var s in v.ProductImages)
-                {
-                    <td><img src="@Url.Content(s.Url)" alt="@s.Caption" style="width: 100px;height:100px" class="img-thumbnail" /></td>
-                }
-            </tr>
-            <tr class="text-center">
-                <th> Name</th>
-                <td>@v.Name</td>
-            </tr>
-            <tr class="text-center">
-                <th>Price</th>
-                <td>@v.BidPrice</td>
-            </tr>
-            <tr class="text-center">
-                <th>Specification</th>
-                <td>@v.Specification</td>
-            </tr>
-            <tr class="text-center">
-                <th>Address</th>
-                <td>@v.FullAddress</td>
-            </tr>
-            <tr class="text-center">
-                <th>Contact</th>
-                <td>@v.Contact</td>
-            </tr>
-            <tr class="text-center">
-                <th>Description</th>
-                <td>@v.Description</td>
-            </tr>
-            <tr class="text-center">
-                <th>Posted Time</th>
-                <td>@v.Postedon</td>
-            </tr>
-
-        }
+<h2 class="text-center">Product Details</h2>
+<div class="col-lg-8 offset-lg-2">
+    <table class="table table-bordered  table-hover">
+        <tr class="text-center">
+            <th>Product Image</th>
+            @foreach (var s in Model.ProductImages)
+            {
+                <td><img src="@Url.Content(s.Url)" alt="@s.Caption" style="width: 100px;height:100px" class="img-thumbnail" /></td>
+            }
+        </tr>
+        <tr class="text-center">
+            <th> Name</th>
+            <td>@Model.Name</td>
+        </tr>
+        <tr class="text-center">
+            <th>Price</th>
+            <td>@Model.BidPrice</td>
+        </tr>
+        <tr class="text-center">
+            <th>Specification</th>
+            <td>@Model.Specification</td>
+        </tr>
+        <tr class="text-center">
+            <th>Address</th>
+            <td>@Model.FullAddress</td>
+        </tr>
+        <tr class="text-center">
+            <th>Contact</th>
+            <td>@Model.Contact</td>
+        </tr>
+        <tr class="text-center">
+            <th>Description</th>
+            <td>@Model.Description</td>
+        </tr>
+        <tr class="text-center">
+            <th>Posted Time</th>
+            <td>@Model.Postedon</td>
+        </tr>
     </table>
 </div>
