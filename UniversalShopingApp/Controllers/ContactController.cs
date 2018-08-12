@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
 using System.Web.Mvc;
 using UniversalShopingClasses;
 using UniversalShopingClasses.UserManagement;
@@ -39,6 +41,17 @@ namespace UniversalShopingApp.Controllers
         public ActionResult FirstPage()
         {
             return View();
+        }
+
+        public ActionResult DeleteContact(int id)
+        {
+            UniversalContext db = new UniversalContext();
+            Contact contact = (from c in db.Contacts
+                               where c.Id == id
+                               select c).FirstOrDefault();
+            db.Entry(contact).State = EntityState.Deleted;
+            db.SaveChanges();
+            return Json("Delete", JsonRequestBehavior.AllowGet);
         }
 
 
