@@ -16,9 +16,9 @@
                         {
                             <h3>No Image</h3>
                         } <h5 class="float-right mt-2">@p.BidPrice.ToString("c")</h5>
-                        <h3>
+                        <h4>
                             @p.Name
-                        </h3>
+                        </h4>
                         <p>@p.Description </p>
                         <a href="@Url.Action("Index","Auction", new { Id = p.Id})" style="border-radius: 30px;margin-left: 21%" class="btn btn-success"><span class="fa fa-envelope"></span>&nbsp; Start Auction</a>
                     </div>
