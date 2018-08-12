@@ -12,6 +12,8 @@
     @{
         User currentuser = (User)Session[WebUtils.Current_User];
         List<SelectListItem> categories = ModelHelper.ToSelectItemList(new ProductHandler().GetAllCategories());
+        List<SelectListItem> types = ModelHelper.ToSelectItemList(new ProductHandler().GetAllTypes());
+        int panelcount = 1;
     }
     <!-- Font Awesome -->
     <link href="~/Content/MDB-Free/fonts/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
@@ -26,7 +28,7 @@
     <!--Navbar-->
     <nav class="navbar navbar-expand-lg navbar-dark  deep-purple fixed-top">
         <!-- Navbar brand -->
-        <a class="navbar-brand" href="@Url.Action("Index","Home")"><img src="~/Content/LogImg/uss LOGO-01.png" style="width: 170px;height:40px" /></a>
+        <a class="navbar-brand" href="@Url.Action("Index","Home")"><img src="~/Content/LogImg/USS LOGO Final-01-01.png" style="width: 170px;height:40px" /></a>
         <!-- Collapse button -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav"
                 aria-expanded="false" aria-label="Toggle navigation">
@@ -87,16 +89,34 @@
     <!--/.Navbar-->
     <div class="row" style="padding: 10px; margin: 0px; ">
         <div class="col-lg-3" style="margin-top: 6%">
-            <div class="list-group">
-                <a href="#" class="list-group-item deep-purple text-white text-center">
-                    Online Drink Shop Menu
-                </a>
-                <a href="@Url.Action("Index", "Home")" class="list-group-item"><i class="fa fa-tags"></i>&nbsp; All Drinks</a>
-                @if (categories != null)
+            <div class="accordion" id="accordionEx" role="tablist" aria-multiselectable="true">
+                @if (types != null)
                 {
-                    foreach (var v in categories)
+                    foreach (var v in types)
                     {
-                        <a class="list-group-item" href="@Url.Action("ByCategory", "Home", new {id = Convert.ToInt32(v.Value)})"><span class="fa fa-tag"></span> @v.Text</a>
+                        <div class="card">
+                            <div class="card-header" role="tab" id="heading_@panelcount">
+                                <a data-toggle="collapse" href="#collapse_@panelcount" aria-expanded="true" aria-controls="collapseOne">
+                                    <h5 class="mb-0">
+                                        @v.Text <i class="fa fa-angle-down rotate-icon"></i>
+                                    </h5>
+                                </a>
+                            </div>
+                            @{ List<ProductBrand> brands = new ProductHandler().GetProductBrandBypTypeId(Convert.ToInt32(v.Value)); }
+                            <div id="collapse_@panelcount" class="collapse show" role="tabpanel" aria-labelledby="heading_@panelcount" data-parent="#accordionEx">
+                                <div class="card-body">
+                                    @if (brands != null)
+                                    {
+                                        foreach (var b in brands)
+                                        {
+                                            <a class="dropdown-item" href="@Url.Action("ByCategory","Home", new { id = b.Id})">@b.Name</a>
+
+                                        }
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        panelcount++;
                     }
                 }
             </div>
@@ -170,3 +190,30 @@
     </script>
 </body>
 </html>
+@*<div class="list-group">
+
+    <a href="@Url.Action("Index", "Home")" class="list-group-item"><i class="fa fa-tags"></i>&nbsp; All Products</a>
+    @if (types != null)
+    {
+        foreach (var v in types)
+        {
+            <a class="list-group-item dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="@Url.Action("ByCategory", "Home", new {id = Convert.ToInt32(v.Value)})"><span class="fa fa-tag"></span> @v.Text</a>
+            @*<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Basic dropdown</button>*@
+@*List<ProductBrand> brands = new ProductHandler().GetProductBrandBypTypeId(Convert.ToInt32(v.Value));
+
+    if (brands != null)
+    {
+    <div class="btn-group">
+        <div class="dropdown-menu">
+            @foreach (var b in brands)
+            {
+                <a class="dropdown-item" href="@Url.Action("ByCategory","Home", new { id = b.Id})">@b.Name</a>
+
+            }
+        </div>
+    </div>
+    }
+
+    }
+    }
+    </div>*@
