@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AuctionLayout.cshtml";
+}
+<div class="container mt-2">
+    <div class="card">
+        <p class="text-center">This is a world Largest Sites To Place Your Bides You can Sell And your Products.</p>
+        <div class="card-body">
+            <h4 class="card-title"><a>How this Auction works</a></h4>
+            <p class="card-text">
+                <ul>
+                    <li>The auction start when you Click On this Button which is Given Below</li>
+                    <li>You Can See All The Bids On That Product.</li>
+                    <li>You Need To Start Your Bid Above From the given Price</li>
+                    <li>The max value allowed to Place the Next Bid</li>
+                    <li>The last person to bid is the winner</li>
+                </ul>
+            </p>
+            <a href="@Url.Action("Chat","AuctionChat")" class="btn btn-success btn-md">Place Your Bids &nbsp;<span class="fa fa-arrow-right"></span></a>
+        </div>
+    </div>
+</div>
+<!-- Card -->
