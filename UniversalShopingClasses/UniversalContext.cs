@@ -42,6 +42,7 @@ namespace UniversalShopingClasses
 
         public DbSet<Auction> Auctions { get; set; }
         public DbSet<AuctionCategory> AuctionCategories { get; set; }
+        public DbSet<FeedBack> FeedBacks { get; set; }
 
 
 
