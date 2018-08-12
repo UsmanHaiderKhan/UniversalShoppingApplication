@@ -20,7 +20,7 @@
                             @p.Name
                         </h4>
                         <p>@p.Description </p>
-                        <a href="@Url.Action("Index","Auction", new { Id = p.Id})" style="border-radius: 30px;margin-left: 21%" class="btn btn-success"><span class="fa fa-envelope"></span>&nbsp; Start Auction</a>
+                        <a href="@Url.Action("Chat","AuctionChat",new { Id = p.Id})" style="border-radius: 30px;margin-left: 21%" class="btn btn-success" target="_blank"><span class="fa fa-envelope"></span>&nbsp; Start Auction</a>
                     </div>
                 </div>
             }
