@@ -68,5 +68,14 @@ namespace UniversalShopingClasses.AuctionManagement
                         select c).FirstOrDefault();
             }
         }
+
+        public List<FeedBack> GetAllFeedBacks()
+        {
+            using (db)
+            {
+                return (from c in db.FeedBacks select c).ToList();
+            }
+        }
+
     }
 }
