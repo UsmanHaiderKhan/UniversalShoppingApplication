@@ -73,6 +73,7 @@
     <Compile Include="AuctionManagement\AuctionHandler.cs" />
     <Compile Include="AuctionManagement\AuctionHelper.cs" />
     <Compile Include="AuctionManagement\AuctionSummery.cs" />
+    <Compile Include="AuctionManagement\FeedBack.cs" />
     <Compile Include="AuctionManagement\IBidable.cs" />
     <Compile Include="CartManagement\Order.cs" />
     <Compile Include="CartManagement\OrderDetail.cs" />
@@ -111,6 +112,10 @@
     <Compile Include="Migrations\201808111347344_UpdateBrandValidation.cs" />
     <Compile Include="Migrations\201808111347344_UpdateBrandValidation.Designer.cs">
       <DependentUpon>201808111347344_UpdateBrandValidation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808121539514_NewFeedTbl.cs" />
+    <Compile Include="Migrations\201808121539514_NewFeedTbl.Designer.cs">
+      <DependentUpon>201808121539514_NewFeedTbl.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MobileManagement\Mobile.cs" />
@@ -158,6 +163,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808111347344_UpdateBrandValidation.resx">
       <DependentUpon>201808111347344_UpdateBrandValidation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808121539514_NewFeedTbl.resx">
+      <DependentUpon>201808121539514_NewFeedTbl.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
