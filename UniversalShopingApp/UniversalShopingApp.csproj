@@ -461,6 +461,7 @@
     <Content Include="Views\Category\AddProductBrands.cshtml" />
     <Content Include="Views\Category\DeleteProductBrands.cshtml" />
     <Content Include="Views\AuctionChat\Chat.cshtml" />
+    <Content Include="Views\Auction\GetAuctionDetailForCustomer.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
