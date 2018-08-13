@@ -54,14 +54,14 @@
                     <div class="logo">
                         <h1>
                             <a href="@Url.Action("FirstPage","Contact")">
-                                <img src="~/Content/LogImg/logo.png" style="width: 300px;height: 120px" />
+                                <img src="~/Content/LogImg/TEST-LOGO.png" style="width: 320px;height: 90px" />
                             </a>
                         </h1>
                     </div>
                 </div>
                 <!--/.navbar-header-->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav">
+                    <ul class="nav navbar-nav float-right">
                         <li><a href="@Url.Action("FirstPage","Contact")">Home</a></li>
                         <li><a href="@Url.Action("SubmitMessage","Contact")">CONTACT</a></li>
                     </ul>
@@ -73,64 +73,64 @@
     </div>
     <div class="banner">
         <div class="container">
-            <div class="banner-bottom">
-                <div class="banner-bottom-left">
-                    <h2>U<br>S<br>S</h2>
-                </div>
-                <div class="banner-bottom-right">
-                    <div class="callbacks_container">
-                        <ul class="rslides" id="slider4">
-                            <li>
-                                <div class="banner-info">
-                                    <h3>Shop Online</h3>
-                                    <p>Start your Shopping here...</p>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="banner-info">
-                                    <h3>Auction Room</h3>
-                                    <p>Bit to Bulid Assets</p>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="banner-info">
-                                    <h3>Earn From Spare</h3>
-                                    <p>Get Rid &amp; Make Money</p>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <!--banner-->
-                    <script src="~/Content/FrontTemp/js/responsiveslides.min.js"></script>
-                    <script>
-                        // You can also use "$(window).load(function() {"
-                        $(function () {
-                            // Slideshow 4
-                            $("#slider4").responsiveSlides({
-                                auto: true,
-                                pager: true,
-                                nav: false,
-                                speed: 500,
-                                namespace: "callbacks",
-                                before: function () {
-                                    $('.events').append("<li>before event fired.</li>");
-                                },
-                                after: function () {
-                                    $('.events').append("<li>after event fired.</li>");
-                                }
-                            });
 
-                        });
-                    </script>
+            <div class="banner-bottom-left">
+                <h2>U<br>S<br>S</h2>
+            </div>
+            <div class="banner-bottom-right">
+                <div class="callbacks_container">
+                    <ul class="rslides" id="slider4">
+                        <li>
+                            <div class="banner-info">
+                                <h3>Shop Online</h3>
+                                <p>Start your Shopping here...</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="banner-info">
+                                <h3>Auction Room</h3>
+                                <p>Bit to Bulid Assets</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="banner-info">
+                                <h3>Earn From Spare</h3>
+                                <p>Get Rid &amp; Make Money</p>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
-                <div class="clearfix"> </div>
+                <!--banner-->
+                <script src="~/Content/FrontTemp/js/responsiveslides.min.js"></script>
+                <script>
+                    // You can also use "$(window).load(function() {"
+                    $(function () {
+                        // Slideshow 4
+                        $("#slider4").responsiveSlides({
+                            auto: true,
+                            pager: true,
+                            nav: false,
+                            speed: 500,
+                            namespace: "callbacks",
+                            before: function () {
+                                $('.events').append("<li>before event fired.</li>");
+                            },
+                            after: function () {
+                                $('.events').append("<li>after event fired.</li>");
+                            }
+                        });
+
+                    });
+                </script>
             </div>
-            <div class="shop">
-                <a href="@Url.Action("Index","Home")" style="border-radius: 20px">Shopping Window</a>
-                <a href="@Url.Action("Index","Auction")" style="border-radius: 20px">Auction Room</a>
-                <a href="@Url.Action("Index","Advertisement")" style="border-radius: 20px">Earn from Spare</a>
-            </div>
+            <div class="clearfix"> </div>
+        </div>
+        <div class="shop">
+            <a href="@Url.Action("Index","Home")" style="border-radius: 20px">Shopping Window</a>
+            <a href="@Url.Action("Index","Auction")" style="border-radius: 20px">Auction Room</a>
+            <a href="@Url.Action("Index","Advertisement")" style="border-radius: 20px">Earn from Spare</a>
         </div>
     </div>
+
 </body>
 </html>
