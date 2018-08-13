@@ -125,6 +125,14 @@ namespace UniversalShopingApp.Controllers
                 return (from c in db.Auctions select c).Count();
             }
         }
+        public int GetfeedbackCount()
+        {
+            UniversalContext db = new UniversalContext();
+            using (db)
+            {
+                return (from c in db.FeedBacks select c).Count();
+            }
+        }
         public ActionResult Jumb()
         {
             return View();
