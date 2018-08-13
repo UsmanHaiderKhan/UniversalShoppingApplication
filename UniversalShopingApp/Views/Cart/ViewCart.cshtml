@@ -7,9 +7,9 @@
 }
 <h2 style="margin-top: 7%;margin-left: 40%">Your Product Cart</h2>
 <div class="col-lg-12 col-md-12 col-sm-12">
-    <table class="table table-responsive  table-hover">
+    <table class="table table-responsive table-hover">
         <thead>
-            <tr class="deep-purple text-white text-center">
+            <tr class="deep-purple text-white">
                 <th>Image</th>
                 <th>Title</th>
                 <th>Price</th>
@@ -23,7 +23,7 @@
             {
                 foreach (var cItem in cart.Items)
                 {
-                    <tr style="text-align: center">
+                    <tr>
                         <td><img src="@cItem.ImageUrl" alt="@cItem.Name" class="img-thumbnail" style="height:70px; width: 70px;border-radius:50% " /></td>
                         <td>@cItem.Name </td>
                         <td>@cItem.Price</td>
