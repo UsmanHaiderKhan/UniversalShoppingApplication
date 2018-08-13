@@ -62,7 +62,7 @@ label {
 /*-----start-header----*/
 .header-top-strip {
     padding: 8px 0 14px 0;
-    background-color: #673AB7;
+    background-color: #5D5D5D;
 }
 
 .header-top-left ul li {
@@ -270,7 +270,7 @@ ul.multi-column-dropdown h6 {
     font-size: 90px;
     font-weight: 600;
     line-height: 120px;
-    color: #816263;
+    color: #5D5D5D;
     transform: rotate(-15deg);
     -webkit-transform: rotate(-15deg);
     -o-transform: rotate(-15deg);
