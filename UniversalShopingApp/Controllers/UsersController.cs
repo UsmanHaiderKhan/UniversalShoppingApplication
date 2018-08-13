@@ -13,9 +13,10 @@ namespace UniversalShopingApp.Controllers
     public class UsersController : Controller
     {
         // GET: Users
-        public ActionResult Index()
+        public ActionResult Index(int id)
         {
-            return View();
+            User user = new UserHandler().GetUserById(id);
+            return View(user);
         }
         [HttpGet]
         public ActionResult Login()
@@ -187,23 +188,23 @@ namespace UniversalShopingApp.Controllers
                 using (db)
                 {
 
-                    long uno = DateTime.Now.Ticks;
-                    int counter = 0;
+                    //long uno = DateTime.Now.Ticks;
+                    //int counter = 0;
 
-                    foreach (string fileName in Request.Files)
-                    {
-                        HttpPostedFileBase file = Request.Files[fileName];
-                        if (!string.IsNullOrEmpty(file.FileName))
-                        {
-                            string abc = uno + "_" + ++counter +
-                                         file.FileName.Substring(file.FileName.LastIndexOf("."));
-                            //dont save the url of the Images Save the 
-                            string url = "~/Content/UserImages/" + abc;
-                            string path = Request.MapPath(url);
-                            u.ImageUrl = abc;
-                            file.SaveAs(path);
-                        }
-                    }
+                    //foreach (string fileName in Request.Files)
+                    //{
+                    //    HttpPostedFileBase file = Request.Files[fileName];
+                    //    if (!string.IsNullOrEmpty(file.FileName))
+                    //    {
+                    //        string abc = uno + "_" + ++counter +
+                    //                     file.FileName.Substring(file.FileName.LastIndexOf("."));
+                    //        //dont save the url of the Images Save the 
+                    //        string url = "~/Content/UserImages/" + abc;
+                    //        string path = Request.MapPath(url);
+                    //        u.ImageUrl = abc;
+                    //        file.SaveAs(path);
+                    //    }
+                    //}
                     db.Entry(u).State = EntityState.Modified;
                     db.SaveChanges();
                 }
