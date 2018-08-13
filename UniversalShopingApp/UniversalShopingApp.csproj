@@ -167,6 +167,7 @@
     <Content Include="Content\FrontTemp\js\responsiveslides.min.js" />
     <Content Include="Content\FrontTemp\js\simpleCart.min.js" />
     <Content Include="Content\jquery-1.10.0.min.js" />
+    <Content Include="Content\LogImg\images %281%29.jpg" />
     <Content Include="Content\LogImg\logo.png" />
     <Content Include="Content\LogImg\avatar.png" />
     <Content Include="Content\LogImg\image.jpg" />
