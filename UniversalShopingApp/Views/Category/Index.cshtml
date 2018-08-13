@@ -7,11 +7,12 @@
 <p>
     @Html.ActionLink("Add New", "AddProductType")
 </p>
-<table class="table table-responsive">
+<table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Name)
         </th>
+        <th>Actions</th>
     </tr>
     @foreach (var item in Model)
     {
@@ -21,7 +22,7 @@
             </td>
             <td>
                 @Html.ActionLink("Delete", "DeleteProductType", new { id = item.Id }) |
-                @Html.ActionLink("OSVersion", "ProductCategories", new { id = item.Id })
+                @Html.ActionLink("SubCategory", "ProductCategories", new { id = item.Id })
             </td>
         </tr>
     }
