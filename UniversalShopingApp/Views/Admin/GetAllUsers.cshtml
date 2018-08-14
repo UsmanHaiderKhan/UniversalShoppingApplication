@@ -6,7 +6,7 @@
 <h2>GetAllUsers</h2>
 @Html.Partial("~/Views/Admin/_DeleteUser.cshtml")
 <table class="table table-hover table-striped table-responsive">
-    <tr class="deep-purple white-text">
+    <tr class="white-text" style="background: #5D5D5D;">
         <th>
             @Html.DisplayNameFor(model => model.Fullname)
         </th>
@@ -78,7 +78,6 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Role.Name)
             </td>
-
             <td>
                 <a href="#exampleModal" data-toggle="modal" id="@item.Id" class="text-danger hits"><span class="fa fa-trash"></span></a>
                 |
