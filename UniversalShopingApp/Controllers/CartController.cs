@@ -8,9 +8,9 @@ namespace UniversalShopingApp.Controllers
     {
         // GET: Cart
         [HttpGet]
+
         public int Add(ShoppingCartItem item)
         {
-
             ShoppingCart cart = (ShoppingCart)Session[WebUtils.Cart];
             if (cart == null) cart = new ShoppingCart();
             cart.Add(item);
