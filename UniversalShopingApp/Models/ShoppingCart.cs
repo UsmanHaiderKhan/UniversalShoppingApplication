@@ -15,6 +15,7 @@ namespace UniversalShopingApp.Models
 
         public void Add(ShoppingCartItem newItem)
         {
+
             ShoppingCartItem itemFound = Items.Find(i => i.Id == newItem.Id);
 
             if (itemFound == null)
