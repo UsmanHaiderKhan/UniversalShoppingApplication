@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@using UniversalShopingClasses.UserManagement
+@{
+    User currentuser = (User)Session[WebUtils.Current_User];
+}
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -36,17 +40,23 @@
                 </li>
                 <!-- Dropdown -->
                 <li class="nav-item dropdown ">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fa fa-user-o"></span>Admin</a>
                     <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
+                        <a class="dropdown-item" href="#"><span class="fa fa-user"></span>&nbsp; @currentuser.Fullname</a>
+                        <a class="dropdown-item" href="#"><span class="fa fa-heart"></span>&nbsp; @currentuser.Role.Name</a>
+                        <a class="dropdown-item" href="@Url.Action("Logout","Users")"><span class="fa fa-sign-out"></span>&nbsp; Logout</a>
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="@Url.Action("SubmitMessage","Contact")"> <span class="fa fa-eye"></span>Contact us</a>
+                    <a class="nav-link" href="@Url.Action("FirstPage","Contact")"> <span class="fa fa-eye"></span>Visit Site</a>
                 </li>
             </ul>
+            @if (currentuser != null)
+            {
+                <nav class="navbar-dark">
+                    <h4 class="text-white"><span class="fa fa-user-o"></span>&nbsp; Admin&nbsp;:&nbsp;@currentuser.Fullname</h4>
+                </nav>
+            }
             <!-- Links -->
         </div>
         <!-- Collapsible content -->
@@ -59,15 +69,15 @@
                     Online Shop Menu
                 </a>
                 <a href="@Url.Action("DashBoard", "Admin")" class="list-group-item"><i class="fa fa-tachometer fa-lg"></i>&nbsp; DashBoard</a>
-                <a href="@Url.Action("GetAllUsers", "Admin")" class="list-group-item"><i class="fa fa-users"></i>&nbsp; UserDetails<i class="badge deep-purple" style="padding: 3%;margin-left: 50% ">@Html.Action("GetUserCount", "Admin")</i></a>
-                <a href="@Url.Action("ProductsinShop", "Drink")" class="list-group-item"><i class="fa fa-glass"></i>&nbsp; Drink Detail <i class="badge deep-purple" style="padding: 3%;margin-left: 49% ">@Html.Action("GetDrinkCount", "Admin")</i></a>
-                <a href="@Url.Action("Orderby", "Order")" class="list-group-item"><i class="fa fa-shopping-bag"></i>&nbsp; Order Details <i class="badge deep-purple" style="padding: 3%;margin-left: 45% ">@Html.Action("GetOrderCount", "Admin")</i></a>
+                <a href="@Url.Action("GetAllUsers", "Admin")" class="list-group-item"><i class="fa fa-users"></i>&nbsp; UserDetails<i class="badge" style="background: #5D5D5D;padding: 3%;margin-left: 50% ">@Html.Action("GetUserCount", "Admin")</i></a>
+                <a href="@Url.Action("ProductsinShop", "Drink")" class="list-group-item"><i class="fa fa-glass"></i>&nbsp; Drink Detail <i class="badge" style="background: #5D5D5D;padding: 3%;margin-left: 49% ">@Html.Action("GetDrinkCount", "Admin")</i></a>
+                <a href="@Url.Action("Orderby", "Order")" class="list-group-item"><i class="fa fa-shopping-bag"></i>&nbsp; Order Details <i class="badge" style="background: #5D5D5D;padding: 3%;margin-left: 45% ">@Html.Action("GetOrderCount", "Admin")</i></a>
                 <a href="@Url.Action("AddProduct", "Drink")" class="list-group-item"><i class="fa fa-plus"></i>&nbsp;Add Product </a>
                 <a href="@Url.Action("CreateMobile", "Mobile")" class="list-group-item"><i class="fa fa-plus"></i>&nbsp;Add Mobiles/Laptop's </a>
                 <a href="@Url.Action("AddFabrics", "Fabrics")" class="list-group-item"><i class="fa fa-plus"></i>&nbsp;Add Fabrics </a>
-                <a href="@Url.Action("Index", "Mobile")" class="list-group-item"><i class="fa fa-mobile fa-lg"></i>&nbsp; Mobiles-in-Shop <i class="badge deep-purple" style="padding: 3%;margin-left: 40% ">@Html.Action("GetMobileCount", "Admin")</i></a>
-                <a href="@Url.Action("Index", "Fabrics")" class="list-group-item"><i class="fa fa-female fa-lg"></i>&nbsp; Fabrics-in-Shop <i class="badge deep-purple" style="padding: 3%;margin-left: 39% ">@Html.Action("GetFabricsCount", "Admin")</i></a>
-                <a href="@Url.Action("GetAuctionDetail", "Auction")" class="list-group-item"><i class="fa fa-female fa-lg"></i>&nbsp; Auctions Products <i class="badge deep-purple" style="padding: 3%;margin-left: 31% ">@Html.Action("GetAuctionProduct", "Admin")</i></a>
+                <a href="@Url.Action("Index", "Mobile")" class="list-group-item"><i class="fa fa-mobile fa-lg"></i>&nbsp; Mobiles-in-Shop <i class="badge" style="background: #5D5D5D;padding: 3%;margin-left: 40% ">@Html.Action("GetMobileCount", "Admin")</i></a>
+                <a href="@Url.Action("Index", "Fabrics")" class="list-group-item"><i class="fa fa-female fa-lg"></i>&nbsp; Fabrics-in-Shop <i class="badge" style="background: #5D5D5D;padding: 3%;margin-left: 39% ">@Html.Action("GetFabricsCount", "Admin")</i></a>
+                <a href="@Url.Action("GetAuctionDetail", "Auction")" class="list-group-item"><i class="fa fa-female fa-lg"></i>&nbsp; Auctions Products <i class="badge" style="background: #5D5D5D;padding: 3%;margin-left: 31% ">@Html.Action("GetAuctionProduct", "Admin")</i></a>
                 <a href="@Url.Action("Index", "Category")" class="list-group-item"><i class="fa fa-plus"></i>&nbsp;Add Category </a>
                 <a href="@Url.Action("Index", "FeedBack")" class="list-group-item"><i class="fa fa-comments"></i>&nbsp; FeedBacks</a>
             </div>
