@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web.Mvc;
 using UniversalShopingClasses;
 using UniversalShopingClasses.AuctionManagement;
+using UniversalShopingClasses.UserManagement;
 
 namespace UniversalShopingApp.Controllers
 {
@@ -12,6 +13,9 @@ namespace UniversalShopingApp.Controllers
         // GET: FeedBack
         public ActionResult Index()
         {
+            User user = (User)Session[WebUtils.Current_User];
+            if (!(user != null && user.IsInRole(WebUtils.Admin)))
+                return RedirectToAction("Login", "Users", new { ctl = "Feedback", act = "GetFeedBack" });
             List<FeedBack> feed = new AuctionHandler().GetAllFeedBacks();
             return View(feed);
         }
@@ -40,6 +44,9 @@ namespace UniversalShopingApp.Controllers
 
         public ActionResult DeleteFeedBack(int id)
         {
+            User user = (User)Session[WebUtils.Current_User];
+            if (!(user != null && user.IsInRole(WebUtils.Admin)))
+                return RedirectToAction("Login", "Users", new { ctl = "Feedback", act = "DeleteFeedBack" });
             UniversalContext db = new UniversalContext();
             FeedBack feedBack = (from c in db.FeedBacks
                                  where c.Id == id
