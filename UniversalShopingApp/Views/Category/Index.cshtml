@@ -3,12 +3,11 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-<h2>Index</h2>
 <p>
-    @Html.ActionLink("Add New", "AddProductType")
+    <a href="@Url.Action("AddProductType","Category")" class="btn btn-dark btn-md">Add New</a>
 </p>
 <table class="table">
-    <tr>
+    <tr class="text-white" style="background: #5D5D5D;">
         <th>
             @Html.DisplayNameFor(model => model.Name)
         </th>
