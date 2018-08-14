@@ -8,6 +8,7 @@ using UniversalShopingApp.Models;
 using UniversalShopingClasses;
 using UniversalShopingClasses.GeneralProductManagement;
 using UniversalShopingClasses.OLXClass;
+using UniversalShopingClasses.UserManagement;
 
 namespace UniversalShopingApp.Controllers
 {
@@ -87,12 +88,16 @@ namespace UniversalShopingApp.Controllers
         [HttpGet]
         public ActionResult ViewDetailofPost(int id)
         {
+
             List<Advertisement> advertisements = new AdvertisemntHandler().GetAllAdvertisementById(id);
             return View(advertisements);
         }
 
         public ActionResult AdminAdvDetails()
         {
+            User user = (User)Session[WebUtils.Current_User];
+            if (!(user != null && user.IsInRole(WebUtils.Admin)))
+                return RedirectToAction("Login", "Users", new { ctl = "Adv", act = "ADvDEtail" });
             List<Advertisement> advertisements = new AdvertisemntHandler().GetAllAdvertisement();
             return View(advertisements);
         }
@@ -113,6 +118,9 @@ namespace UniversalShopingApp.Controllers
         [HttpGet]
         public ActionResult UpdateAdv(int id)
         {
+            User user = (User)Session[WebUtils.Current_User];
+            if (!(user != null && user.IsInRole(WebUtils.Admin)))
+                return RedirectToAction("Login", "Users", new { ctl = "Slider", act = "AddImages" });
             Advertisement advertisement = new AdvertisemntHandler().AdvertisementById(id);
             return View(advertisement);
         }
@@ -122,6 +130,9 @@ namespace UniversalShopingApp.Controllers
 
         public ActionResult UpdateAdv(Advertisement advertisement)
         {
+            User user = (User)Session[WebUtils.Current_User];
+            if (!(user != null && user.IsInRole(WebUtils.Admin)))
+                return RedirectToAction("Login", "Users", new { ctl = "Adv", act = "DetailOfAdv" });
             UniversalContext db = new UniversalContext();
             if (ModelState.IsValid)
             {
