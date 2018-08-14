@@ -7,6 +7,7 @@
 <style type="text/css">
 
 
+
     .mytabpane {
         padding: 10px;
         border-left: solid 3px #e4e4e4;
@@ -16,7 +17,7 @@
 </style>
 @using (Html.BeginForm("CreateMobile", "Mobile", FormMethod.Post, new { id = "prodForm", enctype = "multipart/form-data" }))
 {
-    <ul class="nav nav-tabs deep-purple">
+    <ul class="nav nav-tabs" style="background: #5D5D5D;">
         <li class="nav-item">
             <a class="nav-link" href="#generalTab" data-toggle="tab">
                 <span class="fa fa-audio-description"></span>&nbsp;General
