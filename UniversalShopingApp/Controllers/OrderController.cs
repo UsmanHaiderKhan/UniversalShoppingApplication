@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web.Mvc;
 using UniversalShopingClasses;
 using UniversalShopingClasses.CartManagement;
+using UniversalShopingClasses.UserManagement;
 
 namespace UniversalShopingApp.Controllers
 {
@@ -17,6 +18,10 @@ namespace UniversalShopingApp.Controllers
 
         public ActionResult ReciveOrders()
         {
+            User user = (User)Session[WebUtils.Current_User];
+            if (!(user != null && user.IsInRole(WebUtils.Admin)))
+                return RedirectToAction("Login", "Users", new { ctl = "Order", act = "ReciveOrder" });
+
             List<OrderDetail> orders = new OrderHandler().GetAllOrders();
             return View(orders);
         }
@@ -36,6 +41,10 @@ namespace UniversalShopingApp.Controllers
         }
         public ActionResult DeleteOrdersBy(int id)
         {
+            User user = (User)Session[WebUtils.Current_User];
+            if (!(user != null && user.IsInRole(WebUtils.Admin)))
+                return RedirectToAction("Login", "Users", new { ctl = "Order", act = "DeleteOrder" });
+
             UniversalContext db = new UniversalContext();
             Order p = (from c in db.Orders.Include(x => x.OrderDetails) where c.Id == id select c).FirstOrDefault();
             db.Entry(p).State = EntityState.Deleted;
@@ -46,6 +55,10 @@ namespace UniversalShopingApp.Controllers
         }
         public ActionResult OrderView(int id)
         {
+            User user = (User)Session[WebUtils.Current_User];
+            if (!(user != null && user.IsInRole(WebUtils.Admin)))
+                return RedirectToAction("Login", "Users", new { ctl = "order", act = "OrderView" });
+
             OrderHandler ph = new OrderHandler();
             List<Order> pl = ph.GetOrders();
             ViewBag.POrders = pl;
@@ -54,6 +67,10 @@ namespace UniversalShopingApp.Controllers
         }
         public ActionResult DeleteOrders(int id)
         {
+            User user = (User)Session[WebUtils.Current_User];
+            if (!(user != null && user.IsInRole(WebUtils.Admin)))
+                return RedirectToAction("Login", "Users", new { ctl = "Order", act = "DeleteOrder" });
+
             UniversalContext db = new UniversalContext();
             OrderDetail p = (from c in db.OrderDetails where c.Id == id select c).FirstOrDefault();
             db.Entry(p).State = EntityState.Deleted;
@@ -76,12 +93,20 @@ namespace UniversalShopingApp.Controllers
         [HttpGet]
         public ActionResult UpdateOrder(int id)
         {
+            User user = (User)Session[WebUtils.Current_User];
+            if (!(user != null && user.IsInRole(WebUtils.Admin)))
+                return RedirectToAction("Login", "Users", new { ctl = "Order", act = "UpdateOrder" });
+
             OrderDetail orderDetail = new OrderHandler().GetOrderDetailById(id);
             return View(orderDetail);
         }
         [HttpPost]
         public ActionResult UpdateOrder(OrderDetail orderDetail)
         {
+            User user = (User)Session[WebUtils.Current_User];
+            if (!(user != null && user.IsInRole(WebUtils.Admin)))
+                return RedirectToAction("Login", "Users", new { ctl = "Order", act = "UpdateOrder" });
+
             UniversalContext db = new UniversalContext();
             using (db)
             {
