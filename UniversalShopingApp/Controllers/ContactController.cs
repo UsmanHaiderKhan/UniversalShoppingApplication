@@ -45,6 +45,9 @@ namespace UniversalShopingApp.Controllers
 
         public ActionResult DeleteContact(int id)
         {
+            User user = (User)Session[WebUtils.Current_User];
+            if (!(user != null && user.IsInRole(WebUtils.Admin)))
+                return RedirectToAction("Login", "Users", new { ctl = "Contact", act = "SeeDetail" });
             UniversalContext db = new UniversalContext();
             Contact contact = (from c in db.Contacts
                                where c.Id == id
