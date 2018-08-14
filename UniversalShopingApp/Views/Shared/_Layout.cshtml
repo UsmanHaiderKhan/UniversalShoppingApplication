@@ -54,7 +54,7 @@
                 {
 
                     <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><span class="fa fa-user" style="color: whitesmoke"></span>&nbsp;User Info<span class="caret"></span></a>
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><span class="fa fa-user-circle" style="color: whitesmoke"></span>&nbsp;User Info<span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li class="nav-item"><a class="nav-link" href="@Url.Action("index","Users",new {id=currentuser.Id})"> <span class="fa fa-user"></span>&nbsp; @currentuser.Fullname</a></li>
                             <li class="nav-item"><a class="nav-link" href="@Url.Action("ChangePassword","Users",new{id=currentuser.Id})"><span class="fa fa-lock"></span>&nbsp; Reset Password</a></li>
