@@ -65,7 +65,7 @@ namespace UniversalShopingApp.Controllers
                 {
                     return RedirectToAction("DashBoard", "Admin");
                 }
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("FirstPage", "Contact");
             }
             else
             {
