@@ -10,6 +10,7 @@ namespace UniversalShopingApp.Controllers
         [HttpGet]
         public int Add(ShoppingCartItem item)
         {
+
             ShoppingCart cart = (ShoppingCart)Session[WebUtils.Cart];
             if (cart == null) cart = new ShoppingCart();
             cart.Add(item);
@@ -43,12 +44,13 @@ namespace UniversalShopingApp.Controllers
         [HttpGet]
         public ActionResult ViewCart()
         {
-
             ShoppingCart cart = (ShoppingCart)Session[WebUtils.Cart];
+            if (cart == null)
+            {
+                return RedirectToAction("Empty", "Cart");
+            }
             if (cart != null)
             {
-
-
                 if (!ModelState.IsValid)
                 {
                     return View();
@@ -73,6 +75,7 @@ namespace UniversalShopingApp.Controllers
         {
             return View();
         }
+
 
     }
 }
