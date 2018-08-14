@@ -190,30 +190,3 @@
     </script>
 </body>
 </html>
-@*<div class="list-group">
-
-    <a href="@Url.Action("Index", "Home")" class="list-group-item"><i class="fa fa-tags"></i>&nbsp; All Products</a>
-    @if (types != null)
-    {
-        foreach (var v in types)
-        {
-            <a class="list-group-item dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="@Url.Action("ByCategory", "Home", new {id = Convert.ToInt32(v.Value)})"><span class="fa fa-tag"></span> @v.Text</a>
-            @*<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Basic dropdown</button>*@
-@*List<ProductBrand> brands = new ProductHandler().GetProductBrandBypTypeId(Convert.ToInt32(v.Value));
-
-    if (brands != null)
-    {
-    <div class="btn-group">
-        <div class="dropdown-menu">
-            @foreach (var b in brands)
-            {
-                <a class="dropdown-item" href="@Url.Action("ByCategory","Home", new { id = b.Id})">@b.Name</a>
-
-            }
-        </div>
-    </div>
-    }
-
-    }
-    }
-    </div>*@
