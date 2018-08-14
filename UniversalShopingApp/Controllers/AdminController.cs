@@ -12,22 +12,25 @@ namespace UniversalShopingApp.Controllers
         // GET: Admin
         public ActionResult DashBoard()
         {
+            User user = (User)Session[WebUtils.Current_User];
+            if (!(user != null && user.IsInRole(WebUtils.Admin)))
+                return RedirectToAction("Login", "Users", new { ctl = "Admin", act = "DashBoard" });
             return View();
         }
         public ActionResult GetAllUsers()
         {
-            //User user = (User)Session[WebUtils.Current_User];//for  Seeing Admin
-            //if (!(user != null && user.IsInRole(WebUtils.Admin)))
-            //    return RedirectToAction("Login", "Users", new { ctl = "Admin", act = "Index" });
+            User user = (User)Session[WebUtils.Current_User];//for  Seeing Admin
+            if (!(user != null && user.IsInRole(WebUtils.Admin)))
+                return RedirectToAction("Login", "Users", new { ctl = "Admin", act = "Index" });
             List<User> users = new UserHandler().GetUsers();
             return View(users);
         }
         [HttpGet]
         public ActionResult UpdateUser(int id)
         {
-            //User user = (User)Session[WebUtils.Current_User];//for  Seeing Admin
-            //if (!(user != null && user.IsInRole(WebUtils.Admin)))
-            //    return RedirectToAction("Login", "Users", new { ctl = "Admin", act = "Index" });
+            User user = (User)Session[WebUtils.Current_User];//for  Seeing Admin
+            if (!(user != null && user.IsInRole(WebUtils.Admin)))
+                return RedirectToAction("Login", "Users", new { ctl = "Admin", act = "GetUser" });
 
             User user1 = new UserHandler().GetUserById(id);
             return View(user1);
@@ -37,9 +40,9 @@ namespace UniversalShopingApp.Controllers
 
         public ActionResult UpdateUser(User u)
         {
-            //User user = (User)Session[WebUtils.Current_User];//for  Seeing Admin
-            //if (!(user != null && user.IsInRole(WebUtils.Admin)))
-            //    return RedirectToAction("Login", "Users", new { ctl = "Admin", act = "Index" });
+            User user = (User)Session[WebUtils.Current_User];//for  Seeing Admin
+            if (!(user != null && user.IsInRole(WebUtils.Admin)))
+                return RedirectToAction("Login", "Users", new { ctl = "Admin", act = "Index" });
 
             UniversalContext db = new UniversalContext();
             if (ModelState.IsValid)
