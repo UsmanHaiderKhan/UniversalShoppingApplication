@@ -36,25 +36,31 @@
             <!-- Links -->
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="@Url.Action("DashBoard","Admin")">
+                    <a class="nav-link" href="@Url.Action("Index","Advertisement")">
                         Home
                         <span class="sr-only">(current)</span>
                     </a>
                 </li>
                 <!-- Dropdown -->
                 <li class="nav-item">
-                    <a class="nav-link" href="@Url.Action("Index","Home")"> <span class="fa fa-eye"></span>Visit Site</a>
+                    <a class="nav-link" href="@Url.Action("SubmitMessage","Contact")"> <span class="fa fa-eye"></span>Contact us</a>
                 </li>
             </ul>
             <!-- Links -->
         </div>
+        @if (currentUser != null)
+        {
+            <nav class="navbar navbar-dark mdb-color-ic">
+                <h4 class="text-white">WellCome:@currentUser.Fullname</h4>
+            </nav>
+        }
         <!-- Collapsible content -->
     </nav>
     <!--/.Navbar-->
     <div class="row" style="padding: 10px;margin:0px">
         <div class="col-lg-3">
             <div class="list-group">
-                <a href="#" class="list-group-item deep-purple text-white text-center">
+                <a href="#" class="list-group-item text-white text-center" style="background: #5D5D5D;">
                     Online Drink Shop Menu
                 </a>
                 <a href="@Url.Action("Index", "Advertisement")" class="list-group-item"><i class="fa fa-tags"></i>&nbsp; Advertisements</a>
