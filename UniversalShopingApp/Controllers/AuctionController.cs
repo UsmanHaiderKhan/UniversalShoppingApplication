@@ -8,6 +8,7 @@ using UniversalShopingApp.Models;
 using UniversalShopingClasses;
 using UniversalShopingClasses.AuctionManagement;
 using UniversalShopingClasses.GeneralProductManagement;
+using UniversalShopingClasses.UserManagement;
 
 namespace UniversalShopingApp.Controllers
 {
@@ -85,12 +86,18 @@ namespace UniversalShopingApp.Controllers
         [HttpGet]
         public ActionResult UpdateAuction(int id)
         {
+            User user = (User)Session[WebUtils.Current_User];
+            if (!(user != null && user.IsInRole(WebUtils.Admin)))
+                return RedirectToAction("Login", "Users", new { ctl = "Auction", act = "Getauction" });
             Auction auction = new AuctionHandler().GetAuctionById(id);
             return View(auction);
         }
         [HttpPost]
         public ActionResult UpdateAuction(Auction auction)
         {
+            User user = (User)Session[WebUtils.Current_User];
+            if (!(user != null && user.IsInRole(WebUtils.Admin)))
+                return RedirectToAction("Login", "Users", new { ctl = "Auction", act = "POstAuction" });
             UniversalContext db = new UniversalContext();
             using (db)
             {
@@ -101,6 +108,9 @@ namespace UniversalShopingApp.Controllers
         }
         public ActionResult DeleteAuction(int id)
         {
+            User user = (User)Session[WebUtils.Current_User];
+            if (!(user != null && user.IsInRole(WebUtils.Admin)))
+                return RedirectToAction("Login", "Users", new { ctl = "Delete", act = "DeleteImages" });
             UniversalContext db = new UniversalContext();
             Auction auction = (from c in db.Auctions
                     .Include(x => x.AuctionCategory)
