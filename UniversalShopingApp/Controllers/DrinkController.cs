@@ -27,9 +27,9 @@ namespace UniversalShopingApp.Controllers
 
         public ActionResult AddProduct()
         {
-            //User user = (User)Session[WebUtils.Current_User];//for  Seeing Admin
-            //if (!(user != null && user.IsInRole(WebUtils.Admin)))
-            //    return RedirectToAction("Login", "Users", new { ctl = "Admin", act = "Index" });
+            User user = (User)Session[WebUtils.Current_User];//for  Seeing Admin
+            if (!(user != null && user.IsInRole(WebUtils.Admin)))
+                return RedirectToAction("Login", "Users", new { ctl = "Drink", act = "Index" });
 
 
             ProductHandler mHandler = new ProductHandler();
@@ -40,9 +40,9 @@ namespace UniversalShopingApp.Controllers
 
         public ActionResult AddProduct(Drink drink, FormCollection data)
         {
-            //User user = (User)Session[WebUtils.Current_User];//for  Seeing Admin
-            //if (!(user != null && user.IsInRole(WebUtils.Admin)))
-            //    return RedirectToAction("Login", "Users", new { ctl = "Admin", act = "Index" });
+            User user = (User)Session[WebUtils.Current_User];//for  Seeing Admin
+            if (!(user != null && user.IsInRole(WebUtils.Admin)))
+                return RedirectToAction("Login", "Users", new { ctl = "Admin", act = "Index" });
 
             long uno = DateTime.Now.Ticks;
             int counter = 0;
@@ -210,6 +210,9 @@ namespace UniversalShopingApp.Controllers
         [HttpGet]
         public ActionResult UpdateProduct(int id)
         {
+            User user = (User)Session[WebUtils.Current_User];
+            if (!(user != null && user.IsInRole(WebUtils.Admin)))
+                return RedirectToAction("Login", "Users", new { ctl = "Product", act = "Update" });
             Drink drink = new DrinkHandler().GetSingleDrink(id);
             return View(drink);
 
