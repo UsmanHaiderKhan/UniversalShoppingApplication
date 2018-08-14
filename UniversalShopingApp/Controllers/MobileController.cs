@@ -9,6 +9,7 @@ using UniversalShopingClasses;
 using UniversalShopingClasses.DrinksManagement;
 using UniversalShopingClasses.GeneralProductManagement;
 using UniversalShopingClasses.MobileManagement;
+using UniversalShopingClasses.UserManagement;
 
 namespace UniversalShopingApp.Controllers
 {
@@ -17,12 +18,18 @@ namespace UniversalShopingApp.Controllers
         // GET: Mobile
         public ActionResult Index()
         {
+            User user = (User)Session[WebUtils.Current_User];
+            if (!(user != null && user.IsInRole(WebUtils.Admin)))
+                return RedirectToAction("Login", "Users", new { ctl = "Mobile", act = "AllMobiles" });
             List<Mobile> mobiles = new MobileHandler().GetAllMobiles();
             return View(mobiles);
         }
         [HttpGet]
         public ActionResult CreateMobile()
         {
+            User user = (User)Session[WebUtils.Current_User];
+            if (!(user != null && user.IsInRole(WebUtils.Admin)))
+                return RedirectToAction("Login", "Users", new { ctl = "Mobiile", act = "MobileCreate" });
             DrinkHandler mHandler = new DrinkHandler();
             ViewBag.Brands = ModelHelper.ToSelectItemList(mHandler.GetAllBrands());
             return View();
@@ -30,6 +37,11 @@ namespace UniversalShopingApp.Controllers
         [HttpPost]
         public ActionResult CreateMobile(Mobile mobile, FormCollection data)
         {
+            User user = (User)Session[WebUtils.Current_User];
+            if (!(user != null && user.IsInRole(WebUtils.Admin)))
+                return RedirectToAction("Login", "Users", new { ctl = "Slider", act = "AddImages" });
+
+
             UniversalContext db = new UniversalContext();
             mobile.ProductBrand = new ProductBrand { Id = Convert.ToInt32(data["brand"]) };
             mobile.Wifi = Convert.ToBoolean(data["wifi"].Split(',').First());
@@ -64,6 +76,10 @@ namespace UniversalShopingApp.Controllers
 
         public ActionResult DeleteMobile(int id)
         {
+            User user = (User)Session[WebUtils.Current_User];
+            if (!(user != null && user.IsInRole(WebUtils.Admin)))
+                return RedirectToAction("Login", "Users", new { ctl = "Slider", act = "AddImages" });
+
             UniversalContext db = new UniversalContext();
             Mobile mobile = (from c in db.Mobiles
                     .Include(x => x.ProductBrand)
@@ -77,12 +93,19 @@ namespace UniversalShopingApp.Controllers
         [HttpGet]
         public ActionResult UpdateMobile(int id)
         {
+            User user = (User)Session[WebUtils.Current_User];
+            if (!(user != null && user.IsInRole(WebUtils.Admin)))
+                return RedirectToAction("Login", "Users", new { ctl = "Slider", act = "AddImages" });
             Mobile mobile = new MobileHandler().GetMobilesById(id);
             return View(mobile);
         }
         [HttpPost]
         public ActionResult UpdateMobile(Mobile mobile)
         {
+            User user = (User)Session[WebUtils.Current_User];
+            if (!(user != null && user.IsInRole(WebUtils.Admin)))
+                return RedirectToAction("Login", "Users", new { ctl = "Slider", act = "AddImages" });
+
             UniversalContext db = new UniversalContext();
             using (db)
             {
