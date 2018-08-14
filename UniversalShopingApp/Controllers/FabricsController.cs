@@ -9,6 +9,7 @@ using UniversalShopingClasses;
 using UniversalShopingClasses.DrinksManagement;
 using UniversalShopingClasses.FabricsManagement;
 using UniversalShopingClasses.GeneralProductManagement;
+using UniversalShopingClasses.UserManagement;
 
 namespace UniversalShopingApp.Controllers
 {
@@ -17,6 +18,9 @@ namespace UniversalShopingApp.Controllers
         // GET: Fabrics
         public ActionResult Index()
         {
+            User user = (User)Session[WebUtils.Current_User];
+            if (!(user != null && user.IsInRole(WebUtils.Admin)))
+                return RedirectToAction("Login", "Users", new { ctl = "Admin", act = "ListofProduct" });
             List<Fabric> fabrics = new FabricHandler().GetAllProducts();
             return View(fabrics);
         }
@@ -24,6 +28,9 @@ namespace UniversalShopingApp.Controllers
         [HttpGet]
         public ActionResult AddFabrics()
         {
+            User user = (User)Session[WebUtils.Current_User];
+            if (!(user != null && user.IsInRole(WebUtils.Admin)))
+                return RedirectToAction("Login", "Users", new { ctl = "Product", act = "AddProduct" });
             DrinkHandler mHandler = new DrinkHandler();
             ViewBag.Brands = ModelHelper.ToSelectItemList(mHandler.GetAllBrands());
             return View();
@@ -32,6 +39,10 @@ namespace UniversalShopingApp.Controllers
         [HttpPost]
         public ActionResult AddFabrics(Fabric fabric, FormCollection data)
         {
+            User user = (User)Session[WebUtils.Current_User];
+            if (!(user != null && user.IsInRole(WebUtils.Admin)))
+                return RedirectToAction("Login", "Users", new { ctl = "Slider", act = "AddImages" });
+
             fabric.ProductBrand = new ProductBrand { Id = Convert.ToInt32(data["brand"]) };
             long uno = DateTime.Now.Ticks;
             int counter = 0;
@@ -61,6 +72,10 @@ namespace UniversalShopingApp.Controllers
 
         public ActionResult DeleteFabrics(int id)
         {
+            User user = (User)Session[WebUtils.Current_User];
+            if (!(user != null && user.IsInRole(WebUtils.Admin)))
+                return RedirectToAction("Login", "Users", new { ctl = "Slider", act = "AddImages" });
+
             UniversalContext db = new UniversalContext();
             Fabric fabric = (from c in db.Fabrics
                     .Include(x => x.ProductBrand)
@@ -75,6 +90,10 @@ namespace UniversalShopingApp.Controllers
         [HttpGet]
         public ActionResult UpdateFabric(int id)
         {
+            User user = (User)Session[WebUtils.Current_User];
+            if (!(user != null && user.IsInRole(WebUtils.Admin)))
+                return RedirectToAction("Login", "Users", new { ctl = "Slider", act = "AddImages" });
+
             Fabric fabric = new FabricHandler().GetFabricById(id);
             return View(fabric);
         }
@@ -84,6 +103,10 @@ namespace UniversalShopingApp.Controllers
 
         public ActionResult UpdateFabric(Fabric fabric)
         {
+            User user = (User)Session[WebUtils.Current_User];
+            if (!(user != null && user.IsInRole(WebUtils.Admin)))
+                return RedirectToAction("Login", "Users", new { ctl = "Slider", act = "AddImages" });
+
             UniversalContext db = new UniversalContext();
             if (ModelState.IsValid)
             {
