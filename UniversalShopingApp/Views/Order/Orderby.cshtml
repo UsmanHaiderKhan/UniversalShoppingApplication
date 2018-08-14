@@ -5,10 +5,9 @@
     long price = 0;
     int qty = 0;
 }
-
 @Html.Partial("~/Views/Order/_DeleteOrderBy.cshtml")
 <table class="table table-borderless table-striped table-hover">
-    <tr class="deep-purple text-white">
+    <tr class="text-white" style="background: #5D5D5D;">
         <th>
             @Html.DisplayNameFor(model => model.BuyerName)
         </th>
