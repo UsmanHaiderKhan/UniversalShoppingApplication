@@ -72,6 +72,7 @@
                         <a class="list-group-item" href="@Url.Action("ByCategory", "Advertisement", new {id = Convert.ToInt32(v.Value)})"><span class="fa fa-tag"></span> @v.Text</a>
                     }
                 }
+                <a href="@Url.Action("PostFeedBack", "FeedBack")" class="list-group-item"><i class="fa fa-comment"></i>&nbsp; Provid FeedBack</a>
             </div>
         </div>
         <div class="col-lg-9">
