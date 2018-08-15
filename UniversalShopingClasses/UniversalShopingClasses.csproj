@@ -117,6 +117,10 @@
     <Compile Include="Migrations\201808121539514_NewFeedTbl.Designer.cs">
       <DependentUpon>201808121539514_NewFeedTbl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201808150536245_NewOrderNo.cs" />
+    <Compile Include="Migrations\201808150536245_NewOrderNo.Designer.cs">
+      <DependentUpon>201808150536245_NewOrderNo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MobileManagement\Mobile.cs" />
     <Compile Include="GeneralProductManagement\ProductBrand.cs" />
@@ -166,6 +170,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808121539514_NewFeedTbl.resx">
       <DependentUpon>201808121539514_NewFeedTbl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808150536245_NewOrderNo.resx">
+      <DependentUpon>201808150536245_NewOrderNo.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
