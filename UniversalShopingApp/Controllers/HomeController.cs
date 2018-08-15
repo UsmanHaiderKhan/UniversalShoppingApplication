@@ -8,7 +8,6 @@ using UniversalShopingClasses.CartManagement;
 using UniversalShopingClasses.DrinksManagement;
 using UniversalShopingClasses.GeneralProductManagement;
 using UniversalShopingClasses.MobileManagement;
-using UniversalShopingClasses.UserManagement;
 
 namespace UniversalShopingApp.Controllers
 {
@@ -55,7 +54,8 @@ namespace UniversalShopingApp.Controllers
         [HttpGet]
         public ActionResult ViewOrderDetails()
         {
-            User user = (User)Session[WebUtils.Current_User];
+            //User user = (User)Session[WebUtils.Current_User];
+
             UniversalContext db = new UniversalContext();
             List<Order> orders;
             using (db)
@@ -63,13 +63,30 @@ namespace UniversalShopingApp.Controllers
                 orders = (from c in db.Orders
                        .Include(m => m.OrderDetails)
                        .Include(m => m.OrderStatus)
-                          where c.BuyerName == user.Fullname
-                          where c.FullAddress == user.FullAddress
-                          where c.EmailAddress == user.Email
                           select c).ToList();
             }
             return View(orders);
         }
+
+        public ActionResult TrackOrder()
+        {
+            return View();
+        }
+        [HttpGet]
+        public ActionResult ViewPlaceOrder(string orderNo)
+        {
+            UniversalContext db = new UniversalContext();
+            Order order = new Order();
+            using (db)
+            {
+                order = (from c in db.Orders.Include(m => m.OrderDetails).Include(m => m.OrderStatus)
+                         where c.OrderNo == orderNo
+                         select c).FirstOrDefault();
+            }
+
+            return View(order);
+        }
+
 
     }
 }
