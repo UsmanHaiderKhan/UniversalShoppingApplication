@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "TrackOrder";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>TrackOrder</h2>
+@using (Html.BeginForm())
+{
+    <div class="form-group">
+        @Html.TextBox("", new { @class = "form-control", placeholder = "Track_Id" })
+    </div>
+    <button type="submit" class="btn btn-outline-success"><i class="fa fa-search"></i>&nbsp;Track</button>
+
+}
