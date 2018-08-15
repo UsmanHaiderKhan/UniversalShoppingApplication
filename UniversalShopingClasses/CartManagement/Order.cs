@@ -9,6 +9,7 @@ namespace UniversalShopingClasses.CartManagement
         public string EmailAddress { get; set; }
         public string FullAddress { get; set; }
         public bool IsActive { get; set; }
+        public string OrderNo { get; set; }
         public double Phone { get; set; }
         public OrderStatus OrderStatus { get; set; }
         public List<OrderDetail> OrderDetails { get; set; }
