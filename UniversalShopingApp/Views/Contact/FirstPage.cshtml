@@ -1,6 +1,9 @@
-﻿@{
+﻿@using UniversalShopingClasses.UserManagement
+@{
     ViewBag.Title = "FirstPage";
     Layout = null;
+    User cuser = (User)Session[WebUtils.Current_User];
+
 }
 <!DOCTYPE html>
 <html>
@@ -29,8 +32,12 @@
             <div class="container">
                 <div class="header-top-left">
                     <ul>
-                        <li><a href="@Url.Action("Login","Users")"><span class="fa fa-user"> </span>&nbsp; Login</a></li>
-                        <li><a href="@Url.Action("SignUp","Users")"><span class="fa fa-user-plus"> </span>&nbsp; Create an Account</a></li>
+                        @if (cuser == null)
+                        {
+                            <li><a href="@Url.Action("Login", "Users")"><span class="fa fa-user"> </span>&nbsp; Login</a></li>
+                            <li><a href="@Url.Action("SignUp", "Users")"><span class="fa fa-user-plus"> </span>&nbsp; Create an Account</a></li>
+                        }
+
                     </ul>
                 </div>
                 <div class="header-right">
@@ -73,7 +80,6 @@
     </div>
     <div class="banner">
         <div class="container">
-
             <div class="banner-bottom-left">
                 <h2>U<br>S<br>S</h2>
             </div>
@@ -131,6 +137,5 @@
             <a href="@Url.Action("Index","Advertisement")" style="border-radius: 20px">Earn from Spare</a>
         </div>
     </div>
-
 </body>
 </html>
