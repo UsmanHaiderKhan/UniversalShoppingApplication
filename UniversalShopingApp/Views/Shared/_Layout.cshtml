@@ -48,7 +48,10 @@
                     <a class="nav-link" href="@Url.Action("SubmitMessage","Contact")"><span class="fa fa-phone"></span>&nbsp;Contact Us</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="@Url.Action("ViewCart","Cart")"> Cart <span id="cartitems" class="badge">0</span></a>
+                    <a class="nav-link" href="@Url.Action("ViewCart","Cart")"><span class="fa fa-shopping-cart"></span> Cart <span id="cartitems" class="badge">0</span></a>
+                </li>
+                <li class="nav-item">
+                    <a href="@Url.Action("PostFeedBack", "FeedBack")" class="nav-link"><i class="fa fa-comment"></i>&nbsp; Provid FeedBack</a>
                 </li>
                 @if (currentuser != null)
                 {
