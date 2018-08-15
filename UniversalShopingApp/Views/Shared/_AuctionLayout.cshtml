@@ -45,17 +45,23 @@
                     <a class="nav-link" href="@Url.Action("SubmitMessage","Contact")"><span class="fa fa-phone"></span>&nbsp;Contact Us</a>
                 </li>
                 <!-- Dropdown -->
-                <li class="nav-item dropdown ">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                    <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="@Url.Action("Index","Home")">Visit Site</a>
-                </li>
+                @if (currentuser != null)
+                {
+
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><span class="fa fa-user-circle" style="color: whitesmoke"></span>&nbsp;User Info<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li class="nav-item"><a class="nav-link" href="@Url.Action("index","Users",new {id=currentuser.Id})"> <span class="fa fa-user"></span>&nbsp; @currentuser.Fullname</a></li>
+                            <li class="nav-item"><a class="nav-link" href="@Url.Action("ChangePassword","Users",new{id=currentuser.Id})"><span class="fa fa-lock"></span>&nbsp; Reset Password</a></li>
+                            <li class="nav-item"><a class="nav-link" href="@Url.Action("ProfileSetting","Users",new{id=currentuser.Id})"><span class="fa fa-cog"></span>&nbsp; Profile Setting</a></li>
+                            <li class="dropdown-divider"></li>
+                            <li class="nav-item"><a href="@Url.Action("Logout","Users")"><span class="fa fa-sign-out-alt"></span>&nbsp; Logout</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <img src="/Content/UserImages/@Url.Content(currentuser.ImageUrl)" style="width: 50px; height: 50px; border-radius: 50%;" class="img-thumbnail" />
+                    </li>
+                }
             </ul>
             @if (currentuser != null)
             {
@@ -82,7 +88,7 @@
                         <a class="list-group-item" href="@Url.Action("AuctionByCategory", "Auction", new {id = Convert.ToInt32(v.Value)})"><span class="fa fa-tag"></span> @v.Text</a>
                     }
                 }
-                <a href="@Url.Action("AddAuctinoProduct", "Auction")" class="list-group-item"><i class="fa fa-plus"></i>&nbsp; AddNew Adds</a>
+                <a href="@Url.Action("AddAuctinoProduct", "Auction")" class="list-group-item"><i class="fa fa-plus"></i>&nbsp; Add New Adds</a>
                 <a href="@Url.Action("PostFeedBack", "FeedBack")" class="list-group-item"><i class="fa fa-comment"></i>&nbsp; Provid FeedBack</a>
                 @*@if (categories != null)
                     {
