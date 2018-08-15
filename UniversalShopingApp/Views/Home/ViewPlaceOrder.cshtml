@@ -1,0 +1,37 @@
+﻿@model UniversalShopingClasses.CartManagement.Order
+@{
+    ViewBag.Title = "ViewPlaceOrder";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2 style="margin-top: 6%">ViewPlaceOrder</h2>
+<table class="table table-responsive">
+    <thead>
+        <tr class="text-white" style="background: #5D5D5D;">
+            <th>BuyerName</th>
+            <th>EmailAddress</th>
+            <th>FullAddress</th>
+            <th>Phone</th>
+            <th>OrderStatus</th>
+            <th>ProductName</th>
+            <th>ProductPrice</th>
+            <th>Quantity</th>
+            <th>Picture</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@Model.BuyerName</td>
+            <td>@Model.EmailAddress</td>
+            <td>@Model.FullAddress</td>
+            <td>@Model.Phone</td>
+            <td>@Model.OrderStatus.Name</td>
+            @foreach (var v in Model.OrderDetails)
+            {
+                <td>@v.Name</td>
+                <td>@v.Price</td>
+                <td>@v.Qauntity</td>
+                <td><img src="@Url.Content(v.ImageUrl)" style="width: 50px;height: 50px" /></td>
+            }
+        </tr>
+    </tbody>
+</table>
