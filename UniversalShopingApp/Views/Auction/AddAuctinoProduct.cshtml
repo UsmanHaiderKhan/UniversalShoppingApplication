@@ -7,6 +7,9 @@
 }
 <style type="text/css">
 
+
+
+
     .mytabpane {
         padding: 10px;
         border-left: solid 3px #e4e4e4;
@@ -30,12 +33,12 @@
 }
 <h2>AddAuctinoProduct</h2>
 <div class="card">
-    <div class="card-header deep-purple lighten-1 white-text">Featured</div>
+    <div class="card-header lighten-1 text-center white-text" style="background: #5D5D5D;">Add Your Product For Auctioning</div>
     <div class="card-body">
         <p class="card-text">
             @using (Html.BeginForm("AddAuctinoProduct", "Auction", FormMethod.Post, new { enctype = "multipart/form-data" }))
             {
-                <ul class="nav nav-tabs deep-purple">
+                <ul class="nav nav-tabs" style="background: #5d5d5d">
                     <li class="nav-item">
                         <a class="nav-link active" href="#productpane" data-toggle="tab">
                             <span class="fa fa-product-hunt fa-lg"></span>&nbsp;Product
