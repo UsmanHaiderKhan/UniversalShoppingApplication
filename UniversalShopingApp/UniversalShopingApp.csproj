@@ -472,6 +472,8 @@
     <Content Include="Views\Contact\Index.cshtml" />
     <Content Include="Views\Contact\_DeleteContact.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\Home\TrackOrder.cshtml" />
+    <Content Include="Views\Home\ViewPlaceOrder.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
