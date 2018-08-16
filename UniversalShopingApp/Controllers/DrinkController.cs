@@ -118,6 +118,7 @@ namespace UniversalShopingApp.Controllers
             }
 
             db.Orders.Add(p);
+            db.Entry(p.OrderStatus).State = EntityState.Unchanged;
             db.SaveChanges();
             //Session.Clear();
             //Here We Sent the Email 
@@ -126,9 +127,9 @@ namespace UniversalShopingApp.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    var sender = new MailAddress("usmanhaiderkhan4@gmail.com");
+                    var sender = new MailAddress("universalshoppingsystem@gmail.com");
                     var reciver = new MailAddress(p.EmailAddress);
-                    var password = "03349875662";
+                    var password = "asadali.pk";
 
                     var p1 = new DrinkHandler().GetOrderById(p.Id);
                     if (p1 != null)
