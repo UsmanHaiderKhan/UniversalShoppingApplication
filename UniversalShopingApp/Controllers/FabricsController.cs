@@ -66,7 +66,7 @@ namespace UniversalShopingApp.Controllers
                 db.Fabrics.Add(fabric);
                 db.Entry(fabric.ProductBrand).State = EntityState.Unchanged;
                 db.SaveChanges();
-                return RedirectToAction("Complete", "Drink");
+                return RedirectToAction("Success", "Drink");
             }
         }
 
