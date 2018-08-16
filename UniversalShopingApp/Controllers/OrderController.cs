@@ -97,11 +97,11 @@ namespace UniversalShopingApp.Controllers
             if (!(user != null && user.IsInRole(WebUtils.Admin)))
                 return RedirectToAction("Login", "Users", new { ctl = "Order", act = "UpdateOrder" });
 
-            OrderDetail orderDetail = new OrderHandler().GetOrderDetailById(id);
+            Order orderDetail = new OrderHandler().GetOrderById(id);
             return View(orderDetail);
         }
         [HttpPost]
-        public ActionResult UpdateOrder(OrderDetail orderDetail)
+        public ActionResult UpdateOrder(Order order)
         {
             User user = (User)Session[WebUtils.Current_User];
             if (!(user != null && user.IsInRole(WebUtils.Admin)))
@@ -110,7 +110,9 @@ namespace UniversalShopingApp.Controllers
             UniversalContext db = new UniversalContext();
             using (db)
             {
-                db.Entry(orderDetail).State = EntityState.Modified;
+                db.Entry(order).State = EntityState.Modified;
+                db.Entry(order.OrderStatus).State = EntityState.Modified;
+                db.Entry(order.OrderDetails).State = EntityState.Unchanged;
                 db.SaveChanges();
             }
 
