@@ -1,14 +1,33 @@
-﻿
+﻿@model UniversalShopingClasses.CartManagement.Order
 @{
     ViewBag.Title = "TrackOrder";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<h2>TrackOrder</h2>
-@using (Html.BeginForm())
+<h2 style="margin-top: 8%">TrackOrder</h2>
+@using (Html.BeginForm("TrackOrder", "Home", FormMethod.Post, new { }))
 {
     <div class="form-group">
-        @Html.TextBox("", new { @class = "form-control", placeholder = "Track_Id" })
+        @*@Html.TextBox("orderno", new { @class = "form-control", placeholder = "Track_Id", name = "orderno" })*@
+        <input type="search" name="orderno" placeholder="Track_Id" class="form-control" /> <button type="submit" class="btn btn-outline-success"><i class="fa fa-search"></i>&nbsp;Track</button>
     </div>
-    <button type="submit" class="btn btn-outline-success"><i class="fa fa-search"></i>&nbsp;Track</button>
+
+
+}
+@if (Model != null)
+{
+    <p>@Model.OrderNo</p>
+    <p>@Model.BuyerName</p>
+    <p>@Model.EmailAddress</p>
+    <p>@Model.FullAddress</p>
+    <p>@Model.Phone</p>
+
+    foreach (var m in Model.OrderDetails)
+    {
+        <p>@m.Name</p>
+        <p>@m.Price</p>
+        <p>@m.Qauntity</p>
+        <p>@m.Amount</p>
+        <p>@m.ImageUrl</p>
+    }
 
 }
