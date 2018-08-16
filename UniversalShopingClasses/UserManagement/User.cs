@@ -12,10 +12,12 @@ namespace UniversalShopingClasses.UserManagement
         public string Loginid { get; set; }
         [Required]
         [DataType(DataType.Password)]
+        [StringLength(50, MinimumLength = 6, ErrorMessage = "Please Enter More The 6 Char")]
         public string Password { get; set; }
         [Required]
         [DataType(DataType.Password)]
         [Compare("Password")]
+        [StringLength(50, MinimumLength = 6, ErrorMessage = "Please Enter More The 6 Char")]
         public string ConfirmPassword { get; set; }
         [Required]
         public string ImageUrl { get; set; }
