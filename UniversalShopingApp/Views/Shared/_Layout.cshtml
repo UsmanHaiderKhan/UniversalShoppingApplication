@@ -106,7 +106,7 @@
                                 </a>
                             </div>
                             @{ List<ProductBrand> brands = new ProductHandler().GetProductBrandBypTypeId(Convert.ToInt32(v.Value)); }
-                            <div id="collapse_@panelcount" class="collapse show" role="tabpanel" aria-labelledby="heading_@panelcount" data-parent="#accordionEx">
+                            <div id="collapse_@panelcount" class="collapse" role="tabpanel" aria-labelledby="heading_@panelcount" data-parent="#accordionEx">
                                 <div class="card-body">
                                     @if (brands != null)
                                     {
