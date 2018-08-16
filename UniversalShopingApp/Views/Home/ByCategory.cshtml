@@ -2,9 +2,20 @@
 @{
     ViewBag.Title = "ByCategory";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    List<ProductSummeryModel> drinks = ViewBag.DrinksByCategory;
+    List<ProductSummeryModel> mobiles = ViewBag.MobileByCategory;
 }
 <div style="margin-top: 7%">
-    @Html.Partial("~/Views/Shared/_SummeryModel.cshtml", (List<ProductSummeryModel>)ViewBag.DrinksByCategory)
-    @Html.Partial("~/Views/Shared/_SummeryModel.cshtml", (List<ProductSummeryModel>)ViewBag.MobileByCategory)
-    @Html.Partial("~/Views/Shared/_SummeryModel.cshtml", (List<ProductSummeryModel>)ViewBag.FabricsByCategory)
+    @if (drinks != null && drinks.Count > 0)
+    {
+        @Html.Partial("~/Views/Shared/_SummeryModel.cshtml", drinks)
+    }
+    else if (mobiles != null && mobiles.Count > 0)
+    {
+        @Html.Partial("~/Views/Shared/_MobileSummery.cshtml", mobiles)
+    }
+    else if (ViewBag.FabricsByCategory != null)
+    {
+        @Html.Partial("~/Views/Shared/_FabricSummery.cshtml", (List<ProductSummeryModel>)ViewBag.FabricsByCategory)
+    }
 </div>
