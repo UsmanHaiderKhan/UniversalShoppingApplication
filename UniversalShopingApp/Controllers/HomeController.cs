@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
@@ -6,6 +7,7 @@ using UniversalShopingApp.Models;
 using UniversalShopingClasses;
 using UniversalShopingClasses.CartManagement;
 using UniversalShopingClasses.DrinksManagement;
+using UniversalShopingClasses.FabricsManagement;
 using UniversalShopingClasses.GeneralProductManagement;
 using UniversalShopingClasses.MobileManagement;
 
@@ -50,7 +52,12 @@ namespace UniversalShopingApp.Controllers
             List<Mobile> mobiles = new MobileHandler().GetMobilebyId(id);
             return View(mobiles);
         }
-
+        [HttpGet]
+        public ActionResult FabricsDetail(int id)
+        {
+            List<Fabric> fabrics = new FabricHandler().GetFabricByid(id);
+            return View(fabrics);
+        }
         [HttpGet]
         public ActionResult ViewOrderDetails()
         {
@@ -67,11 +74,24 @@ namespace UniversalShopingApp.Controllers
             }
             return View(orders);
         }
-
+        [HttpGet]
         public ActionResult TrackOrder()
         {
+
             return View();
         }
+
+        [HttpPost]
+        public ActionResult TrackOrder(FormCollection fdata)
+        {
+            UniversalContext db = new UniversalContext();
+            string orderno = Convert.ToString(fdata["orderno"]);
+            Order order = db.Orders.Include(f => f.OrderDetails)
+                .Include(f => f.OrderStatus).FirstOrDefault(f => f.OrderNo == orderno);
+
+            return View(order);
+        }
+
         [HttpGet]
         public ActionResult ViewPlaceOrder(string orderNo)
         {
