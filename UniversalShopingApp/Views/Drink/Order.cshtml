@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="card" style="margin-top: 10%">
-    <div class="card-header lighten-1 white-text text-center deep-purple"> <h4 class="text-xl-center">Enter Your Latest Information</h4></div>
+    <div class="card-header lighten-1 white-text text-center" style=""> <h4 class="text-xl-center">Enter Your Latest Information</h4></div>
     <div class="card-body">
         <div class="card-text">
             @using (Html.BeginForm("Order", "Drink", FormMethod.Post, new { id = "place" }))
