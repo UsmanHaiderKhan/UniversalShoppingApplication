@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
@@ -84,6 +85,8 @@ namespace UniversalShopingApp.Controllers
         public ActionResult Order(FormCollection data)
         {
             UniversalContext db = new UniversalContext();
+            string random = Path.GetRandomFileName().Replace(".", " ");
+
             Order p = new Order()
             {
                 BuyerName = data["BuyerName"],
@@ -91,10 +94,12 @@ namespace UniversalShopingApp.Controllers
                 EmailAddress = data["EmailAddress"],
                 Phone = Convert.ToDouble(data["Phone"]),
                 IsActive = false,
-                OrderStatus = new OrderHandler().GetOrderStatusById(1)
+                OrderStatus = new OrderHandler().GetOrderStatusById(1),
+                OrderNo = random
             };
             List<OrderDetail> cartItems = new List<OrderDetail>();
             ShoppingCart cart = (ShoppingCart)Session[WebUtils.Cart];
+
 
             foreach (var i in cart.Items)
             {
@@ -105,7 +110,7 @@ namespace UniversalShopingApp.Controllers
                     ImageUrl = i.ImageUrl,
                     Qauntity = i.Quantity,
                     Price = i.Price,
-                    Amount = i.Amount
+                    Amount = i.Amount,
                 };
                 cartItems.Add(ci);
             }
@@ -138,6 +143,7 @@ namespace UniversalShopingApp.Controllers
 
                         var body = $"<h2 style='color:#bc4b4b'><center>---Your Buyed Product Information From Universal Shopping App Given Below --- </center></h2><br />" +
                                    $"<div><table style='width:60%;border:1px solid yellow;padding:10px; background-color: #eeeeee; margin: auto;border-collapse: collapse; transition: all 1s;'><tr onMouseOver=this.style.color = 'red''  onMouseOut=this.style.color = 'blue''  style='border:1px solid grey;padding:10px;background-color: #eee;'><th style='border:1px solid grey;padding:10px'>Customer Name:</th><td style='border:1px solid grey;padding:10px'>{p1.BuyerName}</td></tr><tr onMouseOver=this.style.color = 'red''  onMouseOut=this.style.color = 'blue'' style='border:1px solid grey;padding:10px;background-color: pink;'><th style='border:1px solid grey;padding:10px'>Customer Address:</th><td style='border:1px solid grey;padding:10px'>{p1.FullAddress}</td></tr><tr onMouseOver=this.style.color = 'red''  onMouseOut=this.style.color = 'blue'' style='border:1px solid grey;padding:10px;background-color:  #eee;'><th style='border:1px solid grey;padding:10px'>Customer PhoneNo:</th><td style='border:1px solid grey;padding:10px'>{p1.Phone}</td></tr><tr onMouseOver=this.style.color = 'red''  onMouseOut=this.style.color = 'blue'' style='border:1px solid grey;padding:10px;background-color: pink;'><th style='border:1px solid grey;padding:10px'>Product Name:</th><td style='border:1px solid grey;padding:10px'>{p1.OrderDetails.First().Name}</td></tr><tr onMouseOver=this.style.color = 'red''  onMouseOut=this.style.color = 'blue'' style='background-color:  #eee;border:1px solid grey;padding:10px'><th style='border:1px solid grey;padding:10px'>Product Quantity:</th><td style='border:1px solid grey;padding:10px'>{p1.OrderDetails.First().Qauntity}</td></tr><tr onMouseOver=this.style.color = 'red'' onMouseOut=this.style.color = 'blue'' style='background-color: pink;border:1px solid grey;padding:10px'><th style='border:1px solid grey;padding:10px'>Product Amount:</th><td style='border:1px solid grey;padding:10px'>{p1.OrderDetails.First().Amount}</td></tr></table></div>";
+                        body = body + "<br> <br> ORDER NO: <b><u> " + p.OrderNo + "</u></b>";
                         var smtp1 = new SmtpClient
                         {
                             Host = "smtp.gmail.com",
@@ -160,6 +166,7 @@ namespace UniversalShopingApp.Controllers
                             message = "Your Order Details Has Been Sent By Email SuccessFully";
                         }
                     }
+
                     else
                     {
 
@@ -174,6 +181,7 @@ namespace UniversalShopingApp.Controllers
                 ViewBag.OrderMessageError = $"There Is Some Problem Here Please Try Agin{e}";
             }
 
+            Session[WebUtils.Cart] = null;
             return RedirectToAction("Complete", message);
 
         }
