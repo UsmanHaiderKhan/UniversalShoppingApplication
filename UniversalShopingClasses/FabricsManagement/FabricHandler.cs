@@ -29,6 +29,18 @@ namespace UniversalShopingClasses.FabricsManagement
                         select c).FirstOrDefault();
             }
         }
+        public List<Fabric> GetFabricByid(int id)
+        {
+            using (db)
+            {
+                return (from c in db.Fabrics
+                        .Include(m => m.ProductBrand)
+                        .Include(m => m.ProductImages)
+                        where c.Id == id
+                        select c).ToList();
+            }
+        }
+
 
     }
 }
