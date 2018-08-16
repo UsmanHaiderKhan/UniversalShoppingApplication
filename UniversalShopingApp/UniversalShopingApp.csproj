@@ -474,6 +474,8 @@
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Home\TrackOrder.cshtml" />
     <Content Include="Views\Home\ViewPlaceOrder.cshtml" />
+    <Content Include="Views\Home\FabricsDetail.cshtml" />
+    <Content Include="Views\Shared\_FabricSummery.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
