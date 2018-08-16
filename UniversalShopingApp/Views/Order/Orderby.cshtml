@@ -2,8 +2,8 @@
 @{
     ViewBag.Title = "Orderby";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
-    long price = 0;
-    int qty = 0;
+    //long price = 0;
+    //int qty = 0;
 }
 @Html.Partial("~/Views/Order/_DeleteOrderBy.cshtml")
 <table class="table table-borderless table-striped table-hover">
@@ -16,9 +16,6 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.FullAddress)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IsActive)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Phone)
@@ -43,9 +40,6 @@
                 @Html.DisplayFor(modelItem => item.FullAddress)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IsActive)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.Phone)
             </td>
             <td>
@@ -53,15 +47,15 @@
             </td>
             @foreach (var v in item.OrderDetails)
             {
-                price += v.Amount;
-                qty += v.Qauntity;
-
+                <td class="text-center">@v.Price</td>
+                <td class="text-center">@v.Qauntity</td>
             }
-            <td class="text-center">@price</td>
-            <td class="text-center">@qty</td>
             <td>
                 <a href='#exampleModal' data-toggle="modal" id="@item.Id" class="hits text-danger"><span class="fa fa-trash"></span></a> |
                 <a href="@Url.Action("OrderView","Order",new {id=item.Id})" id="@item.Id" class="text-success"><span class="fa fa-eye"></span></a>
+                @*|
+                    <a href="@Url.Action("UpdateOrder","Order",new{id=item.Id})"
+                       class="text-success"><span class="fa fa-edit"></span></a>*@
             </td>
         </tr>
     }
@@ -96,3 +90,5 @@
         });
     </script>
 }
+@*price += v.Amount;
+    qty += v.Qauntity;*@
