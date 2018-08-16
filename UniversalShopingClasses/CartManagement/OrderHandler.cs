@@ -63,5 +63,18 @@ namespace UniversalShopingClasses.CartManagement
                 return (from c in db.OrderDetails where c.Id == id select c).ToList();
             }
         }
+
+        public Order GetOrderById(int id)
+        {
+            UniversalContext db = new UniversalContext();
+            using (db)
+            {
+                return (from c in db.Orders
+                        .Include(m => m.OrderStatus)
+                        .Include(m => m.OrderDetails)
+                        where c.Id == id
+                        select c).FirstOrDefault();
+            }
+        }
     }
 }
