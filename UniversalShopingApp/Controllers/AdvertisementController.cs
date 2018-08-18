@@ -73,7 +73,7 @@ namespace UniversalShopingApp.Controllers
                 throw ex;
             }
 
-            return View();
+            return RedirectToAction("PostAdvertisement");
 
         }
 
