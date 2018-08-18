@@ -37,7 +37,6 @@
                             <li><a href="@Url.Action("Login", "Users")"><span class="fa fa-user"> </span>&nbsp; Login</a></li>
                             <li><a href="@Url.Action("SignUp", "Users")"><span class="fa fa-user-plus"> </span>&nbsp; Create an Account</a></li>
                         }
-
                     </ul>
                 </div>
                 <div class="header-right">
@@ -71,6 +70,9 @@
                     <ul class="nav navbar-nav float-right">
                         <li><a href="@Url.Action("FirstPage","Contact")">Home</a></li>
                         <li><a href="@Url.Action("SubmitMessage","Contact")">CONTACT</a></li>
+                        <li><a href="@Url.Action("Index","Home")">Shopping Window</a></li>
+                        <li><a href="@Url.Action("Index","Auction")">Auction Room</a></li>
+                        <li><a href="@Url.Action("Index","Advertisement")">Earn from Spare</a></li>
                     </ul>
                 </div>
                 <!--/.navbar-collapse-->
@@ -130,11 +132,6 @@
                 </script>
             </div>
             <div class="clearfix"> </div>
-        </div>
-        <div class="shop">
-            <a href="@Url.Action("Index","Home")" style="border-radius: 20px">Shopping Window</a>
-            <a href="@Url.Action("Index","Auction")" style="border-radius: 20px">Auction Room</a>
-            <a href="@Url.Action("Index","Advertisement")" style="border-radius: 20px">Earn from Spare</a>
         </div>
     </div>
 </body>
