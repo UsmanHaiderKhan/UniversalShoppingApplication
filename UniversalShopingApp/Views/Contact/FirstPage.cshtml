@@ -70,7 +70,10 @@
                     <ul class="nav navbar-nav float-right">
                         <li><a href="@Url.Action("FirstPage","Contact")">Home</a></li>
                         <li><a href="@Url.Action("SubmitMessage","Contact")">CONTACT</a></li>
-                        <li><a href="@Url.Action("Index","Home")">Shopping Window</a></li>
+                        @if (cuser != null)
+                        {
+                            <li><a href="@Url.Action("Index","Home")">Shopping Window</a></li>
+                        }
                         <li><a href="@Url.Action("Index","Auction")">Auction Room</a></li>
                         <li><a href="@Url.Action("Index","Advertisement")">Earn from Spare</a></li>
                     </ul>
