@@ -40,11 +40,11 @@ namespace UniversalShopingApp.Controllers
 
         public ActionResult FirstPage()
         {
-            User user = (User)Session[WebUtils.Current_User];
-            if (user == null)
-            {
-                return RedirectToAction("Login", "Users");
-            }
+            //User user = (User)Session[WebUtils.Current_User];
+            //if (user == null)
+            //{
+            //    return RedirectToAction("Login", "Users");
+            //}
 
             return View();
         }
