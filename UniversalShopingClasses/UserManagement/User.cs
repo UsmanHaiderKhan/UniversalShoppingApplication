@@ -20,6 +20,7 @@ namespace UniversalShopingClasses.UserManagement
         [DataType(DataType.Password)]
         [Compare("Password")]
         [StringLength(50, MinimumLength = 6, ErrorMessage = "Please Enter More The 6 Char")]
+        [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W)\S{6,15}$", ErrorMessage = "Please Enter Capital small or special Char...! ")]
         public string ConfirmPassword { get; set; }
         [Required]
         public string ImageUrl { get; set; }
