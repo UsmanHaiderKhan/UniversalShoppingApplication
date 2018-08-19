@@ -11,6 +11,8 @@
 <style>
 
 
+
+
     .back {
         padding: 0px;
         margin: 0px;
@@ -43,7 +45,7 @@
                     <i class="fa fa-user prefix"></i>
                     @Html.TextBoxFor(m => m.Fullname, null, new { @class = "text-white form-control", type = "text" })
                     @Html.LabelFor(m => m.Fullname)
-                    @Html.ValidationMessageFor(m => m.Fullname, "", new { @class = "text-white" })
+                    <p class="text-center"> @Html.ValidationMessageFor(m => m.Fullname, "", new { @class = "text-white" })</p>
                 </div>
                 <div class="md-form">
                     <i class="fa fa-envelope prefix"></i>
@@ -61,13 +63,13 @@
                     <i class="fa fa-lock prefix"></i>
                     @Html.PasswordFor(m => m.Password, new { @class = "text-white form-control" })
                     @Html.LabelFor(m => m.Password)
-                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-white" })
+                    <p class="text-center">@Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-white" })</p>
                 </div>
                 <div class="md-form">
                     <i class="fa fa-lock prefix"></i>
                     @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "text-white form-control" })
                     @Html.LabelFor(m => m.ConfirmPassword)
-                    @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-white" })
+                    <p class="text-center">@Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })</p>
                 </div>
                 <div class="md-form">
                     <i class="fa fa-id-card prefix"></i>
