@@ -14,6 +14,7 @@ namespace UniversalShopingClasses.UserManagement
         [Required]
         [DataType(DataType.Password)]
         [StringLength(50, MinimumLength = 6, ErrorMessage = "Please Enter More The 6 Char")]
+        [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W)\S{6,15}$", ErrorMessage = "Please Enter Capital small or special Char...! ")]
         public string Password { get; set; }
         [Required]
         [DataType(DataType.Password)]
