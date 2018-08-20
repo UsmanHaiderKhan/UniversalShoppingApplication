@@ -15,6 +15,7 @@
 
 
 
+
     .back {
         padding: 0px;
         margin: 0px;
@@ -95,29 +96,28 @@
                     <i class="fa fa-flag prefix"></i>
                     @Html.TextBoxFor(m => m.City, null, new { @class = "text-white form-control", type = "text" })
                     @Html.LabelFor(m => m.City)
-                    @Html.ValidationMessageFor(m => m.City, "", new { @class = "text-white" })
+                    <p class="text-center">@Html.ValidationMessageFor(m => m.City, "", new { @class = "text-white" })</p>
                 </div>
                 <div class="md-form">
                     <i class="fa fa-address-book prefix"></i>
                     @Html.TextBoxFor(m => m.FullAddress, null, new { @class = "text-white form-control", type = "text" })
                     @Html.LabelFor(m => m.FullAddress)
-                    @Html.ValidationMessageFor(m => m.FullAddress, "", new { @class = "text-white" })
+                    <p class="text-center">@Html.ValidationMessageFor(m => m.FullAddress, "", new { @class = "text-white" })</p>
                 </div>
                 <div class="md-form text-white">
                     <i class="fa fa-phone prefix"></i>
                     @Html.TextBoxFor(m => m.MobileNo, null, new { @class = "text-white form-control", type = "number" })
                     @Html.LabelFor(m => m.MobileNo)
-                    @Html.ValidationMessageFor(m => m.MobileNo, "", new { @class = "text-white" })
+                    <p class="text-center">@Html.ValidationMessageFor(m => m.MobileNo, "", new { @class = "text-white" })</p>
                 </div>
                 <div class="form-group text-center text-white">
-                    @if (ViewBag.GenderList != null)
+
+                    @Html.LabelFor(m => m.Gender, new { })
+                    @foreach (var b in (IEnumerable<SelectListItem>)ViewBag.GenderList)
                     {
-                        @Html.LabelFor(m => m.Gender, new { })
-                        foreach (var b in (IEnumerable<SelectListItem>)ViewBag.GenderList)
-                        {
-                            <label>@Html.RadioButton("gender.Name", b.Value) @b.Text</label>
-                        }
+                        <label>@Html.RadioButton("gender.Name", b.Value) @b.Text</label>
                     }
+
                 </div>
                 <div class="form-group text-center ">
                     <button type="submit" class="btn btn-deep-purple"><span class="fa fa-user-plus"></span>&nbsp;Signup</button>
