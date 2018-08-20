@@ -14,6 +14,7 @@
 
 
 
+
     .back {
         padding: 0px;
         margin: 0px;
@@ -76,18 +77,19 @@
                     <i class="fa fa-id-card prefix"></i>
                     @Html.TextBoxFor(m => m.Cnic, null, new { @class = "text-white form-control", type = "number" })
                     @Html.LabelFor(m => m.Cnic)
-                    @Html.ValidationMessageFor(m => m.Cnic, "", new { @class = "text-white" })
+                    <p class="text-center">@Html.ValidationMessageFor(m => m.Cnic, "", new { @class = "text-white" })</p>
                 </div>
                 <div class="md-form">
                     <i class="fa fa-calendar prefix"></i>
                     @Html.TextBoxFor(m => m.DateofBirth, null, new { @class = "text-white form-control", type = "date" })
                     @Html.ValidationMessageFor(m => m.DateofBirth, "", new { @class = "text-white" })
+                    <p class="text-center">@Html.ValidationMessageFor(m => m.DateofBirth, "", new { @class = "text-white" })</p>
                 </div>
                 <div class="md-form">
                     <i class="fa fa-flag prefix"></i>
                     @Html.TextBoxFor(m => m.State, null, new { @class = "text-white form-control", type = "text" })
                     @Html.LabelFor(m => m.State)
-                    @Html.ValidationMessageFor(m => m.State, "", new { @class = "text-white" })
+                    <p class="text-center">@Html.ValidationMessageFor(m => m.State, "", new { @class = "text-white" })</p>
                 </div>
                 <div class="md-form">
                     <i class="fa fa-flag prefix"></i>
