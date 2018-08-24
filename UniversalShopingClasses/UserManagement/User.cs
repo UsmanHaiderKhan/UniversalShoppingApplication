@@ -32,6 +32,7 @@ namespace UniversalShopingClasses.UserManagement
         public DateTime DateofBirth { get; set; }
         [Required]
         [DataType(DataType.PhoneNumber)]
+        [RegularExpression(@"\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}?", ErrorMessage = "Your Phone No Is Not Valid")]
         public long MobileNo { get; set; }
         [Required]
         public string FullAddress { get; set; }
